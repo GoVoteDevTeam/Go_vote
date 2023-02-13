@@ -18,7 +18,7 @@ git clone "https://github.com/GoVoteDevTeam/Go_vote.git"
 ```
 ## パッケージマネージャをインストールする
 ### a : composer のインストール
-下記のURLのWindows Installerからインストールを行ってください
+下記のURLのWindows Installerからインストールを行ってください<br>
 https://getcomposer.org/download/
 
 ### b : npmのインストール
@@ -52,4 +52,4 @@ npm run dev
 ```powershell
 php artisan serve
 ```
-各開発サーバはは別のターミナルで行ってください
+各開発サーバを起動する際は、別ターミナルで行ってください
