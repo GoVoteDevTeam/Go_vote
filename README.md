@@ -14,7 +14,7 @@ https://gitforwindows.org/
 ## リポジトリをcloneする
 `C:\xampp\htdocs`上でpowershellを立ち上げ、リモートリポジトリをcloneしてください
 ```powershell
-git clone https://github.com/GoVoteDevTeam/Go_vote.git
+git clone "https://github.com/GoVoteDevTeam/Go_vote.git"
 ```
 ## パッケージマネージャをインストールする
 ### a : composer のインストール
