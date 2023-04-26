@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HelloController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -14,6 +15,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('hello-world');
-});
+// Route::get('/', function () {
+//     return Inertia::render('hello-world');
+// });
+Route::get('/', [HelloController::class, 'index']);

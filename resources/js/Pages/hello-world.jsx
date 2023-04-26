@@ -1,7 +1,7 @@
-export default function HelloWorld() {
+export default function HelloWorld(props) {
     return (
         <div>
-            <div className="testCakse">helloWorld</div>
+            <div className="testCakse">{props.name}</div>
         </div>
     );
 }
