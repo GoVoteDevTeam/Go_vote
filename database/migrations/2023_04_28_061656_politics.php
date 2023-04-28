@@ -8,15 +8,15 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * 政党を格納する
      * @return void
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::create("politics", function (Blueprint $table) {
+            $table->bigIncrements("politics_id");
+            $table->string("politics_name");
+            $table->text("information");
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        Schema::dropIfExists("politics");
     }
 };

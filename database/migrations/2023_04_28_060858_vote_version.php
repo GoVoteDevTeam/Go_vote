@@ -8,19 +8,15 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * 投票の開催数を格納する
      * @return void
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+        Schema::create("vote_version", function (Blueprint $table) {
+            $table->bigIncrements("version_id");
+            $table->dateTime("start_date");
+            $table->dateTime("finish_date");
         });
     }
 
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists("vote_version");
     }
 };
