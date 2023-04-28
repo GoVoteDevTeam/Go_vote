@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create("users", function(Blueprint $table){
             // primary key
             $table->bigIncrements("user_id");
-
+            $table->string("password");
             $table->string("user_name");
             $table->string("email");
         });
@@ -30,7 +30,7 @@ return new class extends Migration
      */
     public function down()
     {
-        // 
+        //
         Schema::dropIfExists("users");
     }
 };
