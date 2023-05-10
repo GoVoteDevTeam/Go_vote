@@ -17,3 +17,8 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('hello-world');
 });
+
+
+Route::get('/demo', function () {
+    return Inertia::render('Demo');
+});
