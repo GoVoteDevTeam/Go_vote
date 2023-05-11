@@ -2,13 +2,6 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const Politics = () => {
-    const [count, setCount] = useState(0);
-
-    const handleClick = () =>  {
-        let counts = count + 1;
-        setCount(counts);
-    }
-
     return (
         <>
             <HeaderElement>
@@ -18,9 +11,11 @@ const Politics = () => {
                 <div className="title">
                     政党早見表
                 </div>
-                <button onClick={handleClick}>
-                    ここをクリック
-                </button>
+                <div className="political_party">
+                    <div className="item">
+                        ajfdfsn
+                    </div>
+                </div>
             </PoliticsPage>
         </>
     )
@@ -42,8 +37,15 @@ const PoliticsPage = styled.div`
     background-color: #36375F;
     border-radius: 10px 10px 0 0;
     .title {
-        padding: 10px;
+        padding: 30px;
         text-align: center;
         color: #fff;
+        font-size:40px;
+    }
+    .item{
+        height: 150px;
+        width: 95%;
+        background-color: #fff;
+        margin:auto;
     }
 `;
