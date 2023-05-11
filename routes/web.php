@@ -15,5 +15,5 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('hello-world');
+    return Inertia::render('Politics');
 });
