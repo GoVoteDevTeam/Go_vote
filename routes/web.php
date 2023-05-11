@@ -15,10 +15,6 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-<<<<<<< HEAD
-    return Inertia::render('Politics');
-});
-=======
     return Inertia::render('hello-world');
 });
 
@@ -26,4 +22,7 @@ Route::get('/', function () {
 Route::get('/demo', function () {
     return Inertia::render('Demo');
 });
->>>>>>> f760f534794c9b755600273645294cbb006f8977
+
+Route::get('/politics', function () {
+    return Inertia::render('Politics');
+});
