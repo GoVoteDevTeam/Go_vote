@@ -22,3 +22,8 @@ Route::get('/', function () {
 Route::get('/demo', function () {
     return Inertia::render('Demo');
 });
+
+
+Route::get('/diagonose', function () {
+    return Inertia::render('Diagonose');
+});
