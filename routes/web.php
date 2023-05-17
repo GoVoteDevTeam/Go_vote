@@ -23,7 +23,6 @@ Route::get('/demo', function () {
     return Inertia::render('Demo');
 });
 
-
 Route::get('/politics', function () {
     return Inertia::render('Politics');
 });

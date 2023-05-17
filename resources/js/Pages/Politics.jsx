@@ -1,7 +1,7 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 const Politics = () => {
+
     return (
         <>
             <HeaderElement>
@@ -12,9 +12,8 @@ const Politics = () => {
                     政党早見表
                 </div>
                 <div className="political_party">
-                    <div className="item">
-                        ajfdfsn
-                    </div>
+                    <div className="item"><div className="icon"></div></div>
+                    <div className="item2"></div>
                 </div>
             </PoliticsPage>
         </>
@@ -37,15 +36,29 @@ const PoliticsPage = styled.div`
     background-color: #36375F;
     border-radius: 10px 10px 0 0;
     .title {
-        padding: 30px;
+        padding: 20px;
         text-align: center;
         color: #fff;
         font-size:40px;
     }
+    .political_party{
+        display: flex;
+    }
     .item{
-        height: 150px;
-        width: 95%;
+        width: 20%;
+        height: 100px;
+        /* margin-right: 10px; */
+        margin-left: 10px;
+        background-color: #ffffffc3;
+        .icon{
+            background:
+        }
+    }
+    .item2{
+        width: 80%;
+        height: 100px;
+        margin-right: 10px;
+        /* margin-left: 10px; */
         background-color: #fff;
-        margin:auto;
     }
 `;
