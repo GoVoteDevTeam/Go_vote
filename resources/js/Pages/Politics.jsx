@@ -27,7 +27,7 @@ const Politics = () => {
                                 <div class="modal-001__content">
                                     <div className="nameModal">自民党</div>
                                     <div className="iconModal"></div>
-                                    <div className="detailModal">自我が強く他人の待遇に一切の興味を示さない、非人道的な組織です。</div>
+                                    <div className="detailModal">自民党は日本の主要政党で、経済重視、保守主義、安全保障強化、憲法改正、社会保障政策などを重視する党です。</div>
                                 </div>
                             </div>
                             <label for="modal-001__close">
@@ -131,15 +131,16 @@ const PoliticsPage = styled.div`
         display: none;
         .nameModal{
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 15px;
             font-size: 35px;
         }
         .iconModal{
             background-color:#eaff4c;
             border-radius: 50%;
-            height: 60px;
-            width: 60px;
+            height: 120px;
+            width: 120px;
             margin:0px auto;
+            margin-bottom: 30px;
         }
     }
 
