@@ -29,7 +29,9 @@ const Politics = () => {
                 </div>
                 <div className="political_party">
                     <div className="item">
-                        <div className="icon"></div>
+                        <div className="icon">
+                            <img className="img" src={data[0].img} />
+                        </div>
                         <div className="name">{data[0].name}</div>
                     </div>
                     <div className="item2">
@@ -76,6 +78,11 @@ const PoliticsPage = styled.div`
                 height: 60px;
                 width: 60px;
                 margin:8px auto;
+                .img{
+                    border-radius:50%;
+                    height: 60px;
+                    width: 60px;
+                }
             }
             .name{
                 text-align: center;
