@@ -1,14 +1,29 @@
 import styled from "styled-components";
+import data from "../components/Politics_data";
 
 const Politics = () => {
-    
+    // console.log(data);
+    data.forEach((data)=> {
+        console.log(data.name) ;
+    });
+
+    const Politicses = () => {
+        return data.map((data)=>{
+            return(
+                <div className="">{data.name}</div>
+            );
+        })
+    }
 
     return (
+
         <>
+            <Politicses />
             <HeaderElement>
 
             </HeaderElement>
             <PoliticsPage>
+
                 <div className="title">
                     政党早見表
                 </div>
@@ -17,21 +32,21 @@ const Politics = () => {
                         <div className="icon"></div>
                         <div className="name">自民党</div>
                     </div>
-                    <div class="modal-001__wrap">
-                        <input type="radio" id="modal-001__open" class="modal-001__open-input" name="modal-001__trigger"/>
-                        <label for="modal-001__open"  class="modal-001__open-label">モーダルを開く</label>
-                        <input type="radio" id="modal-001__close" name="modal-001__trigger"/>
-                        <div class="modal-001">
-                            <div class="modal-001__content-wrap">
+                    <div className="modal-001__wrap">
+                        <input type="radio" id="modal-001__open" className="modal-001__open-input" name="modal-001__trigger"/>
+                        <label for="modal-001__open"  className="modal-001__open-label"></label>
+                        <input type="radio" id="modal-001__close" className="modal-001__trigger"/>
+                        <div className="modal-001">
+                            <div className="modal-001__content-wrap">
                                 {/* <label for="modal-001__close" class="modal-001__close-label">×</label> */}
-                                <div class="modal-001__content">
+                                <div className="modal-001__content">
                                     <div className="nameModal">自民党</div>
                                     <div className="iconModal"></div>
                                     <div className="detailModal">自民党は日本の主要政党で、経済重視、保守主義、安全保障強化、憲法改正、社会保障政策などを重視する党です。</div>
                                 </div>
                             </div>
                             <label for="modal-001__close">
-                                <div class="modal-001__background"></div>
+                                <div className="modal-001__background"></div>
                             </label>
                         </div>
                     </div>
@@ -98,28 +113,10 @@ const PoliticsPage = styled.div`
         margin-right: 10px;
         /* margin-left: 10px; */
         background-color: #fff;
+        input {
+            display: none;
+        }
     }
-
-    .modal-001__wrap input {
-        display: none;
-    }
-
-    /* .modal-001__open-label,
-    .modal-001__close-label {
-        display: table-cell;
-        vertical-align: middle;
-    } */
-
-    /* .modal-001__open-label {
-        color: #4f96f6;
-        font-size: .95em;
-    } */
-
-    /* .modal-001__open-label:hover {
-        text-decoration: underline;
-        cursor: pointer;
-        color: #c7511f;
-    } */
 
     .modal-001 {
         position: fixed;
@@ -161,7 +158,7 @@ const PoliticsPage = styled.div`
         border-radius: 5px;
     }
 
-       .modal-001__close-label {
+    .modal-001__close-label {
         background-color: #777;
         color: #fff;
         border: 2px solid #fff;
@@ -176,7 +173,7 @@ const PoliticsPage = styled.div`
         right: -2%;
         z-index: 99999;
         font-size: 1.4em;
-    } 
+    }
 
     .modal-001__content {
         max-height: 50vh;
