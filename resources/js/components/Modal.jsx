@@ -13,7 +13,9 @@ const Modal = ({ Politics_data }) => {
                             {/* <label htmlFor="modal-001__close" className="modal-001__close-label">×</label> */}
                             <div className="modal-001__content">
                                 <div className="nameModal">{Politics_data[0].name}</div>
-                                <div className="iconModal"></div>
+                                <div className="iconModal">
+                                    <img className="img" src={`./img/${Politics_data[0].img}`} />
+                                </div>
                                 <div className="detailModal">{Politics_data[0].datail}</div>
                             </div>
                         </div>
@@ -91,6 +93,12 @@ const ModalWrap = styled.header`
                     width: 120px;
                     margin:0px auto;
                     margin-bottom: 30px;
+                    .img{
+                        border-radius:50%;
+                        height: 120px;
+                        width: 120px;
+                        border: solid 4px #ff6347;  //白で見にくかったからborder付けただけ。
+                    }
                 }
             }
         }

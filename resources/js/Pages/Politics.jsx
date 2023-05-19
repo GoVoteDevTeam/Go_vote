@@ -30,7 +30,7 @@ const Politics = () => {
                 <div className="political_party">
                     <div className="item">
                         <div className="icon">
-                            <img className="img" src={data[0].img} />
+                            <img className="img" src={`./img/${data[0].img}`} />
                         </div>
                         <div className="name">{data[0].name}</div>
                     </div>
