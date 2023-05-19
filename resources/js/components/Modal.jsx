@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Modal = () => {
+const Modal = ({ Politics_data }) => {
     return(
         <>
             <ModalWrap>
@@ -12,9 +12,9 @@ const Modal = () => {
                         <div className="modal-001__content-wrap">
                             {/* <label htmlFor="modal-001__close" className="modal-001__close-label">×</label> */}
                             <div className="modal-001__content">
-                                <div className="nameModal">自民党</div>
+                                <div className="nameModal">{Politics_data[0].name}</div>
                                 <div className="iconModal"></div>
-                                <div className="detailModal">自民党は日本の主要政党で、経済重視、保守主義、安全保障強化、憲法改正、社会保障政策などを重視する党です。</div>
+                                <div className="detailModal">{Politics_data[0].datail}</div>
                             </div>
                         </div>
                         <label htmlFor="modal-001__close">

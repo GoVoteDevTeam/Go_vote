@@ -30,10 +30,10 @@ const Politics = () => {
                 <div className="political_party">
                     <div className="item">
                         <div className="icon"></div>
-                        <div className="name">自民党</div>
+                        <div className="name">{data[0].name}</div>
                     </div>
                     <div className="item2">
-                        <Modal/>
+                        <Modal Politics_data={data}/>
                     </div>
                 </div>
             </PoliticsPage>
