@@ -18,7 +18,7 @@ const Politics = () => {
     return (
 
         <>
-            <Politicses />
+            {/* <Politicses /> */}
             <HeaderElement>
 
             </HeaderElement>
@@ -35,7 +35,7 @@ const Politics = () => {
                     <div className="modal-001__wrap">
                         <input type="radio" id="modal-001__open" className="modal-001__open-input" name="modal-001__trigger"/>
                         <label for="modal-001__open"  className="modal-001__open-label">開く</label>
-                        <input type="radio" id="modal-001__close" className="modal-001__trigger"/>
+                        <input type="radio" id="modal-001__close" name="modal-001__trigger"/>
                         <div className="modal-001">
                             <div className="modal-001__content-wrap">
                                 {/* <label for="modal-001__close" class="modal-001__close-label">×</label> */}
