@@ -6,7 +6,7 @@ const Modal = ({ Politics_data }) => {
             <ModalWrap>
                 <div className="modal-001__wrap">
                     <input type="radio" id="modal-001__open" className="modal-001__open-input" name="modal-001__trigger"/>
-                    <label htmlFor="modal-001__open" className="modal-001__open-label">開く</label>
+                    <label htmlFor="modal-001__open" className="modal-001__open-label">{Politics_data[0].catchcopy}</label>
                     <input type="radio" id="modal-001__close" name="modal-001__trigger"/>
                     <div className="modal-001">
                         <div className="modal-001__content-wrap">
