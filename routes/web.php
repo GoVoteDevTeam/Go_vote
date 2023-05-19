@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SignUpController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -22,3 +23,11 @@ Route::get('/', function () {
 Route::get('/demo', function () {
     return Inertia::render('Demo');
 });
+
+Route::get('/login', function () {
+    return Inertia::render('Login');
+})->name("login");
+
+Route::get('/signup', [SignUpController::class, "index"])->name('signup');
+
+Route::post('signup', [SignUpController::class, "signup"]);
