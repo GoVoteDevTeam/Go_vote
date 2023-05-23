@@ -31,3 +31,7 @@ Route::get('/login', function () {
 Route::get('/signup', [SignUpController::class, "index"])->name('signup');
 
 Route::post('signup', [SignUpController::class, "signup"]);
+
+Route::get("/demo_vote/start", function () {
+    return Inertia::render("DemoVoteStart");
+})->name("demovote_start");
