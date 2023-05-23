@@ -1,6 +1,13 @@
 import styled from "styled-components";
+import { Inertia } from "@inertiajs/inertia"
+import axios from "axios";
 
 const DemoVote = () => {
+
+	const startClick = async () => {
+		Inertia.get('/check-login');
+	}
+
 	return (
 		<>
 			<TmpHeader />
@@ -11,7 +18,7 @@ const DemoVote = () => {
 					<p>あなたの投票が、若者の意識を変える</p>
 				</div>
 				
-				<div className="try-button">
+				<div className="try-button" onClick={startClick}>
 					<span>TRY !</span>
 				</div>
 

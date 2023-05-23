@@ -35,3 +35,14 @@ Route::post('signup', [SignUpController::class, "signup"]);
 Route::get("/demo_vote/start", function () {
     return Inertia::render("DemoVoteStart");
 })->name("demovote_start");
+
+Route::get('/check-login', function () {
+    // テスト用にログインしておく
+    if (!Auth::check()) {
+        // ログイン済みの場合の処理（画面遷移など）
+        return Inertia::render("Demo");
+    } else {
+        // 未ログインの場合の処理（ログイン画面へのリダイレクトなど）
+        return Inertia::location("/login");
+    }
+});
