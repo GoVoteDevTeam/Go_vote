@@ -4,6 +4,8 @@ import Modal from "../components/Modal";
 
 const Politics = () => {
     // console.log(data);
+    const loopCount = 10;
+
     data.forEach((data)=> {
         console.log(data.name) ;
     });
@@ -27,17 +29,19 @@ const Politics = () => {
                 <div className="title">
                     政党早見表
                 </div>
-                <div className="political_party">
-                    <div className="item">
+                {[...Array(loopCount)].map((_, index) => (
+                    <div key={index} className="political_party">
+                        <div className="item">
                         <div className="icon">
                             <img className="img" src={`./img/${data[0].img}`} />
                         </div>
                         <div className="name">{data[0].name}</div>
+                        </div>
+                        <div className="item2">
+                        <Modal Politics_data={data} />
+                        </div>
                     </div>
-                    <div className="item2">
-                        <Modal Politics_data={data}/>
-                    </div>
-                </div>
+                ))}
             </PoliticsPage>
         </>
     )
