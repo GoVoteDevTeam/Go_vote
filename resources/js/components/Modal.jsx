@@ -1,22 +1,23 @@
 import styled from "styled-components";
 
 const Modal = ({ Politics_data }) => {
+
     return(
         <>
             <ModalWrap>
                 <div className="modal-001__wrap">
                     <input type="radio" id="modal-001__open" className="modal-001__open-input" name="modal-001__trigger"/>
-                    <label htmlFor="modal-001__open" className="modal-001__open-label">{Politics_data[0].catchcopy}</label>
+                    <label htmlFor="modal-001__open" className="modal-001__open-label">{Politics_data.catchcopy}</label>
                     <input type="radio" id="modal-001__close" name="modal-001__trigger"/>
                     <div className="modal-001">
                         <div className="modal-001__content-wrap">
                             {/* <label htmlFor="modal-001__close" className="modal-001__close-label">×</label> */}
                             <div className="modal-001__content">
-                                <div className="nameModal">{Politics_data[0].name}</div>
+                                <div className="nameModal">{Politics_data.name}</div>
                                 <div className="iconModal">
-                                    <img className="img" src={`./img/${Politics_data[0].img}`} />
+                                    <img className="img" src={`./img/${Politics_data.img}`} />
                                 </div>
-                                <div className="detailModal">{Politics_data[0].datail}</div>
+                                <div className="detailModal">{Politics_data.datail}</div>
                             </div>
                         </div>
                         <label htmlFor="modal-001__close">

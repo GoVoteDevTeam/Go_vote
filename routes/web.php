@@ -23,6 +23,10 @@ Route::get('/demo', function () {
     return Inertia::render('Demo');
 });
 
+Route::get('/diagonose', function () {
+    return Inertia::render('Diagonose');
+});
+
 Route::get('/politics', function () {
     return Inertia::render('Politics');
 });
