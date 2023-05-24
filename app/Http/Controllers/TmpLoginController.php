@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 
 class TmpLoginController extends Controller
 {
     public function index()
     {
+        return Inertia::render('LoginTmp');
     }
 
     public function checkLogin()
@@ -33,7 +35,11 @@ class TmpLoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             // 認証成功の処理
-            return redirect()->intended('/demo'); // ログイン後のリダイレクト先
+            $user = Auth::user();
+
+            Session::put('redirectData', $user);
+
+            return Inertia::location("/demo");
         }
     }
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Inertia } from '@inertiajs/inertia';
 
-const Demo = () => {
+const Demo = ( { auth } ) => {
     const [count, setCount] = useState(0);
 
     const handleClick = () =>  {
@@ -13,6 +13,8 @@ const Demo = () => {
     const handleLogout = () => {
         Inertia.post('/logout'); // ログアウトリクエストを送信
     };
+
+    console.log(auth);
 
     return (
         <>

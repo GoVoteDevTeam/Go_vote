@@ -4,7 +4,7 @@ use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\TmpLoginController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,23 +23,26 @@ Route::get('/', function () {
 
 
 Route::get('/demo', function () {
-    return Inertia::render('Demo');
+    $data = Session::get('redirectData');
+    Session::forget('redirectData'); // データを取得したらセッションから削除する
+    return Inertia::render('Demo',[
+        "auth"=>$data
+    ]);
 });
 
-Route::get('/login', function () {
-    return Inertia::render('LoginTmp');
-})->name("login");
 
 Route::get('/signup', [SignUpController::class, "index"])->name('signup');
 
 Route::post('signup', [SignUpController::class, "signup"]);
 
-Route::get("/demo_vote/start", function () {
-    return Inertia::render("DemoVoteStart");
-})->name("demovote_start");
+Route::get('/login', [TmpLoginController::class, "index"])->name("login");
 
 Route::get('/check-login',  [TmpLoginController::class, "checkLogin"]);
 
 Route::post("/login", [TmpLoginController::class, "login"]);
 
 Route::post('/logout', [TmpLoginController::class, 'logout'])->name('logout');
+
+Route::get("/demo_vote/start", function () {
+    return Inertia::render("DemoVoteStart");
+})->name("demovote_start");
