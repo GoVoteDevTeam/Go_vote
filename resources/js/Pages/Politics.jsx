@@ -29,16 +29,16 @@ const Politics = () => {
                 <div className="title">
                     政党早見表
                 </div>
-                {[...Array(loopCount)].map((_, index) => (
+                {data.map((item, index) => (
                     <div key={index} className="political_party">
                         <div className="item">
                         <div className="icon">
-                            <img className="img" src={`./img/${data[0].img}`} />
+                            <img className="img" src={`./img/${item.img}`} />
                         </div>
-                        <div className="name">{data[0].name}</div>
+                        <div className="name">{item.name}</div>
                         </div>
                         <div className="item2">
-                        <Modal Politics_data={data} />
+                        <Modal Politics_data={item} />
                         </div>
                     </div>
                 ))}
