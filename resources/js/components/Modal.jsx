@@ -36,6 +36,9 @@ const ModalWrap = styled.header`
     display: flex;
     justify-content: center;
     height: 100px;
+    .modal-001__open-label {
+        margin: auto;
+    }
     input {
         display: none;
     }
@@ -125,7 +128,6 @@ const ModalWrap = styled.header`
 @media only screen and (max-width: 520px) {
     .modal-001__open-label {
         max-width: 90%;
-        padding: .94em 2.1em .94em 2.6em;
     }
 
     /* .modal-001__close-label {
