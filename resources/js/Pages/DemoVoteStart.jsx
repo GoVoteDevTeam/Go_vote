@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Inertia } from "@inertiajs/inertia"
-import axios from "axios";
+// import axios from "axios";
 
 const DemoVote = () => {
 
@@ -17,7 +17,6 @@ const DemoVote = () => {
 					<h1>デモ選挙</h1>
 					<p>あなたの投票が、若者の意識を変える</p>
 				</div>
-				
 				<div className="try-button" onClick={startClick}>
 					<span>TRY !</span>
 				</div>
@@ -59,14 +58,14 @@ const DemoVoteStartPage = styled.div`
 	width: 100%;
 	height: calc(100vh - 92px - 80px);
 	overflow-y: auto;
-	
+
 	.title {
 		width: 80%;
 		height: 15vh;
 		margin: 0 auto;
 		text-align: center;
 		display: block;
-		padding: 100px 0px 0px 0;
+		padding: 3% 0px 0px 0;
 		h1 {
 			margin: 0;
 		}
@@ -85,7 +84,7 @@ const DemoVoteStartPage = styled.div`
 		box-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
 
 		cursor: pointer;
-		
+
 		span {
 			color: #000;
 			font-size: 20px;

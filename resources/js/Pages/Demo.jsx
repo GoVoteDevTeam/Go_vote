@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { Inertia } from '@inertiajs/inertia';
 
 const Demo = () => {
     const [count, setCount] = useState(0);
@@ -9,10 +10,14 @@ const Demo = () => {
         setCount(counts);
     }
 
+    const handleLogout = () => {
+        Inertia.post('/logout'); // ログアウトリクエストを送信
+    };
+
     return (
         <>
-            <HeaderElement>
-
+            <HeaderElement onClick={handleLogout}>
+                <h1>ログアウト</h1>
             </HeaderElement>
             <DemoPage>
                 <div className="title">

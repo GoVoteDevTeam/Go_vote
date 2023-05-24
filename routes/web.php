@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\SignUpController;
+use App\Http\Controllers\TmpLoginController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +27,7 @@ Route::get('/demo', function () {
 });
 
 Route::get('/login', function () {
-    return Inertia::render('Login');
+    return Inertia::render('LoginTmp');
 })->name("login");
 
 Route::get('/signup', [SignUpController::class, "index"])->name('signup');
@@ -36,13 +38,8 @@ Route::get("/demo_vote/start", function () {
     return Inertia::render("DemoVoteStart");
 })->name("demovote_start");
 
-Route::get('/check-login', function () {
-    // テスト用にログインしておく
-    if (!Auth::check()) {
-        // ログイン済みの場合の処理（画面遷移など）
-        return Inertia::render("Demo");
-    } else {
-        // 未ログインの場合の処理（ログイン画面へのリダイレクトなど）
-        return Inertia::location("/login");
-    }
-});
+Route::get('/check-login',  [TmpLoginController::class, "checkLogin"]);
+
+Route::post("/login", [TmpLoginController::class, "login"]);
+
+Route::post('/logout', [TmpLoginController::class, 'logout'])->name('logout');
