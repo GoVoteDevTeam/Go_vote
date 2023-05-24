@@ -59,7 +59,7 @@ const HeaderElement = styled.header`
 
 const PoliticsPage = styled.div`
     width: 100%;
-    height: calc(100vh - 200px);
+    height: 100%;
     background-color: #36375F;
     border-radius: 10px 10px 0 0;
     .title {
