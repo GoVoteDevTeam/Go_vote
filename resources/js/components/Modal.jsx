@@ -35,10 +35,10 @@ export default Modal;
 const ModalWrap = styled.header`
 .modal-001__wrap {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     height: 100px;
     .modal-001__open-label {
-        margin: auto;
+        /* margin: auto; */
         font-size: 25px;
     }
     input {
