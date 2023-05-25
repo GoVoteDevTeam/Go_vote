@@ -7,7 +7,11 @@ const Modal = ({ Politics_data }) => {
             <ModalWrap>
                 <div className="modal-001__wrap">
                     <input type="radio" id="modal-001__open" className="modal-001__open-input" name="modal-001__trigger"/>
-                    <label htmlFor="modal-001__open" className="modal-001__open-label">{Politics_data.catchcopy}</label>
+                    <label htmlFor="modal-001__open" className="modal-001__open">
+                        <label htmlFor="modal-001__open" className="modal-001__open-label">{Politics_data.catchcopy}</label>
+                        <label htmlFor="modal-001__open" className="modal-001__open-label_datail">{Politics_data.datail}</label>
+                    </label>
+                    
                     <input type="radio" id="modal-001__close" name="modal-001__trigger"/>
                     <div className="modal-001">
                         <div className="modal-001__content-wrap">
@@ -37,10 +41,25 @@ const ModalWrap = styled.header`
     display: flex;
     /* justify-content: center; */
     height: 100px;
-    .modal-001__open-label {
-        /* margin: auto; */
-        font-size: 25px;
+
+    .modal-001__open{
+        margin:auto 0;
+
+        .modal-001__open-label {
+        font-size: 1.5rem;
+        font-size: calc(2.4rem + ((6.51 - 0.64rem) * 2.1429)); //25px~15px
+        white-space: nowrap;
+        }
+        .modal-001__open-label_datail{
+        /* text-overflow: ellipsis; */
+        white-space: nowrap;
+        overflow: hidden;
+        margin: auto 0;
+        }
     }
+
+    
+
     input {
         display: none;
     }
@@ -129,8 +148,15 @@ const ModalWrap = styled.header`
 
 @media only screen and (max-width: 520px) {
     .modal-001__open-label {
-        max-width: 90%;
-        font-size: 15px;
+        /* max-width: 90%; */
+        font-size: 1rem;
+        white-space: pre-wrap;
+
+    }
+
+    .modal-001__open-label_datail{
+        /* visibility: hidden; */
+        display: none;
     }
 
     /* .modal-001__close-label {
