@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DemoVoteController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\TmpLoginController;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,6 @@ Route::post("/login", [TmpLoginController::class, "login"]);
 
 Route::post('/logout', [TmpLoginController::class, 'logout'])->name('logout');
 
-Route::get("/demo_vote/start", function () {
-    return Inertia::render("DemoVoteStart");
-})->name("demovote_start");
+Route::get("/demo_vote/start", [DemoVoteController::class, "index"])->name("demovote_start");
+
+Route::get("/demo_vote/ballots", [DemoVoteController::class, "handingOutBallots"])->name("ballots");

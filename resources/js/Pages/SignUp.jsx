@@ -19,7 +19,7 @@ const SignUp = ({ errors }) => {
         setInformation(
             { ...inputUserInformation, [e.target.name]: e.target.value }
         );
-        // console.log(inputUserInfomation)
+        // console.log(inputUserInformation)
     }
 
     // サインインボタンが押された場合

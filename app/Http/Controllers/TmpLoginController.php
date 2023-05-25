@@ -39,7 +39,7 @@ class TmpLoginController extends Controller
 
             Session::put('redirectData', $user);
 
-            return Inertia::location("/demo");
+            return Inertia::location("/demo_vote/ballots");
         }
     }
 

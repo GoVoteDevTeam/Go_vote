@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Inertia } from "@inertiajs/inertia"
-// import axios from "axios";
+import TmpHeader from "../components/TmpHeader";
 
 const DemoVote = () => {
 
@@ -47,11 +47,11 @@ const DemoVote = () => {
 }
 export default DemoVote;
 
-const TmpHeader = styled.header`
-	background-color: #36375F;
-	width: 100%;
-	height: 92px;
-`
+// const TmpHeader = styled.header`
+// 	background-color: #36375F;
+// 	width: 100%;
+// 	height: 92px;
+// `
 
 const DemoVoteStartPage = styled.div`
 	background-color: #BDC3CD;

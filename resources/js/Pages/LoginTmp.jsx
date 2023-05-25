@@ -1,6 +1,6 @@
 import { Inertia } from "@inertiajs/inertia";
 
-const Login = () => {
+const Login = ({ auth }) => {
     const mockUserData = {
         email: "test@testtest.com",
         password: "test",
@@ -14,7 +14,8 @@ const Login = () => {
         Inertia.post("/login", mockUserData, {onFinish})
     }
 
-    console.log();
+    console.log(auth);
+    
     return (
         <>
             <div onClick={handleLogin}>ログインを完了させる</div>
