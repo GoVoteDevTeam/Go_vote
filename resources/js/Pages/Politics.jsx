@@ -62,6 +62,7 @@ const PoliticsPage = styled.div`
     height: 100%;
     background-color: #36375F;
     border-radius: 10px 10px 0 0;
+    padding-bottom: 20px;
     .title {
         padding: 20px;
         text-align: center;
@@ -70,6 +71,7 @@ const PoliticsPage = styled.div`
     }
     .political_party{
         display: flex;
+        margin: 10px;
         .item{
             width: 20%;
             height: 100px;

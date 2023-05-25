@@ -39,6 +39,7 @@ const ModalWrap = styled.header`
     height: 100px;
     .modal-001__open-label {
         margin: auto;
+        font-size: 25px;
     }
     input {
         display: none;
@@ -129,6 +130,7 @@ const ModalWrap = styled.header`
 @media only screen and (max-width: 520px) {
     .modal-001__open-label {
         max-width: 90%;
+        font-size: 15px;
     }
 
     /* .modal-001__close-label {
