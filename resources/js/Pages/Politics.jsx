@@ -95,6 +95,8 @@ const PoliticsPage = styled.div`
             }
         }
         .item2{
+            display: flex;
+            align-items: center;
             width: 80%;
             height: 100px;
             margin-right: 10px;
