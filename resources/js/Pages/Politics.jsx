@@ -3,25 +3,14 @@ import data from "../components/Politics_data";
 import Modal from "../components/Modal";
 
 const Politics = () => {
-    // console.log(data);
-    const loopCount = 10;
 
     data.forEach((data)=> {
         console.log(data.name) ;
     });
 
-    const Politicses = () => {
-        return data.map((data)=>{
-            return(
-                <div className="">{data.name}</div>
-            );
-        })
-    }
-
     return (
 
         <>
-            {/* <Politicses /> */}
             <HeaderElement>
 
             </HeaderElement>
@@ -101,6 +90,11 @@ const PoliticsPage = styled.div`
             height: 100px;
             margin-right: 10px;
             background-color: #fff;
+
+            // コメントアウト戻すと見た目は良くなるけどモーダルの中身もoverflow: hidden;で消えてしまう
+            /* white-space: nowrap;
+            text-overflow: ellipsis;    //機能してない
+            overflow: hidden; */
         }
     }
 `;

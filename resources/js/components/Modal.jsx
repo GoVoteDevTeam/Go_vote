@@ -20,6 +20,9 @@ const Modal = ({ Politics_data }) => {
         <label htmlFor={`modal-${Politics_data.name}`} className="modal__trigger">
           {Politics_data.catchcopy}
         </label>
+        <label htmlFor={`modal-${Politics_data.name}`} className="modal__trigger_datail">
+          {Politics_data.datail}
+        </label>
 
         {isOpen && (
           <div className="modal__overlay" onClick={handleModal}>
@@ -49,6 +52,11 @@ const ModalWrap = styled.div`
 
     .modal__trigger {
         font-size: 1.5rem;
+        cursor: pointer;
+        /* margin: auto 0; */
+    }
+    .modal__trigger_datail {
+        font-size: 1rem;  //効かない
         cursor: pointer;
         margin: auto 0;
     }
@@ -103,4 +111,14 @@ const ModalWrap = styled.div`
             }
         }
     }
+    @media only screen and (max-width: 640px) {
+    .modal__trigger_datail {
+        font-size: calc(2rem - 1rem);
+        white-space: pre-wrap;
+    }
+
+    .modal__trigger_datail{
+        display: none;
+    }
+}
 `;
