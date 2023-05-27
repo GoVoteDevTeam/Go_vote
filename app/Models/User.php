@@ -14,6 +14,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $primaryKey = 'user_id';
+
     protected $attributes = [];
 
     protected $primaryKey = 'user_id';
