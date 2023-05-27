@@ -34,12 +34,10 @@ class TmpLoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            // 認証成功の処理
-            $user = Auth::user();
-
-            Session::put('redirectData', $user);
-
-            return Inertia::location("/demo_vote/ballots");
+            session(['key' => 'value']);
+            // session(["ischecked"=> Auth::check()]);
+            // ddd(session()->all());
+            return redirect('/demo');
         }
     }
 

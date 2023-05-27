@@ -1,6 +1,7 @@
 import TmpHeader from "../components/TmpHeader";
 
-const HandingOutBallots = () => {
+const HandingOutBallots = ( { auth } ) => {
+    console.log(auth);
     return (
         <>
             <TmpHeader />

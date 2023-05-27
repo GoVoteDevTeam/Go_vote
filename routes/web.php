@@ -3,6 +3,7 @@
 use App\Http\Controllers\DemoVoteController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\TmpLoginController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Session;
@@ -24,10 +25,12 @@ Route::get('/', function () {
 
 
 Route::get('/demo', function () {
-    $data = Session::get('redirectData');
-    Session::forget('redirectData'); // データを取得したらセッションから削除する
-    return Inertia::render('Demo',[
-        "auth"=>$data
+    $value = session('key');
+    // ddd(Auth::check());
+    // ddd(session()->all());
+    return Inertia::render('Demo', [
+        'value' => $value,
+        "user" => Auth::user(),
     ]);
 });
 

@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Inertia } from '@inertiajs/inertia';
+// import axios from "axios";
 
-const Demo = ( { auth } ) => {
+const Demo = ({value, user}) => {
     const [count, setCount] = useState(0);
 
     const handleClick = () =>  {
@@ -14,7 +15,7 @@ const Demo = ( { auth } ) => {
         Inertia.post('/logout'); // ログアウトリクエストを送信
     };
 
-    console.log(auth);
+    console.log(value, user);
 
     return (
         <>
