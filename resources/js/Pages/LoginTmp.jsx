@@ -1,6 +1,6 @@
 import { Inertia } from "@inertiajs/inertia";
 
-const Login = ({ auth }) => {
+const Login = ({ user }) => {
     const mockUserData = {
         email: "test@testtest.com",
         password: "test",
@@ -14,7 +14,7 @@ const Login = ({ auth }) => {
         Inertia.post("/login", mockUserData, {onFinish})
     }
 
-    console.log(auth);
+    console.log(user);
     
     return (
         <>

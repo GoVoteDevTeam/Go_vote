@@ -1,12 +1,9 @@
 import styled from "styled-components";
 import { Inertia } from "@inertiajs/inertia"
-import TmpHeader from "../components/TmpHeader";
+import axios from "axios";
+import { InertiaLink } from "@inertiajs/inertia-react";
 
 const DemoVote = () => {
-
-	const startClick = async () => {
-		Inertia.get('/check-login');
-	}
 
 	return (
 		<>
@@ -17,10 +14,13 @@ const DemoVote = () => {
 					<h1>デモ選挙</h1>
 					<p>あなたの投票が、若者の意識を変える</p>
 				</div>
-				<div className="try-button" onClick={startClick}>
-					<span>TRY !</span>
-				</div>
-
+				
+				<InertiaLink href="/demo_vote/ballots">
+					<div className="try-button">
+						<span>TRY !</span>
+					</div>
+				</InertiaLink>
+				
 				<div className="date">
 					<div className="election-day">
 						<h3>投票日</h3>
@@ -47,55 +47,59 @@ const DemoVote = () => {
 }
 export default DemoVote;
 
-// const TmpHeader = styled.header`
-// 	background-color: #36375F;
-// 	width: 100%;
-// 	height: 92px;
-// `
+const TmpHeader = styled.header`
+	background-color: #36375F;
+	width: 100%;
+	height: 92px;
+`
 
 const DemoVoteStartPage = styled.div`
 	background-color: #BDC3CD;
 	width: 100%;
 	height: calc(100vh - 92px - 80px);
 	overflow-y: auto;
-
+	
 	.title {
 		width: 80%;
 		height: 15vh;
 		margin: 0 auto;
 		text-align: center;
 		display: block;
-		padding: 3% 0px 0px 0;
+		padding: 100px 0px 0px 0;
 		h1 {
 			margin: 0;
 		}
 	}
+	a {
+		text-decoration: none;
+		color: #000;
+		.try-button {
+			width: 110px;
+			height: 110px;
+			border: 4px solid #000;
+			background-color: #FFFFFF;
+			margin: 0 auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			transform: translate(-2px, -2px);
+			box-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
 
-	.try-button {
-		width: 110px;
-  		height: 110px;
-		border: 4px solid #000;
-		background-color: #FFFFFF;
-		margin: 0 auto;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		transform: translate(-2px, -2px);
-		box-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
+			cursor: pointer;
+			
+			span {
+				color: #000;
+				font-size: 20px;
+				font-weight: 700;
+			}
 
-		cursor: pointer;
-
-		span {
-			color: #000;
-			font-size: 20px;
-			font-weight: 700;
-		}
-
-		:hover {
-			transform: translate(0px, 0px);
-			box-shadow: none;
-		}
+			:hover {
+				transform: translate(0px, 0px);
+				box-shadow: none;
+			}
+		}	
 	}
+
 
 	.date {
 		width: 70%;

@@ -11,7 +11,9 @@ class TmpLoginController extends Controller
 {
     public function index()
     {
-        return Inertia::render('LoginTmp');
+        return Inertia::render('LoginTmp', [
+            "user" => Auth::user(),
+        ]);
     }
 
     public function checkLogin()
@@ -19,7 +21,7 @@ class TmpLoginController extends Controller
         // テスト用にログインしておく
         if (Auth::check()) {
             // ログイン済みの場合の処理（画面遷移など）
-            return Inertia::render("Demo");
+            return Inertia::location("/ballots");
         } else {
             // 未ログインの場合の処理（ログイン画面へのリダイレクトなど）
             return Inertia::location("/login");
@@ -32,12 +34,8 @@ class TmpLoginController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-
         if (Auth::attempt($credentials)) {
-            session(['key' => 'value']);
-            // session(["ischecked"=> Auth::check()]);
-            // ddd(session()->all());
-            return Inertia::location(url('/demo'));
+            return Inertia::location('/demo');
         }
     }
 
@@ -48,6 +46,6 @@ class TmpLoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return Inertia::location('/login');
     }
 }

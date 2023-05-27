@@ -25,11 +25,7 @@ Route::get('/', function () {
 
 
 Route::get('/demo', function () {
-    $value = session('key');
-    // ddd(Auth::check());
-    // ddd(session()->all());
     return Inertia::render('Demo', [
-        'value' => $value,
         "user" => Auth::user(),
     ]);
 });
@@ -49,4 +45,6 @@ Route::post('/logout', [TmpLoginController::class, 'logout'])->name('logout');
 
 Route::get("/demo_vote/start", [DemoVoteController::class, "index"])->name("demovote_start");
 
-Route::get("/demo_vote/ballots", [DemoVoteController::class, "handingOutBallots"])->name("ballots")->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get("/demo_vote/ballots", [DemoVoteController::class, "handingOutBallots"])->name("ballots");
+});
