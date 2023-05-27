@@ -6,7 +6,7 @@ use App\Http\Controllers\TmpLoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use Illuminate\Support\Facades\Session;
+// use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,4 +47,9 @@ Route::get("/demo_vote/start", [DemoVoteController::class, "index"])->name("demo
 
 Route::middleware('auth')->group(function () {
     Route::get("/demo_vote/ballots", [DemoVoteController::class, "handingOutBallots"])->name("ballots");
+    
+    Route::get("/demo_vote/party_based_election", function(){
+        return Inertia::render('MarkOnBallotPaper');
+    })->name("markon");
+
 });
