@@ -37,7 +37,7 @@ class TmpLoginController extends Controller
             session(['key' => 'value']);
             // session(["ischecked"=> Auth::check()]);
             // ddd(session()->all());
-            return redirect('/demo');
+            return Inertia::location(url('/demo'));
         }
     }
 

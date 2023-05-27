@@ -49,4 +49,4 @@ Route::post('/logout', [TmpLoginController::class, 'logout'])->name('logout');
 
 Route::get("/demo_vote/start", [DemoVoteController::class, "index"])->name("demovote_start");
 
-Route::get("/demo_vote/ballots", [DemoVoteController::class, "handingOutBallots"])->name("ballots");
+Route::get("/demo_vote/ballots", [DemoVoteController::class, "handingOutBallots"])->name("ballots")->middleware('auth');

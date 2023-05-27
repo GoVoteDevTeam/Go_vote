@@ -16,12 +16,15 @@ class User extends Authenticatable
 
     protected $attributes = [];
 
+    protected $primaryKey = 'user_id';
+
     protected $fillable = [
         'user_name', 'email', 'password',
     ];
 
     protected $hidden = [
         'password',
+        'remember_token',
     ];
 
     public function setPasswordAttribute($password)

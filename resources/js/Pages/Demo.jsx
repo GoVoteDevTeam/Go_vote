@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Inertia } from '@inertiajs/inertia';
 // import axios from "axios";
 
-const Demo = ({value, user}) => {
+const Demo = ({value,user}) => {
     const [count, setCount] = useState(0);
 
     const handleClick = () =>  {
