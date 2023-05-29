@@ -2,19 +2,46 @@ import TmpFooter from "../components/TmpFooter";
 import TmpHeader from "../components/TmpHeader";
 import styled from "styled-components";
 import VoteTitle from "../components/VoteTitle";
+import { InertiaLink } from "@inertiajs/inertia-react";
 
 const MarkOnBallotPaper = () => {
-	
+
 	const pageInfo = {
         title: "政党別",
         info: `投票用紙を作成する`
     }
+    const year = 5
 
 	return(
 		<>
 			<TmpHeader />
 			<MarkOnBallotPage>
 				<VoteTitle info={pageInfo} />
+                <div className="ballot-main-paper">
+                    <div className="fiscal-year">
+                        <h3>令和{year}年執行</h3>
+                    </div>
+                    <div className="ballot-title">
+                        <h3>{pageInfo.title}デモ選挙</h3>
+                    </div>
+                    <div className="attention">
+                        <h3>(注意)</h3>
+                        <p>政党名を欄内で一つ選択することすること</p>
+                    </div>
+                    <div className="input-name">
+                        <div className="col-title">
+                            <h3>候補政党</h3>
+                        </div>
+                        <div className="col-input">
+                            <h1>自由民主党</h1>
+                        </div>
+                    </div>
+                    <div className="vote-button">
+                        <InertiaLink href={"/demo_vote/to_vote"}>
+                            投票所へ進む
+                        </InertiaLink>
+                    </div>
+                </div>
 			</MarkOnBallotPage>
 			<TmpFooter/>
 		</>
@@ -28,4 +55,57 @@ const MarkOnBallotPage = styled.div`
 	width: 100%;
 	height: calc(100vh - 92px - 80px);
 	overflow-y: auto;
+    .ballot-main-paper {
+        background-color: #fff;
+        max-width: 80%;
+        margin:10px auto 30px auto;
+        padding: 10px;
+        .ballot-title {
+            text-align: center;
+            h3 {
+                margin: 0;
+            }
+        }
+        .attention {
+            h3 {
+                margin: 0;
+            }
+        }
+        .input-name {
+            border: 1px solid #000;
+            display: flex;
+            .col-title {
+                padding: 10px;
+                border-right: #000 solid 1px;
+                writing-mode: vertical-lr;
+                h3 {
+                    margin: 0;
+                }
+            }
+            .col-input {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-left: 10px;
+                h1 {
+                    margin: 0;
+                }
+            }
+        }
+        .vote-button {
+            margin: 45px auto;
+            width: 150px;
+            a {
+                padding: 20px;
+                text-decoration: none;
+                background-color: #36375F;
+                width: 120px;
+                height: 55px;
+                border-radius: 20px;
+                color: #fff;
+                box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+                margin: 0 auto;
+            }
+        }
+    }
 `

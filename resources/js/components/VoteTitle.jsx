@@ -1,12 +1,11 @@
 import styled from "styled-components";
+import BallotPaper from "./BallotPaper";
 
 const VoteTitle = ( { info } ) => {
 	return (
 		<TitleComponent>
 			<h1>デモ選挙</h1>
-			<div className="ballot-paper">
-				<span>{info.title}</span>
-			</div>
+            <BallotPaper title={info.title} />
 			<h3>{info.info}</h3>
 		</TitleComponent>
 	)
@@ -28,7 +27,7 @@ const TitleComponent = styled.div`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		box-shadow: 3px 3px 3px rgba(0, 0, 0, 1);		
+		box-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
 		span {
 			color: #000;
 			font-size: 20px;
