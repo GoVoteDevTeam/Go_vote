@@ -55,4 +55,9 @@ Route::middleware('auth')->group(function () {
     Route::get("/demo_vote/to_vote", function () {
         return Inertia::render("ToVote");
     });
+
+    Route::get("/demo_vote/voting_completed", function () {
+        return Inertia::render("VotingCompleted");
+    });
+    
 });

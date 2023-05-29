@@ -29,8 +29,8 @@ const HandingOutBallots = ({ auth }) => {
                 <VoteTitle info={pageInfo} />
                 <div className="votable-items">
                     {mockVoteVersion.map((item, index) => (
-                        <InertiaLink href={item.href}>
-                            <div className="votable-item" key={index}>
+                        <InertiaLink href={item.href} key={index}>
+                            <div className="votable-item">
                                 <h3>{item.name}</h3>
                             </div>
                         </InertiaLink>

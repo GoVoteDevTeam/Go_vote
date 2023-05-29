@@ -2,11 +2,53 @@ import styled from "styled-components"
 import TmpHeader from "../components/TmpHeader";
 import TmpFooter from "../components/TmpFooter";
 import BallotPaper from "../components/BallotPaper";
-import { useState } from "react";
+import{ Inertia } from "@inertiajs/inertia";
+import { useRef } from "react";
 
 const ToVote = () => {
-    const el = document.querySelector(".elem");
-    // const [isLimit, setIsLimit] = useState(false);
+
+    const el = useRef(null);
+    const box_top = useRef(null);
+
+    const touchstart = (e) => {
+
+        //移動時にtouchmove、離れた時にtouchend関数を実行する
+        window.addEventListener("touchmove", touchmove);
+        window.addEventListener("touchend", touchend);
+
+        //現在地を取得
+        let prevY = e.touches[0].clientY;
+
+        // touchmoveされたとき
+        function touchmove (e){
+
+            // Y座標値差 = 初期値 - 現在地点
+            let newY = prevY - e.touches[0].clientY;
+
+            // 現在地点を変数として取得
+
+            var rect = el.current.getBoundingClientRect();
+
+            // 想定範囲外への移動を無効化
+            if (rect.top >= 92) {
+                el.current.style.top = rect.top - newY + "px";
+            } else if (rect.top < 92) {
+                el.current.style.top = 92 + "px";
+            }
+
+            if (box_top.current.getBoundingClientRect().top < el.current.getBoundingClientRect().top) {
+                Inertia.get("/demo_vote/voting_completed")
+            }
+
+            prevY = e.touches[0].clientY;
+        }
+
+        // itemから指が離れた際にイベントを解除
+        function touchend () {
+            window.removeEventListener("touchmove", touchmove);
+            window.removeEventListener("touchend", touchend);
+        }
+    }
 
     const mousedown = (e) => {
 
@@ -18,30 +60,24 @@ const ToVote = () => {
         let prevX = e.clientX;
         let prevY = e.clientY;
 
-        // debugger;
         // mousemoveされたとき
         function mousemove (e){
-
-            // debugger
             // X,Y座標値差 = 初期値 - 現在地点
-            let newX = prevX - e.clientX;
             let newY = prevY - e.clientY;
 
             // 現在地点を変数として取得
-            var rect = el.getBoundingClientRect();
+            var rect = el.current.getBoundingClientRect();
 
-            if (rect.top >= 92 && rect.left >= 0) {
-                el.style.left = rect.left - newX + "px";
-                el.style.top = rect.top - newY + "px";
+            // 想定範囲外への移動を無効化
+            if (rect.top >= 92) {
+                el.current.style.top = rect.top - newY + "px";
             } else if (rect.top < 92) {
-                el.style.top = 92 + "px";
-            } else if (rect.left < 0) {
-                el.style.left = 0 + "px"
+                el.current.style.top = 92 + "px";
             }
 
-            debugger;
-            console.log(newX);
-
+            if (box_top.current.getBoundingClientRect().top < el.current.getBoundingClientRect().top) {
+                Inertia.get("/demo_vote/voting_completed")
+            }
             prevX = e.clientX;
             prevY = e.clientY;
         }
@@ -53,13 +89,22 @@ const ToVote = () => {
         }
     }
 
-
     return (
         <>
         <TmpHeader />
             <ToVotePage>
-                <div className="elem" onMouseDown={(e)=> mousedown(e)}>
+                <div className="elem"
+                    onTouchStart={(e)=> touchstart(e)}
+                    onMouseDown={(e) => mousedown(e)}
+                    ref={el}
+                    >
                     <BallotPaper title={"投票用紙"} />
+                </div>
+                <div className="ballot-box">
+                    <div className="top" ref={box_top} />
+                    <div className="box">
+                        スワイプして投票
+                    </div>
                 </div>
             </ToVotePage>
         <TmpFooter />
@@ -79,5 +124,28 @@ const ToVotePage = styled.div`
         position: absolute;
         width: fit-content;
         margin: 0 auto;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .ballot-box {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        .top {
+            width: 200px;
+            height: 20px;
+            background-color: #000;
+            border-radius: 10px;
+        }
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: #BDC3CD;
+            padding-top: 15px;
+            text-align: center;
+            font-weight: 700px;
+            font-size: 1.2em;
+        }
     }
 `;
