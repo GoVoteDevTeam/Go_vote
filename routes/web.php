@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SignUpController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -18,6 +19,21 @@ Route::get('/', function () {
     return Inertia::render('hello-world');
 });
 
+<<<<<<< HEAD
 Route::get('/news', function () {
     return Inertia::render('News');
 });
+=======
+
+Route::get('/demo', function () {
+    return Inertia::render('Demo');
+});
+
+Route::get('/login', function () {
+    return Inertia::render('Login');
+})->name("login");
+
+Route::get('/signup', [SignUpController::class, "index"])->name('signup');
+
+Route::post('signup', [SignUpController::class, "signup"]);
+>>>>>>> 885befb678d8104579e10bedc788fb7b9b75b207
