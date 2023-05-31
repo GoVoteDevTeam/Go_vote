@@ -76,13 +76,12 @@ const ModalWrap = styled.div`
             background-color: #fefefe;
             border-radius: 5px;
             padding: 20px;
-            max-width: 650px;
+            max-width: 80%;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
             .iconModal{
-                    background-color:#eaff4c;
                     border-radius: 50%;
                     height: 120px;
                     width: 120px;
