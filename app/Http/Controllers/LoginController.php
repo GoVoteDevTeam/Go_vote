@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -13,33 +15,45 @@ class LoginController extends Controller
         return Inertia::render("Login");
     }
 
-    public function login (Request $input_user) {
-
-        // バリデーションチェック
-        /**
-         * user_name: 必須
-         * email: 必須, メールアドレス型, 重複無し
-         * pasword: 必須, 3文字以上
-         */
-        $validator = Validator::make($input_user->all(), [
-            "email" => "required|email|unique:users",
-            "password" => "required|min:3",
-        ]);
-
-        // エラーの場合はlogin画面に戻す
-        if ($validator->fails()) {
-            return Inertia::render('Login', [
-                'errors' => $validator->errors()->getMessages(),
-            ]);
+    public function checkLogin()
+    {
+        if (Auth::check()) {
+            // ログイン済みの場合の処理（画面遷移など）
+            return Inertia::reder("Demo");
+        } else {
+            // 未ログインの場合の処理（ログイン画面へのリダイレクトなど）
+            return Inertia::location("/login");
         }
+    }
+    
 
-        // insert
-        User::create([
-            "email" => $input_user->email,
-            "password" => $input_user->password
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
+    }
+    
+    
+    
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
 
-        // リダイレクト
-        // return redirect()->route('login');
+        if (Auth::attempt($credentials)) {
+            // 認証成功の処理
+            $user = Auth::user();
+
+            Session::put('redirectData', $user);
+
+            return Inertia::location("/demo");
+        }
     }
 }

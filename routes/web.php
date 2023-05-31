@@ -31,8 +31,8 @@ Route::post('/demo', function () {
 
 Route::get('/login', [LoginController::class, "index"])->name('login');
 
-Route::post('login', [LoginController::class, "login"]);
+Route::post('/login', [LoginController::class, "login"]);
 
 Route::get('/signup', [SignUpController::class, "index"])->name('signup');
 
-Route::post('signup', [SignUpController::class, "signup"]);
+Route::post('/signup', [SignUpController::class, "signup"]);
