@@ -82,7 +82,7 @@ const ModalWrap = styled.div`
             align-items: center;
             position: relative;
             .iconModal{
-                    background-color:#eaff4c;
+                    /* background-color:#eaff4c; */
                     border-radius: 50%;
                     height: 120px;
                     width: 120px;
