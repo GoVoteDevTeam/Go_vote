@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Inertia } from "@inertiajs/inertia";
+import PropTypes from 'prop-types';
 
 const SignUp = ({ errors }) => {
     // 入力されるデータを定義
@@ -73,6 +74,10 @@ const SignUp = ({ errors }) => {
         </>
     )
 
+}
+
+SignUp.PropTypes = {
+    errors: PropTypes.string
 }
 
 export default SignUp;

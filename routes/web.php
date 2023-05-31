@@ -48,9 +48,7 @@ Route::get("/demo_vote/start", [DemoVoteController::class, "index"])->name("demo
 Route::middleware('auth')->group(function () {
     Route::get("/demo_vote/ballots", [DemoVoteController::class, "handingOutBallots"])->name("ballots");
 
-    Route::get("/demo_vote/party_based_election", function(){
-        return Inertia::render('MarkOnBallotPaper');
-    })->name("markon");
+    Route::get("/demo_vote/party_based_election", [DemoVoteController::class, "markOnBallotPaper"])->name("markon");
 
     Route::get("/demo_vote/to_vote", function () {
         return Inertia::render("ToVote");
@@ -59,5 +57,5 @@ Route::middleware('auth')->group(function () {
     Route::get("/demo_vote/voting_completed", function () {
         return Inertia::render("VotingCompleted");
     });
-    
+
 });

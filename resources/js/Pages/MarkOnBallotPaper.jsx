@@ -1,21 +1,32 @@
 import TmpFooter from "../components/TmpFooter";
 import TmpHeader from "../components/TmpHeader";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import VoteTitle from "../components/VoteTitle";
 import { InertiaLink } from "@inertiajs/inertia-react";
+import PoliticsModal from "../components/PoliticsModal";
+import { useState } from "react";
 
-const MarkOnBallotPaper = () => {
+const MarkOnBallotPaper = ({ politics }) => {
 
 	const pageInfo = {
         title: "政党別",
         info: `投票用紙を作成する`
     }
+
     const year = 5
+
+    const [open, setOpen] = useState(true);
+
+    const handleNameClick = () => {
+        // 反転
+        setOpen(!open);
+        console.log(open)
+    }
 
 	return(
 		<>
 			<TmpHeader />
-			<MarkOnBallotPage>
+			<MarkOnBallotPage open={open} >
 				<VoteTitle info={pageInfo} />
                 <div className="ballot-main-paper">
                     <div className="fiscal-year">
@@ -28,7 +39,7 @@ const MarkOnBallotPaper = () => {
                         <h3>(注意)</h3>
                         <p>政党名を欄内で一つ選択することすること</p>
                     </div>
-                    <div className="input-name">
+                    <div className="input-name" onClick={handleNameClick}>
                         <div className="col-title">
                             <h3>候補政党</h3>
                         </div>
@@ -42,7 +53,9 @@ const MarkOnBallotPaper = () => {
                         </InertiaLink>
                     </div>
                 </div>
+                <PoliticsModal politics={politics} open={open} setOpen={setOpen} />
 			</MarkOnBallotPage>
+
 			<TmpFooter/>
 		</>
 	)
@@ -50,11 +63,21 @@ const MarkOnBallotPaper = () => {
 
 export default MarkOnBallotPaper;
 
+
 const MarkOnBallotPage = styled.div`
-	background-color: #BDC3CD;
 	width: 100%;
 	height: calc(100vh - 92px - 80px);
 	overflow-y: auto;
+    position: relative;
+
+    ${({open}) => open ? css`
+            background-color:rgba(0, 0, 0, 0.6);
+        `: css`
+    	    background-color: #BDC3CD;
+            opacity: 1;
+        `
+    }
+
     .ballot-main-paper {
         background-color: #fff;
         max-width: 80%;
