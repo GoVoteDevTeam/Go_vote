@@ -1,13 +1,13 @@
 import styled from "styled-components"
 import TmpFooter from "../components/TmpFooter"
-import TmpHeader from "../components/TmpHeader"
+import Header from "../components/Header"
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { InertiaLink } from "@inertiajs/inertia-react";
 
 const VotingCompleted = () => {
     return(
         <>
-            <TmpHeader />
+            <Header />
                 <VotingCompeletedPage>
                     <div className="completed">
                         <h1>デモ選挙</h1>

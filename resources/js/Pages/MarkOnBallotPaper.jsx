@@ -1,5 +1,5 @@
 import TmpFooter from "../components/TmpFooter";
-import TmpHeader from "../components/TmpHeader";
+import Header from "../components/Header";
 import styled, { css } from "styled-components";
 import VoteTitle from "../components/VoteTitle";
 import { InertiaLink } from "@inertiajs/inertia-react";
@@ -8,26 +8,27 @@ import { useState } from "react";
 
 const MarkOnBallotPaper = ({ politics }) => {
 
-	const pageInfo = {
+    const pageInfo = {
         title: "政党別",
         info: `投票用紙を作成する`
     }
 
     const year = 5
 
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
+
+    const [currentPolitics, setCurrentPolitics] = useState("");
 
     const handleNameClick = () => {
         // 反転
         setOpen(!open);
-        console.log(open)
     }
 
-	return(
-		<>
-			<TmpHeader />
-			<MarkOnBallotPage open={open} >
-				<VoteTitle info={pageInfo} />
+    return (
+        <>
+            <Header />
+            <MarkOnBallotPage open={open} >
+                <VoteTitle info={pageInfo} />
                 <div className="ballot-main-paper">
                     <div className="fiscal-year">
                         <h3>令和{year}年執行</h3>
@@ -44,7 +45,7 @@ const MarkOnBallotPaper = ({ politics }) => {
                             <h3>候補政党</h3>
                         </div>
                         <div className="col-input">
-                            <h1>自由民主党</h1>
+                            <h1>{currentPolitics}</h1>
                         </div>
                     </div>
                     <div className="vote-button">
@@ -53,12 +54,18 @@ const MarkOnBallotPaper = ({ politics }) => {
                         </InertiaLink>
                     </div>
                 </div>
-                <PoliticsModal politics={politics} open={open} setOpen={setOpen} />
-			</MarkOnBallotPage>
+                <PoliticsModal
+                    politics={politics}
+                    open={open}
+                    setOpen={setOpen}
+                    currentPolitics={currentPolitics}
+                    setCurrentPolitics={setCurrentPolitics}
+                />
+            </MarkOnBallotPage>
 
-			<TmpFooter/>
-		</>
-	)
+            <TmpFooter />
+        </>
+    )
 }
 
 export default MarkOnBallotPaper;
@@ -70,7 +77,7 @@ const MarkOnBallotPage = styled.div`
 	overflow-y: auto;
     position: relative;
 
-    ${({open}) => open ? css`
+    ${({ open }) => open ? css`
             background-color:rgba(0, 0, 0, 0.6);
         `: css`
     	    background-color: #BDC3CD;

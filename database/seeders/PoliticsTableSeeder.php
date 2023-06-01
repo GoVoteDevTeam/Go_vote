@@ -37,7 +37,7 @@ class PoliticsTableSeeder extends Seeder
                 "information" => ""
             ],
             [
-                "politics_name" => "わいわ新選組",
+                "politics_name" => "れいわ新選組",
                 "information" => ""
             ],
             [

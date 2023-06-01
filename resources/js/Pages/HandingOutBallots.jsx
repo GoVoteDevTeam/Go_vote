@@ -1,6 +1,6 @@
 import { InertiaLink } from "@inertiajs/inertia-react";
 import TmpFooter from "../components/TmpFooter";
-import TmpHeader from "../components/TmpHeader";
+import Header from "../components/Header";
 import VoteTitle from "../components/VoteTitle";
 import styled from "styled-components";
 
@@ -24,7 +24,7 @@ const HandingOutBallots = ({ auth }) => {
 
     return (
         <>
-            <TmpHeader />
+            <Header />
             <HandingOutBallotsPage>
                 <VoteTitle info={pageInfo} />
                 <div className="votable-items">

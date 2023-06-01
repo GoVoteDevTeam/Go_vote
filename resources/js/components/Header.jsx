@@ -4,7 +4,7 @@ import logo from "../../../public/logo.png"
 
 const Header = () => {
     return(
-    
+
 
         <HeaderElement>
           <div className="logo-container">
@@ -22,7 +22,7 @@ export default Header;
 
 const HeaderElement = styled.header`
   width: 100%;
-  height: 100px;
+  height: 92px;
   position: relative;
   text-align: center;
   align-items: center;
@@ -51,5 +51,5 @@ const HeaderElement = styled.header`
     border-radius: 50%;
     background-color: white;
   }
-    
+
 `;

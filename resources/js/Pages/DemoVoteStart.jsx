@@ -2,25 +2,26 @@ import styled from "styled-components";
 import { Inertia } from "@inertiajs/inertia"
 import axios from "axios";
 import { InertiaLink } from "@inertiajs/inertia-react";
+import Header from "../components/Header";
 
 const DemoVote = () => {
 
 	return (
 		<>
-			<TmpHeader />
+			<Header />
 
 			<DemoVoteStartPage>
 				<div className="title">
 					<h1>デモ選挙</h1>
 					<p>あなたの投票が、若者の意識を変える</p>
 				</div>
-				
-				<InertiaLink href="/demo_vote/ballots">
+
+				<InertiaLink href={"/demo_vote/ballots"}>
 					<div className="try-button">
 						<span>TRY !</span>
 					</div>
 				</InertiaLink>
-				
+
 				<div className="date">
 					<div className="election-day">
 						<h3>投票日</h3>
@@ -58,7 +59,7 @@ const DemoVoteStartPage = styled.div`
 	width: 100%;
 	height: calc(100vh - 92px - 80px);
 	overflow-y: auto;
-	
+
 	.title {
 		width: 80%;
 		height: 15vh;
@@ -86,7 +87,7 @@ const DemoVoteStartPage = styled.div`
 			box-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
 
 			cursor: pointer;
-			
+
 			span {
 				color: #000;
 				font-size: 20px;
@@ -97,7 +98,7 @@ const DemoVoteStartPage = styled.div`
 				transform: translate(0px, 0px);
 				box-shadow: none;
 			}
-		}	
+		}
 	}
 
 
