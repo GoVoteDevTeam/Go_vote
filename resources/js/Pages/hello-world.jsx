@@ -1,7 +1,14 @@
+import styled from "styled-components";
+import Header from "../components/Header"
+
 export default function HelloWorld() {
     return (
-        <div>
-            <div className="testCakse">helloWorld</div>
-        </div>
+        <>
+            <Header />
+            <div>
+                <div className="testCakse"></div>
+            </div>
+        </>
     );
 }
+
