@@ -7,11 +7,11 @@ const Header = () => {
     
 
         <HeaderElement>
-          <div class="logo-container">
+          <div className="logo-container">
             <img className="logo" src={logo}/>
           </div>
 
-          <div class="icon-container">
+          <div className="icon-container">
             <div className="icon"></div>
           </div>
         </HeaderElement>
