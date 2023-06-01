@@ -17,12 +17,14 @@ const Modal = ({ Politics_data }) => {
           checked={isOpen}
           onChange={handleModal}
         />
-        <label htmlFor={`modal-${Politics_data.name}`} className="modal__trigger">
-          {Politics_data.catchcopy}
-        </label>
-        <label htmlFor={`modal-${Politics_data.name}`} className="modal__trigger_datail">
-          {Politics_data.datail}
-        </label>
+        <div className="modal__trigger">
+          <label htmlFor={`modal-${Politics_data.name}`} className="modal__trigger_catchcopy">
+            {Politics_data.catchcopy}
+          </label>
+          <label htmlFor={`modal-${Politics_data.name}`} className="modal__trigger_datail">
+            {Politics_data.datail}
+          </label>
+        </div>
 
         {isOpen && (
           <div className="modal__overlay" onClick={handleModal}>
@@ -50,15 +52,24 @@ const ModalWrap = styled.div`
         display: none;
     }
 
-    .modal__trigger {
-        font-size: 1.5rem;
-        cursor: pointer;
-        /* margin: auto 0; */
-    }
-    .modal__trigger_datail {
-        font-size: 1rem;  //効かない
-        cursor: pointer;
-        margin: auto 0;
+    .modal__trigger{
+      position:relative;
+      margin-left: 10px;
+      margin-right: 10px;
+      max-width: 80%;
+      .modal__trigger_catchcopy {
+          font-size: 1.5rem;
+          cursor: pointer;
+          /* margin-left: 10px; */
+      }
+      .modal__trigger_datail {
+          font-size: 1rem;
+          cursor: pointer;
+          margin: auto 0;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+      }
     }
 
     .modal__overlay {
@@ -114,9 +125,6 @@ const ModalWrap = styled.div`
     .modal__trigger_datail {
         font-size: calc(2rem - 1rem);
         white-space: pre-wrap;
-    }
-
-    .modal__trigger_datail{
         display: none;
     }
 }
