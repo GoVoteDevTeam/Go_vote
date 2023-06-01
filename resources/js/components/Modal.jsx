@@ -35,7 +35,6 @@ const Modal = ({ Politics_data }) => {
               </div>
               <div className="detailModal">{Politics_data.datail}</div>
               <button className="modal__close" onClick={handleModal}>
-              ×
               </button>
             </div>
           </div>
