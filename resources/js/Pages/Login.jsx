@@ -55,9 +55,7 @@ const Login = ({ errors }) => {
                 } else {
                     passwordSetMatchError(false);
                 }
-        }
-
-        
+        }  
         
         // "/demo"パスに遷移
         Inertia.post("/login", inputUserInfomation, {onFinish})

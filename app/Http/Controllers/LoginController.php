@@ -46,14 +46,16 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-
+    
         if (Auth::attempt($credentials)) {
             // 認証成功の処理
             $user = Auth::user();
-
+    
             Session::put('redirectData', $user);
-
-            return Inertia::location("/demo");
+    
+            return Redirect::route('demo')->with('success', 'ログインに成功しました。');
+        } else {
+            return Redirect::back()->with('error', 'メールアドレスまたはパスワードが正しくありません。')->withErrors(['email' => 'メールアドレスまたはパスワードが正しくありません。']);
         }
     }
 }

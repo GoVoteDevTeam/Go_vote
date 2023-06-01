@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const Demo = () => {
+    
     const [count, setCount] = useState(0);
 
     const handleClick = () =>  {
@@ -28,6 +29,7 @@ const Demo = () => {
 }
 
 export default Demo;
+
 
 const HeaderElement = styled.header`
     width: 100%;
