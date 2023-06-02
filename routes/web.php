@@ -6,6 +6,9 @@ use App\Http\Controllers\TmpLoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
+use function Termwind\render;
+
 // use Illuminate\Support\Facades\Session;
 
 /*
@@ -45,6 +48,10 @@ Route::post('/logout', [TmpLoginController::class, 'logout'])->name('logout');
 
 Route::get("/demo_vote/start", [DemoVoteController::class, "index"])->name("demovote_start");
 
+Route::get("/demo_vote/result", function() {
+    return Inertia::render("VoteResult");
+})->name("demovote_result");
+
 Route::middleware('auth')->group(function () {
     Route::get("/demo_vote/ballots", [DemoVoteController::class, "handingOutBallots"])->name("ballots");
 
@@ -57,5 +64,4 @@ Route::middleware('auth')->group(function () {
     Route::get("/demo_vote/voting_completed", function () {
         return Inertia::render("VotingCompleted");
     });
-
 });

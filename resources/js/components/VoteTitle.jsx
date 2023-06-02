@@ -6,7 +6,9 @@ const VoteTitle = ( { info } ) => {
 		<TitleComponent>
 			<h1>デモ選挙</h1>
             <BallotPaper title={info.title} />
-			<h3>{info.info}</h3>
+            {(info.info).length > 0 &&
+    			<h3>{info.info}</h3>
+            }
 		</TitleComponent>
 	)
 }

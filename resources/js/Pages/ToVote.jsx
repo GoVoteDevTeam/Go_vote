@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import TmpHeader from "../components/TmpHeader";
+import Header from "../components/Header";
 import TmpFooter from "../components/TmpFooter";
 import BallotPaper from "../components/BallotPaper";
 import{ Inertia } from "@inertiajs/inertia";
@@ -91,22 +91,22 @@ const ToVote = () => {
 
     return (
         <>
-        <TmpHeader />
-            <ToVotePage>
-                <div className="elem"
-                    onTouchStart={(e)=> touchstart(e)}
-                    onMouseDown={(e) => mousedown(e)}
-                    ref={el}
-                    >
-                    <BallotPaper title={"投票用紙"} />
+        <Header />
+        <ToVotePage>
+            <div className="elem"
+                onTouchStart={(e)=> touchstart(e)}
+                onMouseDown={(e) => mousedown(e)}
+                ref={el}
+                >
+                <BallotPaper title={"投票用紙"} />
+            </div>
+            <div className="ballot-box">
+                <div className="top" ref={box_top} />
+                <div className="box">
+                    スワイプして投票
                 </div>
-                <div className="ballot-box">
-                    <div className="top" ref={box_top} />
-                    <div className="box">
-                        スワイプして投票
-                    </div>
-                </div>
-            </ToVotePage>
+            </div>
+        </ToVotePage>
         <TmpFooter />
         </>
     )

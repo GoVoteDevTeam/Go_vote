@@ -15,7 +15,7 @@ const VotingCompleted = () => {
                         <h3>投票完了</h3>
                         <h3>開票日: 000 0000 000</h3>
                     </div>
-                    <InertiaLink className="finish-button" href={"/demo"}>
+                    <InertiaLink className="finish-button" href={"/demo_vote/start"}>
                         終了
                     </InertiaLink>
                 </VotingCompeletedPage>

@@ -9,14 +9,14 @@ const DemoVote = () => {
 	return (
 		<>
 			<Header />
-
 			<DemoVoteStartPage>
+                <InertiaLink href={"/demo_vote/result"} className="tmp"> 結果表示</InertiaLink>
 				<div className="title">
 					<h1>デモ選挙</h1>
 					<p>あなたの投票が、若者の意識を変える</p>
 				</div>
 
-				<InertiaLink href={"/demo_vote/ballots"}>
+				<InertiaLink className="start-button" href={"/demo_vote/ballots"}>
 					<div className="try-button">
 						<span>TRY !</span>
 					</div>
@@ -60,7 +60,12 @@ const DemoVoteStartPage = styled.div`
 	height: calc(100vh - 92px - 80px);
 	overflow-y: auto;
 
-	.title {
+    .tmp {
+        display: block;
+        opacity: 0.2;
+    }
+
+    .title {
 		width: 80%;
 		height: 15vh;
 		margin: 0 auto;
@@ -71,7 +76,8 @@ const DemoVoteStartPage = styled.div`
 			margin: 0;
 		}
 	}
-	a {
+
+    .start-button {
 		text-decoration: none;
 		color: #000;
 		.try-button {
@@ -86,8 +92,6 @@ const DemoVoteStartPage = styled.div`
 			transform: translate(-2px, -2px);
 			box-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
 
-			cursor: pointer;
-
 			span {
 				color: #000;
 				font-size: 20px;
@@ -100,7 +104,6 @@ const DemoVoteStartPage = styled.div`
 			}
 		}
 	}
-
 
 	.date {
 		width: 70%;
