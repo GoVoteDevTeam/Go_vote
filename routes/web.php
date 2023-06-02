@@ -26,13 +26,15 @@ Route::get('/', function () {
     return Inertia::render('hello-world');
 });
 
+Route::get('/news', function () {
+    return Inertia::render('News');
+});
 
 Route::get('/demo', function () {
     return Inertia::render('Demo', [
         "user" => Auth::user(),
     ]);
 });
-
 
 Route::get('/signup', [SignUpController::class, "index"])->name('signup');
 
