@@ -1,10 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Inertia } from "@inertiajs/inertia";
+import PropTypes from 'prop-types';
 
 const SignUp = ({ errors }) => {
     // 入力されるデータを定義
-    const [inputUserInfomation, setInfomation] = useState({
+    const [inputUserInformation, setInformation] = useState({
         user_name: "",
         email: "",
         password: "",
@@ -16,10 +17,10 @@ const SignUp = ({ errors }) => {
 
     // 変更が加えられた際に、元データを展開し、再代入
     const inputChange = (e) => {
-        setInfomation(
-            { ...inputUserInfomation, [e.target.name]: e.target.value }
+        setInformation(
+            { ...inputUserInformation, [e.target.name]: e.target.value }
         );
-        // console.log(inputUserInfomation)
+        // console.log(inputUserInformation)
     }
 
     // サインインボタンが押された場合
@@ -28,14 +29,14 @@ const SignUp = ({ errors }) => {
         e.preventDefault();
 
         // 一致していない場合はtureしている場合はfalse
-        if (inputUserInfomation.password !== inputUserInfomation.confirmPassword) {
+        if (inputUserInformation.password !== inputUserInformation.confirmPassword) {
             setMatchError(true);
             return;
         } else {
             setMatchError(false);
         }
 
-        Inertia.post("signup", inputUserInfomation, {onFinish})
+        Inertia.post("signup", inputUserInformation, {onFinish})
     }
     const onFinish = () => {
         console.log("finish");
@@ -73,6 +74,10 @@ const SignUp = ({ errors }) => {
         </>
     )
 
+}
+
+SignUp.PropTypes = {
+    errors: PropTypes.string
 }
 
 export default SignUp;
