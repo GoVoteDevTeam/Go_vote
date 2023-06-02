@@ -17,7 +17,7 @@ const Politics = () => {
             <PoliticsPage>
                 <div className="title">
                     政党早見表
-                </div>
+                </div>;
                 {data.map((item, index) => (
                     <div key={index} className="political_party">
                         <div className="item">
@@ -90,6 +90,7 @@ const PoliticsPage = styled.div`
             height: 100px;
             margin-right: 10px;
             background-color: #fff;
+            white-space: pre-wrap;
 
             // コメントアウト戻すと見た目は良くなるけどモーダルの中身もoverflow: hidden;で消えてしまう
             /* white-space: nowrap;
