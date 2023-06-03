@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+import Header from '../components/Header';
+import TmpFooter from '../components/TmpFooter';
+import VoteNotice from '../components/VoteNotice';
+import { useEffect } from "react";
+import axios from "axios";
 
-const Tabs = () => {
+const News = () => {
 
+    const [news, setNews] = useState();
     const [currentTab, setCurrentTab] = useState('1');
     const tabs = [
         {
@@ -34,58 +41,50 @@ const Tabs = () => {
         setCurrentTab(e.target.id);
     }
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const newsContents = await axios.get(`https://newsapi.org/v2/top-headlines?country=jp&apiKey=${import.meta.env.VITE_NEWS_KEY}`);
+            setNews(newsContents.data.articles);
+            console.log(news);
+        }
+        fetchData();
+	}, []);
+
     return (
       <>
-        <HeaderElement>
-          <News_Page>
-            <div className="title">
-              ニュース
+        <Header />
+        <NewsPage>
+            <VoteNotice />
+            <div className="news-container">
+                <div className='tabs'>
+                    {tabs.map((tab, i) =>
+                        <button key={i} id={tab.id} disabled={currentTab === `${tab.id}`} onClick={(handleTabClick)}>{tab.tabTitle}</button>
+                    )}
+                </div>
+                <div className='content'>
+                    {tabs.map((tab, i) =>
+                        <div key={i}>
+                            {currentTab === `${tab.id}` && <div><p className='title'>{tab.title}</p><p>{tab.content}</p></div>}
+                        </div>
+                    )}
+                </div>
             </div>
-            </News_Page>
-        </HeaderElement>
-
-        <div className='container'>
-            <div className='tabs'>
-                {tabs.map((tab, i) =>
-                    <button key={i} id={tab.id} disabled={currentTab === `${tab.id}`} onClick={(handleTabClick)}>{tab.tabTitle}</button>
-                )}
-            </div>
-            <div className='content'>
-                {tabs.map((tab, i) =>
-                    <div key={i}>
-                        {currentTab === `${tab.id}` && <div><p className='title'>{tab.title}</p><p>{tab.content}</p></div>}
-                    </div>
-                )}
-            </div>
-        </div>
+        </NewsPage>
+        <TmpFooter />
       </>
     );
 }
 
-export default Tabs;
+export default News;
 
-const HeaderElement = styled.header`
+const NewsPage = styled.div`
+    background-color: #BDC3CD;
     width: 100%;
-    height: 92px;
-    background-color: #36375F;
-    margin-bottom: 100px;
-`;
+    height: calc(100vh - 92px - 80px);
+    overflow-y: auto;
 
-const News_Page = styled.div`
-    width: 100%;
-    height: calc(100vh - 300px);
-    background-color: #36375F;
-    border-radius: 30px 30px 0 0;
-    .title {
-        font-size: 50px;
-        padding: 10px;
-        text-align: center;
-        color: #fff;
-    }
-    .newspage{
-        border: #666666;
-        height: 300px;
+    .news-container {
         width: 100%;
-        padding: 10px;
     }
-`;
+    
+`
