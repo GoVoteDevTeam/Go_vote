@@ -9,28 +9,28 @@ import axios from "axios";
 const News = () => {
 
     const [news, setNews] = useState();
-    const [currentTab, setCurrentTab] = useState('1');
+    const [currentTab, setCurrentTab] = useState('business');
     const tabs = [
         {
-            id: 1,
+            id: "business",
             tabTitle: 'Tab 1',
             title: 'Title 1',
             content: 'Las tabs se generan automáticamente a partir de un array de objetos, el cual tiene las propiedades: id, tabTitle, title y content.'
         },
         {
-            id: 2,
+            id: "entertainment",
             tabTitle: 'Tab 2',
             title: 'Title 2',
             content: 'Contenido de tab 2.'
         },
         {
-            id: 3,
+            id: "health",
             tabTitle: 'Tab 3',
             title: 'Title 3',
             content: 'Contenido de tab 3.'
         },
         {
-            id: 4,
+            id: "science",
             tabTitle: 'Tab 4',
             title: 'Title 4',
             content: 'Contenido de tab 4.'
@@ -43,12 +43,12 @@ const News = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const newsContents = await axios.get(`https://newsapi.org/v2/top-headlines?country=jp&apiKey=${import.meta.env.VITE_NEWS_KEY}`);
+            const newsContents = await axios.get(`https://newsapi.org/v2/top-headlines?country=jp&category=${currentTab}&apiKey=${import.meta.env.VITE_NEWS_KEY}`);
             setNews(newsContents.data.articles);
-            console.log(news);
         }
         fetchData();
-	}, []);
+        console.log("rerender")
+	}, [currentTab]);
 
     return (
       <>
@@ -68,6 +68,7 @@ const News = () => {
                         </div>
                     )}
                 </div>
+                {news && news.map((news, i) => <div key={i}>{news.title}</div>)}
             </div>
         </NewsPage>
         <TmpFooter />
@@ -86,5 +87,5 @@ const NewsPage = styled.div`
     .news-container {
         width: 100%;
     }
-    
+
 `
