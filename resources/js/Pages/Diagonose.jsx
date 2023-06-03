@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import React, {useState} from "react";
+
 
 const Deagonos = () => {
-
+    
     return (
         <>
             <HeaderElement>
@@ -14,11 +16,38 @@ const Deagonos = () => {
                 <div className="qestion">
                     Qestion!
                 </div>
+                    <h2>質問1: 政府の役割についてどう考えますか？</h2>
+                    <label>
+                        <input type="radio" name="q1" value="1" /> 強力な中央集権が必要だ
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="2"  /> 適度な中央集権が必要だ
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="3" /> 分権化が必要だ
+                    </label>
+                    <br />
+                
+                    <h2>質問2: 税制についてどのように考えますか？</h2>
+        <           label>
+                        <input type="radio" name="q2" value="1" /> 高い税金を支持する
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="2" /> 適切な税金を支持する
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="3"/> 低い税金を支持する
+                    </label>
+                    <br />
+
+
+                
             </DeagonosPage>
         </>
     )
 
 }
+
 
 export default Deagonos;
 

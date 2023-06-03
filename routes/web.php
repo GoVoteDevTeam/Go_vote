@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SignUpController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -30,3 +31,10 @@ Route::get('/diagonose', function () {
 Route::get('/politics', function () {
     return Inertia::render('Politics');
 });
+Route::get('/login', function () {
+    return Inertia::render('Login');
+})->name("login");
+
+Route::get('/signup', [SignUpController::class, "index"])->name('signup');
+
+Route::post('signup', [SignUpController::class, "signup"]);
