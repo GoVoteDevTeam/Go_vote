@@ -1,12 +1,17 @@
+import { InertiaLink } from "@inertiajs/inertia-react";
 import styled from "styled-components";
 const TmpFooter = () => {
 	return (
 		<TmpNav>
 			<ul>
-				<li>ニュース</li>
-				<li>政党診断</li>
-				<li>政党一覧</li>
-				<li>デモ選挙</li>
+				<li>
+					<InertiaLink href="/news" className="tmp-link">ニュース</InertiaLink>
+				</li>
+				<li>
+					<InertiaLink className="tmp-link">政党診断</InertiaLink>
+				</li>
+				<li><InertiaLink className="tmp-link">政党一覧</InertiaLink></li>
+				<li><InertiaLink href="/demo_vote/start" className="tmp-link">デモ選挙</InertiaLink></li>
 			</ul>
 		</TmpNav>
 	)
@@ -28,8 +33,11 @@ const TmpNav = styled.nav`
 		justify-content: center;
 		padding: 0;
 		li {
-			color: #fff;
 			margin: 0 15px;
+			.tmp-link {
+				text-decoration: none;
+				color: #fff;
+			}
 		}
 	}
 `;
