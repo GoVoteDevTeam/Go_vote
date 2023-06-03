@@ -36,7 +36,6 @@ Route::get('/demo', function () {
     ]);
 });
 
-
 Route::get('/signup', [SignUpController::class, "index"])->name('signup');
 
 Route::post('signup', [SignUpController::class, "signup"]);
