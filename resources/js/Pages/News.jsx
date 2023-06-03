@@ -8,6 +8,7 @@ import axios from "axios";
 
 const News = () => {
 
+    const [news, setNews] = useState();
     const [currentTab, setCurrentTab] = useState('1');
     const tabs = [
         {
@@ -41,15 +42,17 @@ const News = () => {
     }
 
     useEffect(() => {
-		const newsContents = axios.get(`https://newsapi.org/v2/top-headlines?country=jp&apiKey=${import.meta.env.VITE_NEWS_KEY}`).then((res) => {
-			console.log(res.data.articles);
-		});
-        console.log(newsContents);
-	})
+        const fetchData = async () => {
+            const newsContents = await axios.get(`https://newsapi.org/v2/top-headlines?country=jp&apiKey=${import.meta.env.VITE_NEWS_KEY}`);
+            setNews(newsContents.data.articles);
+            console.log(news);
+        }
+        fetchData();
+	}, []);
 
     return (
       <>
-        <Header></Header>
+        <Header />
         <NewsPage>
             <VoteNotice />
             <div className="news-container">
