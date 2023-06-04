@@ -13,27 +13,39 @@ const News = () => {
     const tabs = [
         {
             id: "business",
-            tabTitle: 'Tab 1',
+            tabTitle: 'ビジネス',
             title: 'Title 1',
             content: 'Las tabs se generan automáticamente a partir de un array de objetos, el cual tiene las propiedades: id, tabTitle, title y content.'
         },
         {
             id: "entertainment",
-            tabTitle: 'Tab 2',
+            tabTitle: 'エンターテイメント',
             title: 'Title 2',
             content: 'Contenido de tab 2.'
         },
         {
             id: "health",
-            tabTitle: 'Tab 3',
+            tabTitle: '健康',
             title: 'Title 3',
             content: 'Contenido de tab 3.'
         },
         {
             id: "science",
-            tabTitle: 'Tab 4',
+            tabTitle: '科学',
             title: 'Title 4',
             content: 'Contenido de tab 4.'
+        },
+        {
+            id: "sports",
+            tabTitle: 'スポーツ',
+            title: 'Title 5',
+            content: 'Contenido de tab 5.'
+        },
+        {
+            id: "technology",
+            tabTitle: 'テクノロジー',
+            title: 'Title 6',
+            content: 'Contenido de tab 6.'
         }
     ];
 
@@ -61,14 +73,23 @@ const News = () => {
                         <button key={i} id={tab.id} disabled={currentTab === `${tab.id}`} onClick={(handleTabClick)}>{tab.tabTitle}</button>
                     )}
                 </div>
-                <div className='content'>
-                    {tabs.map((tab, i) =>
+                {news && news.map((news, i) => {
+                    return(
                         <div key={i}>
-                            {currentTab === `${tab.id}` && <div><p className='title'>{tab.title}</p><p>{tab.content}</p></div>}
+                            <div className='news'>
+                            <div className='newsTitle'>{news.title}</div>
+                            <div className='newsContent'>
+                                <div className='newsImg'>
+                                    <img src={news.urlToImage} alt="" />
+                                </div>
+                                <div className='newsText'>
+                                    <div>{news.title}</div>
+                                </div>
+                            </div>
+                            </div>
                         </div>
-                    )}
-                </div>
-                {news && news.map((news, i) => <div key={i}>{news.title}</div>)}
+                    )
+                })}
             </div>
         </NewsPage>
         <TmpFooter />
@@ -85,7 +106,33 @@ const NewsPage = styled.div`
     overflow-y: auto;
 
     .news-container {
-        width: 100%;
+        margin: 5%;
+        .newsTitle{
+            background-color: #D9D9D9;
+            margin-top: 30px;
+            width: 100%;
+            height: 20%;
+        }
+        .newsContent{
+            background-color: #f5f5f5;
+            width: 100%;
+            height: 20%;
+            display: flex;
+            justify-content: center;
+            .newsImg{
+                width: 30%;
+                img {
+                    width: 100%;
+                    margin: 10px 10px 5px;
+                    aspect-ratio: 1/1;
+                    min-width: 100px;
+                }
+                .newsText{
+                    padding: 50px;
+                    
+                }
+            }
+        }
     }
 
 `
