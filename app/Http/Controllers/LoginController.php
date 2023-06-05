@@ -3,26 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
     public function index () {
-        return Inertia::render("Login");
+        return Inertia::render('Login');
     }
 
     public function checkLogin()
     {
         if (Auth::check()) {
             // ログイン済みの場合の処理（画面遷移など）
-            return Inertia::reder("Demo");
+            return Inertia::reder('Demo');
         } else {
             // 未ログインの場合の処理（ログイン画面へのリダイレクトなど）
-            return Inertia::location("/login");
+            return Inertia::location('/login');
         }
     }
     
@@ -47,14 +48,13 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
     
-        if (Auth::attempt($credentials)) {
+        
+        if (Auth::attempt($credentials, true)) {
             // 認証成功の処理
-            $user = Auth::user();
-    
-            Session::put('redirectData', $user);
-    
+            
             return Redirect::route('demo')->with('success', 'ログインに成功しました。');
         } else {
+            
             return Redirect::back()->with('error', 'メールアドレスまたはパスワードが正しくありません。')->withErrors(['email' => 'メールアドレスまたはパスワードが正しくありません。']);
         }
     }

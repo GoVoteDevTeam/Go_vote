@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DemoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignUpController;
 use Illuminate\Support\Facades\Route;
@@ -21,13 +22,17 @@ Route::get('/', function () {
 });
 
 
-Route::get('/demo', function () {
-    return Inertia::render('Demo');
-});
-Route::post('/demo', function () {
-    return Inertia::render('Demo');
-});
+// Route::get('/demo', function () {
+//     return Inertia::render('Demo');
+// });
+// Route::post('/demo', function () {
+//     return Inertia::render('Demo');
+// });
 
+
+Route::get('/demo', [DemoController::class, "index"])->name('login');
+
+Route::post('/demo', [DemoController::class, "login"])->name('login.attempt');
 
 Route::get('/login', [LoginController::class, "index"])->name('login');
 
