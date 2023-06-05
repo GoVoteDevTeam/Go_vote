@@ -23,7 +23,7 @@ const Login = ({ errors }) => {
   const loginSubmit = (e) => {
     e.preventDefault();
 
-    //一致していないpasswordが送信された場合
+    //二回入力したpassword一致していない場合
     if (inputUserInfomation.password !== inputUserInfomation.confirmPassword) {
         passwordSetMatchError(true);
         return;      
@@ -32,7 +32,7 @@ const Login = ({ errors }) => {
     }
 
 
-    // "/demo"パスに遷移
+    // /loginにPOST
     Inertia.post("/login", inputUserInfomation, { onFinish });
   };
   const onFinish = () => {
