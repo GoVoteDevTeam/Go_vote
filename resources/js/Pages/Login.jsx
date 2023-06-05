@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { Inertia } from "@inertiajs/inertia";
 
@@ -23,30 +23,16 @@ const Login = ({ errors }) => {
   const loginSubmit = (e) => {
     e.preventDefault();
 
-    //一致していないpasswordが送信された場合
-    if (
-      inputUserInfomation.password !== inputUserInfomation.confirmPassword
-    ) {
-      //passwordが、同時に入力された場合、すべてのエラー文を返す
-      if (
-        inputUserInfomation.password !== inputUserInfomation.confirmPassword
-      ) {
+    //二回入力したpassword一致していない場合
+    if (inputUserInfomation.password !== inputUserInfomation.confirmPassword) {
         passwordSetMatchError(true);
-        return;
-      }
-
-      // 一致していない場合はtureしている場合はfalse(password)
-      if (
-        inputUserInfomation.password !== inputUserInfomation.confirmPassword
-      ) {
-        passwordSetMatchError(true);
-        return;
-      } else {
+        return;      
+    } else {
         passwordSetMatchError(false);
-      }
     }
 
-    // "/demo"パスに遷移
+
+    // /loginにPOST
     Inertia.post("/login", inputUserInfomation, { onFinish });
   };
   const onFinish = () => {

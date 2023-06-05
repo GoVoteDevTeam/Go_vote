@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
 
-class TmpLoginController extends Controller
+class LoginController extends Controller
 {
     public function index()
     {
-        return Inertia::render('LoginTmp', [
+        return Inertia::render('Login', [
             "user" => Auth::user(),
         ]);
     }
@@ -41,7 +41,7 @@ class TmpLoginController extends Controller
             return Inertia::location('/demo');
         } else {
             
-            return Redirect::back()->with('error', 'メールアドレスまたはパスワードが正しくありません。');
+            return Redirect::back()->withErrors(['メールアドレスまたはパスワードが正しくありません。']);
         }
     }
 
