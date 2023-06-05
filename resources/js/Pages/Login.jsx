@@ -24,27 +24,13 @@ const Login = ({ errors }) => {
     e.preventDefault();
 
     //一致していないpasswordが送信された場合
-    if (
-      inputUserInfomation.password !== inputUserInfomation.confirmPassword
-    ) {
-      //passwordが、同時に入力された場合、すべてのエラー文を返す
-      if (
-        inputUserInfomation.password !== inputUserInfomation.confirmPassword
-      ) {
+    if (inputUserInfomation.password !== inputUserInfomation.confirmPassword) {
         passwordSetMatchError(true);
-        return;
-      }
-
-      // 一致していない場合はtureしている場合はfalse(password)
-      if (
-        inputUserInfomation.password !== inputUserInfomation.confirmPassword
-      ) {
-        passwordSetMatchError(true);
-        return;
-      } else {
+        return;      
+    } else {
         passwordSetMatchError(false);
-      }
     }
+
 
     // "/demo"パスに遷移
     Inertia.post("/login", inputUserInfomation, { onFinish });

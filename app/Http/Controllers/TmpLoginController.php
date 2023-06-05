@@ -41,7 +41,7 @@ class TmpLoginController extends Controller
             return Inertia::location('/demo');
         } else {
             
-            return Redirect::back()->with('error', 'メールアドレスまたはパスワードが正しくありません。')->withErrors(['email' => 'メールアドレスまたはパスワードが正しくありません。']);
+            return Redirect::back()->with('error', 'メールアドレスまたはパスワードが正しくありません。');
         }
     }
 

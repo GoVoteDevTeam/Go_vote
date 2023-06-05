@@ -12,7 +12,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return Inertia::render('LoginTmp', [
+        return Inertia::render('Login', [
             "user" => Auth::user(),
         ]);
     }
@@ -41,7 +41,7 @@ class LoginController extends Controller
             return Inertia::location('/demo');
         } else {
             
-            return Redirect::back()->with('error', 'メールアドレスまたはパスワードが正しくありません。')->withErrors(['email' => 'メールアドレスまたはパスワードが正しくありません。']);
+            return Redirect::back()->withErrors(['メールアドレスまたはパスワードが正しくありません。']);
         }
     }
 
