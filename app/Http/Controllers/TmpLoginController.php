@@ -38,7 +38,7 @@ class TmpLoginController extends Controller
         if (Auth::attempt($credentials, true)) {
             // 認証成功の処理
             
-            return Redirect::route('demo')->with('succests', 'ログインに成功しました。');
+            return Inertia::location('/demo');
         } else {
             
             return Redirect::back()->with('error', 'メールアドレスまたはパスワードが正しくありません。')->withErrors(['email' => 'メールアドレスまたはパスワードが正しくありません。']);
