@@ -1,12 +1,10 @@
 import styled from "styled-components";
 import React, {useState} from "react";
 import data from "../components/diagonos";
+import Header from "../components/Header"
 
 
-const Deagonos = () => {
-
-    // console.log(data);
-    const loopCount = 10;
+const diagonose = () => {
 
     data.forEach((data)=> {
         console.log(data.name) ;
@@ -20,63 +18,39 @@ const Deagonos = () => {
         })
     }
     
+    
     return (
         <>
-            <HeaderElement>
-
-            </HeaderElement>
-            <DeagonosPage>
+            <Header />
+            <DiagonosPage>
                 <div className="title">
                     政党診断
                 </div>
-                <div className="qestion">
-                    Qestion!
+                <div className="sub_title">
+                    Question!
                 </div>
-                    <h2>質問1: 政府の役割についてどう考えますか？</h2>
-                    <label>
-                        <input type="radio" name="q1" value="1" /> 強力な中央集権が必要だ
-                    </label>
-                    <label>
-                        <input type="radio" name="q1" value="2"  /> 適度な中央集権が必要だ
-                    </label>
-                    <label>
-                        <input type="radio" name="q1" value="3" /> 分権化が必要だ
-                    </label>
-                    <br />
-                
-                    <h2>質問2: 税制についてどのように考えますか？</h2>
-        <           label>
-                        <input type="radio" name="q2" value="1" /> 高い税金を支持する
-                    </label>
-                    <label>
-                        <input type="radio" name="q2" value="2" /> 適切な税金を支持する
-                    </label>
-                    <label>
-                        <input type="radio" name="q2" value="3"/> 低い税金を支持する
-                    </label>
-                    <br />
-
-
-                
-            </DeagonosPage>
+                {data.map((item, index) => (
+                    <div key={index} className="question_date">
+                        <div className="question">{item.number}</div>
+                        <div className="question_title">{item.title}</div>
+                        <div className="quetion">{item.question}</div>
+                        <div className="answer1"><button></button>{item.answer1}</div>
+                        <div className="answer2"><button></button>{item.answer2}</div>
+                        <div className="answer3"><button></button>{item.answer3}</div>
+                    </div>
+                ))}
+            </DiagonosPage>
         </>
     )
 
 }
 
 
-export default Deagonos;
+export default diagonose;
 
-const HeaderElement = styled.header`
+const DiagonosPage = styled.div`
     width: 100%;
-    height: 92px;
-    background-color: #36375F;
-    margin-bottom: 100px;
-`;
-
-const DeagonosPage = styled.div`
-    width: 100%;
-    height: calc(100vh - 200px);
+    height: calc(1500px - 200px);
     background-color: #36375F;
     border-radius: 10px 10px 0 0;
     .title {
@@ -84,8 +58,13 @@ const DeagonosPage = styled.div`
         text-align: center;
         color: #fff;
     }
-    .qestion {
+    .sub_title {
         text-align: center;
         color: #fff;
+    }
+    .question_date {
+        text-align: center;
+        color: #fff;
+        padding-bottom: 50px;
     }
 `;

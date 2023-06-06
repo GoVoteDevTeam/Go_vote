@@ -35,21 +35,7 @@ const diagonese = [
         answer3: "PB黒字化維持",
         answer4: "特になし"     
     },
-    {
-        number: "5",     //政党名
-        title: "",       //キャッチコピー
-        question: "",      //詳細      
-    },
-    {
-        number: "6",     //政党名
-        title: "",       //キャッチコピー
-        question: "",      //詳細      
-    },
-    {
-        number: "7",     //政党名
-        title: "",       //キャッチコピー
-        question: "",      //詳細     
-    },
+    
 ]
 
-export default politics;
+export default diagonese;
