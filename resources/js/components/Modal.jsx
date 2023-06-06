@@ -21,8 +21,8 @@ const Modal = ({ Politics_data }) => {
           <label htmlFor={`modal-${Politics_data.name}`} className="modal__trigger_catchcopy">
             {Politics_data.catchcopy}
           </label>
-          <label htmlFor={`modal-${Politics_data.name}`} className="modal__trigger_datail">
-            {Politics_data.datail}
+          <label htmlFor={`modal-${Politics_data.name}`} className="modal__trigger_detail">
+            {Politics_data.detail}
           </label>
         </div>
 
@@ -33,7 +33,7 @@ const Modal = ({ Politics_data }) => {
               <div className="iconModal">
                 <img className="img" src={`./img/${Politics_data.img}`} />
               </div>
-              <div className="detailModal">{Politics_data.datail}</div>
+              <div className="detailModal">{Politics_data.detail}</div>
               <button className="modal__close" onClick={handleModal}>
                 ×
               </button>
@@ -62,7 +62,7 @@ const ModalWrap = styled.div`
           cursor: pointer;
           /* margin-left: 10px; */
       }
-      .modal__trigger_datail {
+      .modal__trigger_detail {
           font-size: 1rem;
           cursor: pointer;
           margin: auto 0;
@@ -122,7 +122,7 @@ const ModalWrap = styled.div`
         }
     }
     @media only screen and (max-width: 640px) {
-    .modal__trigger_datail {
+    .modal__trigger_detail {
         font-size: calc(2rem - 1rem);
         white-space: pre-wrap;
         display: none;
