@@ -82,9 +82,9 @@ const News = () => {
                                 <div className='newsImg'>
                                     <img src={news.urlToImage} alt="" />
                                 </div>
-                                <div className='newsText'>
-                                    <div>{news.title}</div>
-                                </div>
+                                
+                                <div className='newsText'>{news.title}</div>
+                                
                             </div>
                             </div>
                         </div>
@@ -127,11 +127,10 @@ const NewsPage = styled.div`
                     aspect-ratio: 1/1;
                     min-width: 100px;
                 }
-                .newsText{
-                    padding: 50px;
-                    
-                }
             }
+            .newsText{
+                    margin: 10px 10px 5px 20px;
+                }
         }
     }
 
