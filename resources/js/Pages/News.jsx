@@ -19,7 +19,7 @@ const News = () => {
         },
         {
             id: "entertainment",
-            tabTitle: 'エンターテイメント',
+            tabTitle: 'エンタメ',
             title: 'Title 2',
             content: 'Contenido de tab 2.'
         },
@@ -41,12 +41,6 @@ const News = () => {
             title: 'Title 5',
             content: 'Contenido de tab 5.'
         },
-        {
-            id: "technology",
-            tabTitle: 'テクノロジー',
-            title: 'Title 6',
-            content: 'Contenido de tab 6.'
-        }
     ];
 
     const handleTabClick = (e) => {
@@ -68,9 +62,13 @@ const News = () => {
         <NewsPage>
             <VoteNotice />
             <div className="news-container">
+            <div className='tab-wrap'>
                 <div className='tabs'>
+                    <div className='title'>
+                        ニュース
+                    </div>
                     {tabs.map((tab, i) =>
-                        <button key={i} id={tab.id} disabled={currentTab === `${tab.id}`} onClick={(handleTabClick)}>{tab.tabTitle}</button>
+                        <butto className='btn' key={i} id={tab.id} disabled={currentTab === `${tab.id}`} onClick={(handleTabClick)}>{tab.tabTitle}</butto>
                     )}
                 </div>
                 {news && news.map((news, i) => {
@@ -84,7 +82,7 @@ const News = () => {
                             </div>
                             <div className='newsContent'>
                                 <div className='newsImg'>
-                                    <img src={news.urlToImage} alt="" />
+                                    <img src={news.urlToImage || '../../../img/jimin.jpg'} alt="" />
                                 </div>
                                 
                                 <div className='newsText'>{news.title}</div>
@@ -94,6 +92,7 @@ const News = () => {
                         </div>
                     )
                 })}
+            </div>
             </div>
         </NewsPage>
         <TmpFooter />
@@ -110,44 +109,74 @@ const NewsPage = styled.div`
     overflow-y: auto;
 
     .news-container {
+        max-width: calc(100vw - 10px*2);
+	    width: 600px;
         margin: 2%;
-        .tabs{
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        outline: none;
-        padding: 0;
-        appearance: none;
-        }
+        .tab-wrap{
+            /* width: 1000px; */
+            .tabs{
+                margin: 20px 0 0 -2%;
+                padding-top: 10px 0;
+                background-color: #36375F;
+                width: 105.4%;
+                height: 90px;
+                border-radius: 35px 35px 0px 0px;
+                .title{
+                    text-align: center;
+                    font-size: 20px;
+                    color:#fff;
+                    margin: 0 0 5px 0;
+                    padding-top: 15px;
+                }
+                .btn{
+                    background-color: transparent;
+                    color:#fff;
+                    margin:0 10px 0 15px;
+                    border: none;
+                    cursor: pointer;
+                    outline: none;
+                    padding: 0;
+                    appearance: none;
+                }
+                
+            }
 
-        .newsTitle{
-            background-color: #D9D9D9;
-            margin-top: 30px;
-            width: 100%;
-            height: 20%;
-            .newsTitleText{
-            padding: 3px 10px;
-            }
-        }
-        .newsContent{
-            background-color: #f5f5f5;
-            width: 100%;
-            height: 20%;
-            display: flex;
-            justify-content: center;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-            .newsImg{
-                width: 30%;
-                img {
+            .news{
+                max-width: calc(100vw - 10px*2);
+	            width: 600px;
+                .newsTitle{
+                    background-color: #D9D9D9;
+                    margin-top: 25px;
                     width: 100%;
-                    margin: 10px 10px 5px;
-                    aspect-ratio: 1/1;
-                    min-width: 100px;
+                    height: 20%;
+                    .newsTitleText{
+                    padding: 3px 10px;
+                    }
+                }
+                .newsContent{
+                    background-color: #f5f5f5;
+                    width: 100%;
+                    height: 20%;
+                    display: flex;
+                    justify-content: center;
+                    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+                    overflow: hidden;
+                    overflow-x: auto;
+                    position: relative;
+                    .newsImg{
+                        width: 30%;
+                        img {
+                            width: 100%;
+                            margin: 10px 10px 5px;
+                            aspect-ratio: 1/1;
+                            min-width: 100px;
+                        }
+                    }
+                    .newsText{
+                            margin: 10px 10px 5px 20px;
+                        }
                 }
             }
-            .newsText{
-                    margin: 10px 10px 5px 20px;
-                }
         }
     }
 
