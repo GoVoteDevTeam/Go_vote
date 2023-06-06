@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Inertia } from '@inertiajs/inertia';
+// import axios from "axios";
 
-const Demo = () => {
+const Demo = ({value,user}) => {
     const [count, setCount] = useState(0);
 
     const handleClick = () =>  {
@@ -9,10 +11,16 @@ const Demo = () => {
         setCount(counts);
     }
 
+    const handleLogout = () => {
+        Inertia.post('/logout'); // ログアウトリクエストを送信
+    };
+
+    console.log(value, user);
+
     return (
         <>
-            <HeaderElement>
-
+            <HeaderElement onClick={handleLogout}>
+                <h1>ログアウト</h1>
             </HeaderElement>
             <DemoPage>
                 <div className="title">
@@ -28,6 +36,7 @@ const Demo = () => {
 }
 
 export default Demo;
+
 
 const HeaderElement = styled.header`
     width: 100%;
