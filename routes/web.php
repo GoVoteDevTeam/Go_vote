@@ -1,8 +1,17 @@
 <?php
 
+use App\Http\Controllers\DemoController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DemoVoteController;
 use App\Http\Controllers\SignUpController;
+use App\Http\Controllers\TmpLoginController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
+use function Termwind\render;
+
+// use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +30,39 @@ Route::get('/', function () {
 
 
 Route::get('/demo', function () {
-    return Inertia::render('Demo');
+    return Inertia::render('Demo', [
+        "user" => Auth::user(),
+    ]);
 });
-
-Route::get('/login', function () {
-    return Inertia::render('Login');
-})->name("login");
 
 Route::get('/signup', [SignUpController::class, "index"])->name('signup');
 
 Route::post('signup', [SignUpController::class, "signup"]);
+
+Route::get('/login', [LoginController::class, "index"])->name("login");
+
+Route::get('/check-login',  [LoginController::class, "checkLogin"]);
+
+Route::post("/login", [LoginController::class, "login"]);
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get("/demo_vote/start", [DemoVoteController::class, "index"])->name("demovote_start");
+
+Route::get("/demo_vote/result", function() {
+    return Inertia::render("VoteResult");
+})->name("demovote_result");
+
+Route::middleware('auth')->group(function () {
+    Route::get("/demo_vote/ballots", [DemoVoteController::class, "handingOutBallots"])->name("ballots");
+
+    Route::get("/demo_vote/party_based_election", [DemoVoteController::class, "markOnBallotPaper"])->name("markon");
+
+    Route::get("/demo_vote/to_vote", function () {
+        return Inertia::render("ToVote");
+    });
+
+    Route::get("/demo_vote/voting_completed", function () {
+        return Inertia::render("VotingCompleted");
+    });
+});
