@@ -56,7 +56,6 @@ const ModalWrap = styled.div`
       position:relative;
       margin-left: 10px;
       margin-right: 10px;
-      max-width: 80%;
       .modal__trigger_catchcopy {
           font-size: 1.5rem;
           cursor: pointer;
