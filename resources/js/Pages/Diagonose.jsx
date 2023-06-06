@@ -1,8 +1,24 @@
 import styled from "styled-components";
 import React, {useState} from "react";
+import data from "../components/diagonos";
 
 
 const Deagonos = () => {
+
+    // console.log(data);
+    const loopCount = 10;
+
+    data.forEach((data)=> {
+        console.log(data.name) ;
+    });
+
+    const Politicses = () => {
+        return data.map((data)=>{
+            return(
+                <div className="">{data.name}</div>
+            );
+        })
+    }
     
     return (
         <>
