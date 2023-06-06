@@ -22,6 +22,8 @@ const FooterElement = styled.footer`
   width: 100%;
   height: 80px;
   text-align: center;
+  position: absolute;
+  bottom: 0;
   margin: 0;
   padding: 0;
   background-color: #36375f;
