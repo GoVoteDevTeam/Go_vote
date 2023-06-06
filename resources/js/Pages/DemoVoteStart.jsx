@@ -4,8 +4,8 @@ import axios from "axios";
 import { InertiaLink } from "@inertiajs/inertia-react";
 import Header from "../components/Header";
 
-const DemoVote = () => {
-
+const DemoVote = ({ vote }) => {
+    // console.log(vote)
 	return (
 		<>
 			<Header />
@@ -25,11 +25,11 @@ const DemoVote = () => {
 				<div className="date">
 					<div className="election-day">
 						<h3>投票日</h3>
-						<p>2023年 1月1日 6:00~</p>
+						<p>{vote.start_date}~</p>
 					</div>
 					<div className="vote-counting-day">
 						<h3>開票日</h3>
-						<p>2022年 1月4日 ~20:00</p>
+						<p>{vote.finish_date}</p>
 					</div>
 				</div>
 

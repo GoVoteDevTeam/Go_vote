@@ -37,7 +37,9 @@ const ToVote = () => {
             }
 
             if (box_top.current.getBoundingClientRect().top < el.current.getBoundingClientRect().top) {
-                Inertia.get("/demo_vote/voting_completed")
+                Inertia.post("/demo_vote/vote", {
+                    politics: "政党名"
+                })
             }
 
             prevY = e.touches[0].clientY;
@@ -76,7 +78,7 @@ const ToVote = () => {
             }
 
             if (box_top.current.getBoundingClientRect().top < el.current.getBoundingClientRect().top) {
-                Inertia.get("/demo_vote/voting_completed")
+                Inertia.get("/demo_vote/vote")
             }
             prevX = e.clientX;
             prevY = e.clientY;

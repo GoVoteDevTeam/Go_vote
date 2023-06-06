@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Http\Request;
-
 use App\Models\Politics;
-// use Illuminate\Support\Facades\App;
+use App\Models\VoteVersion;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use Symfony\Component\HttpFoundation\Request;
 
 class DemoVoteController extends Controller
 {
     public function index() {
-        return Inertia::render("DemoVoteStart");
+        $latestVote = VoteVersion::getLatestVote();
+        return Inertia::render("DemoVoteStart",[
+            "vote" => $latestVote
+        ] );
     }
 
     public function handingOutBallots() {
@@ -29,5 +31,9 @@ class DemoVoteController extends Controller
         return Inertia::render("MarkOnBallotPaper", [
             "politics" => $politics
         ]);
+    }
+
+    public function vote(Request $request) {
+        return Inertia::render("VotingCompleted");
     }
 }
