@@ -91,11 +91,8 @@ const PoliticsPage = styled.div`
             margin-right: 10px;
             background-color: #fff;
             white-space: pre-wrap;
-
-            // コメントアウト戻すと見た目は良くなるけどモーダルの中身もoverflow: hidden;で消えてしまう
-            /* white-space: nowrap;
-            text-overflow: ellipsis;    //機能してない
-            overflow: hidden; */
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 `;

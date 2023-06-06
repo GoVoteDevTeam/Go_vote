@@ -68,6 +68,7 @@ const ModalWrap = styled.div`
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
+          margin-left: 20px;
       }
     }
 
