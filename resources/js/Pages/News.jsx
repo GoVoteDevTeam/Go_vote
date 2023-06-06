@@ -77,7 +77,11 @@ const News = () => {
                     return(
                         <div key={i}>
                             <div className='news'>
-                            <div className='newsTitle'>{news.title}</div>
+                            <div className='newsTitle'>
+                                <div className='newsTitleText'>
+                                   {news.title}
+                                </div>
+                            </div>
                             <div className='newsContent'>
                                 <div className='newsImg'>
                                     <img src={news.urlToImage} alt="" />
@@ -106,12 +110,24 @@ const NewsPage = styled.div`
     overflow-y: auto;
 
     .news-container {
-        margin: 5%;
+        margin: 2%;
+        .tabs{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+        appearance: none;
+        }
+
         .newsTitle{
             background-color: #D9D9D9;
             margin-top: 30px;
             width: 100%;
             height: 20%;
+            .newsTitleText{
+            padding: 3px 10px;
+            }
         }
         .newsContent{
             background-color: #f5f5f5;
@@ -119,6 +135,7 @@ const NewsPage = styled.div`
             height: 20%;
             display: flex;
             justify-content: center;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
             .newsImg{
                 width: 30%;
                 img {
