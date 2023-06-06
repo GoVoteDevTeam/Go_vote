@@ -131,12 +131,17 @@ const NewsPage = styled.div`
                 .btn{
                     background-color: transparent;
                     color:#fff;
-                    margin:0 10px 0 15px;
+                    margin:0 0px 0 13px;
                     border: none;
                     cursor: pointer;
                     outline: none;
                     padding: 0;
                     appearance: none;
+                    border-right: 2px solid #fff; /* 縦線のスタイルを指定 */
+                    padding-right: 10px; /* ボタンと縦線の間のスペースを指定 */
+                }
+                .btn:last-child {
+                    border-right: none; /* 最後のボタンの縦線を削除 */
                 }
                 
             }
