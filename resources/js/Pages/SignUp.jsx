@@ -35,7 +35,7 @@ const SignUp = ({ errors }) => {
             setMatchError(false);
         }
 
-        Inertia.post("signup", inputUserInfomation, {onFinish})
+        Inertia.post("signup", inputUserInfomation, { onFinish })
     }
     const onFinish = () => {
         console.log("finish");
@@ -50,25 +50,27 @@ const SignUp = ({ errors }) => {
                 {errors && Object.keys(errors).map((key) => (
                     <div key={key}>{errors[key]}</div>
                 ))}
-                <form onSubmit={(e) => signUpSubmit(e)}>
-                    <div className="user-input">
-                        <p>ユーザ名</p>
-                        <input type="text" name="user_name" id="user_name" onChange={(e) => inputChange(e)} required />
-                    </div>
-                    <div className="user-emil">
-                        <p>e-mail</p>
-                        <input type="text" name="email" id="email" onChange={(e) => inputChange(e)} required />
-                    </div>
-                    <div className="user-password">
-                        <p>パスワード</p>
-                        <input type="text" name="password" id="password" onChange={(e) => inputChange(e)} required />
-                    </div>
-                    <div className="user-password">
-                        <p>再度入力</p>
-                        <input type="text" name="confirmPassword" id="confirmPassword" required onChange={(e) => inputChange(e)} />
-                    </div>
-                    <button type="submit">送信</button>
-                </form>
+                <div className="main">
+                    <form onSubmit={(e) => signUpSubmit(e)}>
+                        <div className="user-input">
+                            <p>ユーザ名</p>
+                            <input type="text" name="user_name" id="user_name" onChange={(e) => inputChange(e)} required />
+                        </div>
+                        <div className="user-email">
+                            <p>e-mail</p>
+                            <input type="text" name="email" id="email" onChange={(e) => inputChange(e)} required />
+                        </div>
+                        <div className="user-password">
+                            <p>パスワード</p>
+                            <input type="text" name="password" id="password" onChange={(e) => inputChange(e)} required />
+                        </div>
+                        <div className="user-password">
+                            <p>再度入力</p>
+                            <input type="text" name="confirmPassword" id="confirmPassword" required onChange={(e) => inputChange(e)} />
+                        </div>
+                        <button type="submit">送信</button>
+                    </form>
+                </div>
             </SignUPPage>
         </>
     )
@@ -78,11 +80,26 @@ const SignUp = ({ errors }) => {
 export default SignUp;
 
 const SignUPPage = styled.div`
-    form {
-        .user-password {
-            input {
-                -webkit-text-security:disc;
-            }
-        }
+    background-color: #bcd3cd;
+    width: 100%;
+    height: 100vh;
+    .main {
+        margin: 50% auto 0;
+        padding: 10px;
+        width: 80%;
+        height: 70%;
+        background-color: #f5f5f5;
+        text-align: center;
     }
+    
+        form {
+            .user-password {
+                input {
+                    -webkit-text-security:disc;
+                }
+            }
+        } 
+    
+
 `;
+
