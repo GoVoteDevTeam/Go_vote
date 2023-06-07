@@ -23,6 +23,7 @@ const diagonose = () => {
         <>
             <Header />
             <DiagonosPage>
+                <div className="karioki"></div>
                 <div className="title">
                     政党診断
                 </div>
@@ -34,11 +35,12 @@ const diagonose = () => {
                         <div className="question">{item.number}</div>
                         <div className="question_title">{item.title}</div>
                         <div className="quetion">{item.question}</div>
-                        <div className="answer1"><button></button>{item.answer1}</div>
-                        <div className="answer2"><button></button>{item.answer2}</div>
-                        <div className="answer3"><button></button>{item.answer3}</div>
+                        <div className="answer1"><label><input type="radio" name={`options${index}`} value="option1" />{item.answer1}</label></div>
+                        <div className="answer2"><label><input type="radio" name={`options${index}`} value="option2"/>{item.answer2}</label></div>
+                        <div className="answer3"><label><input type="radio" name={`options${index}`} value="option3"/>{item.answer3}</label></div>
                     </div>
                 ))}
+                <button className="button">次に進む</button>
             </DiagonosPage>
         </>
     )
@@ -50,7 +52,7 @@ export default diagonose;
 
 const DiagonosPage = styled.div`
     width: 100%;
-    height: calc(1500px - 200px);
+    height: calc(1300px - 200px);
     background-color: #36375F;
     border-radius: 10px 10px 0 0;
     .title {
@@ -63,8 +65,15 @@ const DiagonosPage = styled.div`
         color: #fff;
     }
     .question_date {
-        text-align: center;
         color: #fff;
         padding-bottom: 50px;
+        text-align: center;
+    }
+    .karioki {
+        margin: 300px;
+    }
+    .button {
+        margin: 0 auto;
+        display: flex;
     }
 `;
