@@ -100,29 +100,28 @@ const SignUPPage = styled.div`
         margin: 0 auto ;
         padding: 10px;
         width: 80%;
-        height: 70%;
+        height: 90%;
         background-color: #f5f5f5;
         text-align: center;
-    }
-    
         form {
             margin: 0 auto;
+
             .user-input {
-                input {  
-                width: 240px;
-                height: 40px;
-                background: #D9D9D9;
-                border-radius: 20px;
+                input {
+                    width: 240px;
+                    height: 40px;
+                    background: #D9D9D9;
+                    border-radius: 20px;
+                }
             }
-        }
-        .user-email {
-            input {
-                width: 240px;
-                height: 40px;
-                background: #D9D9D9;
-                border-radius: 20px;
+            .user-email {
+                input {
+                    width: 240px;
+                    height: 40px;
+                    background: #D9D9D9;
+                    border-radius: 20px;
+                }
             }
-        }
             .user-password {
                 input {
                     -webkit-text-security:disc;
@@ -133,21 +132,24 @@ const SignUPPage = styled.div`
                 }
             }
             .user-submit {
-                button {
-                margin-top: 20px;
-                width: 30px;
-                height: 18px;
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 700;
-                font-size: 15px;
-                line-height: 18px;
-                text-align: center;
-                letter-spacing: -0.01em;
-                color: #000000;
-            }
-        } 
-    }
 
+                button {
+                    margin-top: 50px;
+                    width: 60px;
+                    height: 30px;
+                    border-radius: 10px;
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 15px;
+                    line-height: 18px;
+                    text-align: center;
+                    letter-spacing: -0.01em;
+                    color: #000000;
+                    background-color: #BDC0FF;
+                }
+            }
+        }
+    }
 `;
 
