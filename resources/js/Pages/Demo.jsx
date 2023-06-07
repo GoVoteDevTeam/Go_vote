@@ -37,6 +37,7 @@ const Demo = ({value,user}) => {
 
 export default Demo;
 
+
 const HeaderElement = styled.header`
     width: 100%;
     height: 92px;

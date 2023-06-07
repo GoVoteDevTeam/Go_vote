@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DemoController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DemoVoteController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\TmpLoginController;
@@ -40,13 +42,13 @@ Route::get('/signup', [SignUpController::class, "index"])->name('signup');
 
 Route::post('signup', [SignUpController::class, "signup"]);
 
-Route::get('/login', [TmpLoginController::class, "index"])->name("login");
+Route::get('/login', [LoginController::class, "index"])->name("login");
 
-Route::get('/check-login',  [TmpLoginController::class, "checkLogin"]);
+Route::get('/check-login',  [LoginController::class, "checkLogin"]);
 
-Route::post("/login", [TmpLoginController::class, "login"]);
+Route::post("/login", [LoginController::class, "login"]);
 
-Route::post('/logout', [TmpLoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get("/demo_vote/start", [DemoVoteController::class, "index"])->name("demovote_start");
 
