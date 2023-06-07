@@ -8,10 +8,10 @@ const Footer = () => {
             <ul className="footer_nav">
               <li><InertiaLink href={"/news"} className="footer_link">ニュース</InertiaLink></li>
               <li><InertiaLink href={"/"} className="footer_link">政党診断</InertiaLink></li>
-              <li><InertiaLink href={"/"} className="footer_link">政党一覧</InertiaLink></li>
+              <li><InertiaLink href={"/politics"} className="footer_link">政党一覧</InertiaLink></li>
               <li><InertiaLink href={"/demo_vote/start"} className="footer_link">デモ選挙</InertiaLink></li>
             </ul>
-        </div>  
+        </div>
         </FooterElement>
     )
 }
