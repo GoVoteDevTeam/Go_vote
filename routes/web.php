@@ -38,6 +38,10 @@ Route::get('/demo', function () {
     ]);
 });
 
+Route::get('/politics', function () {
+    return Inertia::render('Politics');
+});
+
 Route::get('/signup', [SignUpController::class, "index"])->name('signup');
 
 Route::post('signup', [SignUpController::class, "signup"]);
@@ -68,12 +72,4 @@ Route::middleware('auth')->group(function () {
     Route::get("/demo_vote/voting_completed", function () {
         return Inertia::render("VotingCompleted");
     });
-});
-
-Route::get('/diagonose', function () {
-    return Inertia::render('Diagonose');
-});
-
-Route::get('/politics', function () {
-    return Inertia::render('Politics');
 });
