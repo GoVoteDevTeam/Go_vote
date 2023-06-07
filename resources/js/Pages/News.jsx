@@ -112,6 +112,7 @@ const NewsPage = styled.div`
         max-width: calc(100vw - 10px*2);
 	    width: 600px;
         margin: 2%;
+        font-weight: 700;
         .tab-wrap{
             /* width: 1000px; */
             .tabs{
