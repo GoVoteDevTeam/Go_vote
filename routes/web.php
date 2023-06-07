@@ -28,6 +28,9 @@ Route::get('/', function () {
     return Inertia::render('hello-world');
 });
 
+Route::get('/news', function () {
+    return Inertia::render('News');
+});
 
 Route::get('/demo', function () {
     return Inertia::render('Demo', [
@@ -65,4 +68,12 @@ Route::middleware('auth')->group(function () {
     Route::get("/demo_vote/voting_completed", function () {
         return Inertia::render("VotingCompleted");
     });
+});
+
+Route::get('/diagonose', function () {
+    return Inertia::render('Diagonose');
+});
+
+Route::get('/politics', function () {
+    return Inertia::render('Politics');
 });
