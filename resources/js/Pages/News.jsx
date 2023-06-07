@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
-import TmpFooter from '../components/TmpFooter';
+import Footer from '../components/footer';
 import VoteNotice from '../components/VoteNotice';
 import { useEffect } from "react";
 import axios from "axios";
@@ -97,7 +97,7 @@ const News = () => {
             </div>
             </div>
         </NewsPage>
-        <TmpFooter />
+        <Footer />
       </>
     );
 }
