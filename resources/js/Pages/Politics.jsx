@@ -2,7 +2,7 @@ import styled from "styled-components";
 import data from "../components/Politics_data";
 import Modal from "../components/Modal";
 import Header from "../components/Header";
-import TmpFooter from "../components/TmpFooter";
+import Footer from "../components/Footer";
 import VoteNotice from '../components/VoteNotice';
 
 const Politics = () => {
@@ -37,7 +37,7 @@ const Politics = () => {
                     ))}
                 </div>
             </PoliticsPage>
-            <TmpFooter />
+            <Footer />
         </>
     )
 
