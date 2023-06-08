@@ -11,7 +11,7 @@ const Footer = () => {
               <li><InertiaLink href={"/politics"} className="footer_link">政党一覧</InertiaLink></li>
               <li><InertiaLink href={"/demo_vote/start"} className="footer_link">デモ選挙</InertiaLink></li>
             </ul>
-        </div>  
+        </div>
         </FooterElement>
     )
 }
