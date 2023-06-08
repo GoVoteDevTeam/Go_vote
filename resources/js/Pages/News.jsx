@@ -116,7 +116,7 @@ const NewsPage = styled.div`
         .tab-wrap{
             /* width: 1000px; */
             .tabs{
-                margin: 20px 0 0 -2%;
+                margin: 30px 0 0 -2%;
                 padding-top: 10px 0;
                 background-color: #36375F;
                 width: 105.4%;
