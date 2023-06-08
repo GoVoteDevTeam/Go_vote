@@ -65,7 +65,7 @@ const PoliticsPage = styled.div`
             display: flex;
             margin: 10px;
             .item{
-                width: 20%;
+                width: 160px;
                 height: 100px;
                 /* margin-right: 10px; */
                 margin-left: 10px;
@@ -89,7 +89,7 @@ const PoliticsPage = styled.div`
             .item2{
                 display: flex;
                 align-items: center;
-                width: 80%;
+                width: 100%;
                 height: 100px;
                 margin-right: 10px;
                 background-color: #fff;
