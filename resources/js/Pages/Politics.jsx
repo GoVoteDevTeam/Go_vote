@@ -20,9 +20,10 @@ const Politics = () => {
                 <VoteNotice />
                 <div className="politics">
                     <div className="title">
-                        政党早見表
-                    </div>;
-                    {data.map((item, index) => (
+                    政党早見表
+                    </div>
+                    <div className="scroll">
+                        {data.map((item, index) => (
                         <div key={index} className="political_party">
                             <div className="item">
                             <div className="icon">
@@ -34,9 +35,11 @@ const Politics = () => {
                             <Modal Politics_data={item} />
                             </div>
                         </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </PoliticsPage>
+
             <Footer />
         </>
     )
@@ -56,47 +59,51 @@ const PoliticsPage = styled.div`
         border-radius: 35px 35px 0px 0px;
         margin-top: 20px;
         .title {
-            padding: 20px 20px 0px 20px;
+            padding: 20px 20px 10px 20px;
             text-align: center;
             color: #fff;
             font-size:20px;
         }
-        .political_party{
-            display: flex;
-            margin: 10px;
-            .item{
-                width: 160px;
-                height: 100px;
-                /* margin-right: 10px; */
-                margin-left: 10px;
-                background-color: #ffffffc3;
-                .icon{
-                    background-color:#eaff4c;
-                    border-radius: 50%;
-                    height: 60px;
-                    width: 60px;
-                    margin:8px auto;
-                    .img{
-                        border-radius:50%;
+        .scroll{
+            overflow-y: scroll;
+            max-height: 461px;
+            .political_party{
+                display: flex;
+                margin: 10px;
+                .item{
+                    width: 190px;
+                    height: 100px;
+                    /* margin-right: 10px; */
+                    margin-left: 10px;
+                    background-color: #ffffffc3;
+                    .icon{
+                        border-radius: 50%;
                         height: 60px;
                         width: 60px;
+                        margin:8px auto;
+                        .img{
+                            border-radius:50%;
+                            height: 60px;
+                            width: 60px;
+                        }
+                    }
+                    .name{
+                        text-align: center;
                     }
                 }
-                .name{
-                    text-align: center;
+                .item2{
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    height: 100px;
+                    margin-right: 10px;
+                    background-color: #fff;
+                    white-space: pre-wrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
-            }
-            .item2{
-                display: flex;
-                align-items: center;
-                width: 100%;
-                height: 100px;
-                margin-right: 10px;
-                background-color: #fff;
-                white-space: pre-wrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
             }
         }
     }
+
 `;
