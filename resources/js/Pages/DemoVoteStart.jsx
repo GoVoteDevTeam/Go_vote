@@ -3,6 +3,7 @@ import { Inertia } from "@inertiajs/inertia"
 import axios from "axios";
 import { InertiaLink } from "@inertiajs/inertia-react";
 import Header from "../components/Header";
+import TmpFooter from "../components/TmpFooter";
 
 const DemoVote = ({ vote }) => {
     // console.log(vote)
@@ -35,14 +36,7 @@ const DemoVote = ({ vote }) => {
 
 			</DemoVoteStartPage>
 
-			<TmpNav>
-				<ul>
-					<li>ニュース</li>
-					<li>政党診断</li>
-					<li>政党一覧</li>
-					<li>デモ選挙</li>
-				</ul>
-			</TmpNav>
+			<TmpFooter />
 		</>
 	);
 }
