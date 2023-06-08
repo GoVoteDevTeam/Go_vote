@@ -55,7 +55,10 @@ const SignUp = ({ errors }) => {
                     <div key={key}>{errors[key]}</div>
                 ))}
                 <div className="main">
-                    <h1>ログイン画面</h1>
+                    <div className="login-gazou">
+                        <h1>新規登録</h1>
+                        <img src="img/signup.png" alt="" />
+                    </div>
                     <form onSubmit={(e) => signUpSubmit(e)}>
                         <div className="user-input">
                             <p>ユーザ名</p>
@@ -103,6 +106,13 @@ const SignUPPage = styled.div`
         height: 90%;
         background-color: #f5f5f5;
         text-align: center;
+        .login-gazou {
+            text-align: center;
+        }
+        .login-gazou img {
+            width: 100px;
+            height: 100px;
+        }
         form {
             margin: 0 auto;
 
@@ -110,7 +120,8 @@ const SignUPPage = styled.div`
                 input {
                     width: 240px;
                     height: 40px;
-                    background: #D9D9D9;
+                    background-color: #eeeeee;
+                    border: none;
                     border-radius: 20px;
                 }
             }
