@@ -56,10 +56,10 @@ const PoliticsPage = styled.div`
         border-radius: 35px 35px 0px 0px;
         margin-top: 20px;
         .title {
-            padding: 20px;
+            padding: 20px 20px 0px 20px;
             text-align: center;
             color: #fff;
-            font-size:40px;
+            font-size:20px;
         }
         .political_party{
             display: flex;
