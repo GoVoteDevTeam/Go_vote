@@ -28,6 +28,9 @@ Route::get('/', function () {
     return Inertia::render('hello-world');
 });
 
+Route::get('/news', function () {
+    return Inertia::render('News');
+});
 
 Route::get('/demo', function () {
     return Inertia::render('Demo', [
@@ -45,6 +48,9 @@ Route::get('/politics', function () {
 // Route::get('/login', function () {
 //     return Inertia::render('Login');
 // })->name("login");
+Route::get('/politics', function () {
+    return Inertia::render('Politics');
+});
 
 Route::get('/signup', [SignUpController::class, "index"])->name('signup');
 
