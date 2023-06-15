@@ -4,7 +4,6 @@ use App\Http\Controllers\DemoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DemoVoteController;
 use App\Http\Controllers\SignUpController;
-use App\Http\Controllers\TmpLoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -60,6 +59,7 @@ Route::get("/demo_vote/result", function() {
     return Inertia::render("VoteResult");
 })->name("demovote_result");
 
+
 Route::middleware('auth')->group(function () {
     Route::get("/demo_vote/ballots", [DemoVoteController::class, "handingOutBallots"])->name("ballots");
 
@@ -69,9 +69,9 @@ Route::middleware('auth')->group(function () {
         return Inertia::render("ToVote");
     });
 
-    Route::post("/demo_vote/vote", [DemoVoteController::class, "vote"]);
+    Route::post("/demo_vote/to_vote", [DemoVoteController::class, "vote"]);
 
     Route::get("/demo_vote/completed", function() {
         return Inertia::render("VotingCompleted");
-    } );
+    });
 });

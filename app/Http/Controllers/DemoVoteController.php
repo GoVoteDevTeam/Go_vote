@@ -34,6 +34,14 @@ class DemoVoteController extends Controller
     }
 
     public function vote(Request $request) {
-        return Inertia::render("VotingCompleted");
+        // 最新の選挙情報を取得
+        $latestVoteId = VoteVersion::getLatestVote();
+
+        $requestData = ($request->request->all());
+
+        ddd(json_decode($requestData["politics"])->politics_id);
+
+
+        return Inertia::location("/demo_vote/completed");
     }
 }

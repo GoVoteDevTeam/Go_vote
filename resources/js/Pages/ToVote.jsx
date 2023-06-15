@@ -7,6 +7,10 @@ import { useRef } from "react";
 
 const ToVote = () => {
 
+    // console.log(localStorage.getItem("politics"));
+    // localStorage.clear();
+    // console.log(localStorage.getItem("politics"));
+
     const el = useRef(null);
     const box_top = useRef(null);
 
@@ -37,9 +41,9 @@ const ToVote = () => {
             }
 
             if (box_top.current.getBoundingClientRect().top < el.current.getBoundingClientRect().top) {
-                Inertia.post("/demo_vote/vote", {
-                    politics: "政党名"
-                })
+                Inertia.post("/demo_vote/to_vote", {
+                    politics: localStorage.getItem("politics")
+                });
             }
 
             prevY = e.touches[0].clientY;
@@ -78,7 +82,9 @@ const ToVote = () => {
             }
 
             if (box_top.current.getBoundingClientRect().top < el.current.getBoundingClientRect().top) {
-                Inertia.get("/demo_vote/vote")
+                Inertia.post("/demo_vote/to_vote", {
+                    politics: localStorage.getItem("politics")
+                });
             }
             prevX = e.clientX;
             prevY = e.clientY;

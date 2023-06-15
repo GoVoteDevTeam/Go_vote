@@ -4,9 +4,9 @@ import axios from "axios";
 import { InertiaLink } from "@inertiajs/inertia-react";
 import Header from "../components/Header";
 import TmpFooter from "../components/TmpFooter";
+import { useEffect } from "react";
 
 const DemoVote = ({ vote }) => {
-    // console.log(vote)
 	return (
 		<>
 			<Header />

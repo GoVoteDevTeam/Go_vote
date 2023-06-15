@@ -21,10 +21,6 @@ class PoliticsTableSeeder extends Seeder
                 "information" => ""
             ],
             [
-                "politics_name" => "公明党",
-                "information" => ""
-            ],
-            [
                 "politics_name" => "立憲民主党",
                 "information" => ""
             ],
@@ -33,9 +29,18 @@ class PoliticsTableSeeder extends Seeder
                 "information" => ""
             ],
             [
+                "politics_name" => "公明党",
+                "information" => ""
+            ],
+            [
+                "politics_name" => "国民民主党",
+                "information" => ""
+            ],
+            [
                 "politics_name" => "日本共産党",
                 "information" => ""
             ],
+
             [
                 "politics_name" => "れいわ新選組",
                 "information" => ""

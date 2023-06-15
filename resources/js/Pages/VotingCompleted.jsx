@@ -5,6 +5,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { InertiaLink } from "@inertiajs/inertia-react";
 
 const VotingCompleted = () => {
+    localStorage.clear()
     return(
         <>
             <Header />
