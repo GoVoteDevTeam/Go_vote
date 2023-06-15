@@ -121,9 +121,11 @@ const ModalWrap = styled.div`
             }
         }
     }
-    @media only screen and (max-width: 640px) {
+    @media only screen and (max-width: 500px) {
+    .modal__trigger .modal__trigger_catchcopy {
+        font-size: 1rem;
+    }
     .modal__trigger_detail {
-        font-size: calc(2rem - 1rem);
         white-space: pre-wrap;
         display: none;
     }
