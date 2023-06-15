@@ -2,8 +2,8 @@ import styled from "styled-components"
 import Header from "../components/Header";
 import TmpFooter from "../components/TmpFooter";
 import BallotPaper from "../components/BallotPaper";
-import{ Inertia } from "@inertiajs/inertia";
-import { useRef } from "react";
+import { Inertia } from "@inertiajs/inertia";
+import { useRef, useState } from "react";
 
 const ToVote = () => {
 
@@ -11,7 +11,9 @@ const ToVote = () => {
     // localStorage.clear();
     // console.log(localStorage.getItem("politics"));
 
+    const [isLoading, setIsLoading] = useState(false);
     const el = useRef(null);
+    const debounceTimer = useRef(null);
     const box_top = useRef(null);
 
     const touchstart = (e) => {
@@ -24,7 +26,7 @@ const ToVote = () => {
         let prevY = e.touches[0].clientY;
 
         // touchmoveされたとき
-        function touchmove (e){
+        function touchmove(e) {
 
             // Y座標値差 = 初期値 - 現在地点
             let newY = prevY - e.touches[0].clientY;
@@ -41,16 +43,26 @@ const ToVote = () => {
             }
 
             if (box_top.current.getBoundingClientRect().top < el.current.getBoundingClientRect().top) {
-                Inertia.post("/demo_vote/to_vote", {
-                    politics: localStorage.getItem("politics")
-                });
+                if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                    if (!isLoading) {
+                        setIsLoading(true);
+                        clearTimeout(debounceTimer.current);
+                        debounceTimer.current = setTimeout(() => {
+                            Inertia.post("/demo_vote/to_vote", {
+                                politics: localStorage.getItem("politics")
+                            }).then(() => {
+                                setIsLoading(false);
+                            });
+                        }, 500);
+                    }
+                }
             }
 
             prevY = e.touches[0].clientY;
         }
 
         // itemから指が離れた際にイベントを解除
-        function touchend () {
+        function touchend() {
             window.removeEventListener("touchmove", touchmove);
             window.removeEventListener("touchend", touchend);
         }
@@ -67,7 +79,7 @@ const ToVote = () => {
         let prevY = e.clientY;
 
         // mousemoveされたとき
-        function mousemove (e){
+        function mousemove(e) {
             // X,Y座標値差 = 初期値 - 現在地点
             let newY = prevY - e.clientY;
 
@@ -82,16 +94,27 @@ const ToVote = () => {
             }
 
             if (box_top.current.getBoundingClientRect().top < el.current.getBoundingClientRect().top) {
-                Inertia.post("/demo_vote/to_vote", {
-                    politics: localStorage.getItem("politics")
-                });
+                if (!navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                    if (!isLoading) { // Only if not currently loading
+                        setIsLoading(true);
+                        clearTimeout(debounceTimer.current);
+                        debounceTimer.current = setTimeout(() => {
+                            Inertia.post("/demo_vote/to_vote", {
+                                politics: localStorage.getItem("politics")
+                            }).then(() => {
+                                setIsLoading(false);
+                            });
+                        }, 500);
+                    }
+                }
             }
+
             prevX = e.clientX;
             prevY = e.clientY;
         }
 
         // itemからカーソルが離れた際にイベントを解除
-        function mouseup () {
+        function mouseup() {
             window.removeEventListener("mousemove", mousemove);
             window.removeEventListener("mouseup", mouseup);
         }
@@ -99,23 +122,23 @@ const ToVote = () => {
 
     return (
         <>
-        <Header />
-        <ToVotePage>
-            <div className="elem"
-                onTouchStart={(e)=> touchstart(e)}
-                onMouseDown={(e) => mousedown(e)}
-                ref={el}
+            <Header />
+            <ToVotePage>
+                <div className="elem"
+                    onTouchStart={(e) => touchstart(e)}
+                    onMouseDown={(e) => mousedown(e)}
+                    ref={el}
                 >
-                <BallotPaper title={"投票用紙"} />
-            </div>
-            <div className="ballot-box">
-                <div className="top" ref={box_top} />
-                <div className="box">
-                    スワイプして投票
+                    <BallotPaper title={"投票用紙"} />
                 </div>
-            </div>
-        </ToVotePage>
-        <TmpFooter />
+                <div className="ballot-box">
+                    <div className="top" ref={box_top} />
+                    <div className="box">
+                        スワイプして投票
+                    </div>
+                </div>
+            </ToVotePage>
+            <TmpFooter />
         </>
     )
 }

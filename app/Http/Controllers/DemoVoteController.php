@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Politics;
+use App\Models\Vote;
 use App\Models\VoteVersion;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -35,12 +36,15 @@ class DemoVoteController extends Controller
 
     public function vote(Request $request) {
         // 最新の選挙情報を取得
-        $latestVoteId = VoteVersion::getLatestVote();
+        $latestVote = VoteVersion::getLatestVote();
 
-        $requestData = ($request->request->all());
+        $requestData = $request->request->all();
 
-        ddd(json_decode($requestData["politics"])->politics_id);
-
+        Vote::create([
+            "user_id" => Auth::id(),
+            "version_id" => $latestVote->version_id,
+            "politics_id" => json_decode($requestData["politics"])->politics_id
+        ]);
 
         return Inertia::location("/demo_vote/completed");
     }
