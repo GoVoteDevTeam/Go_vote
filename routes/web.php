@@ -27,55 +27,6 @@ use function Termwind\render;
 Route::get('/', function () {
     return Inertia::render('hello-world');
 });
-<<<<<<< HEAD
-Route::get('/', function () {
+Route::get('/mypage', function () {
     return Inertia::render('mypage');
 });
-=======
-
-Route::get('/news', function () {
-    return Inertia::render('News');
-});
-
-Route::get('/demo', function () {
-    return Inertia::render('Demo', [
-        "user" => Auth::user(),
-    ]);
-});
-
-Route::get('/politics', function () {
-    return Inertia::render('Politics');
-});
-
-Route::get('/signup', [SignUpController::class, "index"])->name('signup');
-
-Route::post('signup', [SignUpController::class, "signup"]);
-
-Route::get('/login', [LoginController::class, "index"])->name("login");
-
-Route::get('/check-login',  [LoginController::class, "checkLogin"]);
-
-Route::post("/login", [LoginController::class, "login"]);
-
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-Route::get("/demo_vote/start", [DemoVoteController::class, "index"])->name("demovote_start");
-
-Route::get("/demo_vote/result", function() {
-    return Inertia::render("VoteResult");
-})->name("demovote_result");
-
-Route::middleware('auth')->group(function () {
-    Route::get("/demo_vote/ballots", [DemoVoteController::class, "handingOutBallots"])->name("ballots");
-
-    Route::get("/demo_vote/party_based_election", [DemoVoteController::class, "markOnBallotPaper"])->name("markon");
-
-    Route::get("/demo_vote/to_vote", function () {
-        return Inertia::render("ToVote");
-    });
-
-    Route::get("/demo_vote/voting_completed", function () {
-        return Inertia::render("VotingCompleted");
-    });
-});
->>>>>>> 9e08171f01dd612555b74907ab09d590014ada9e
