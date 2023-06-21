@@ -14,13 +14,13 @@ class DemoVoteController extends Controller
     public function index()
     {
         $latestVote = VoteVersion::getLatestVote();
-        // ddd(Vote::where("user_id", Auth::id()));
-        // $voteHistory;
+        //  対象のユーザーが投票済みか
+        $voteHistory =Vote::where("version_id", $latestVote->version_id)->where("user_id", Auth::id())->get();
         return Inertia::render(
             "DemoVoteStart",
             [
                 "vote" => $latestVote,
-                "res" => $latestVote
+                "history" => $voteHistory
             ]
         );
     }
