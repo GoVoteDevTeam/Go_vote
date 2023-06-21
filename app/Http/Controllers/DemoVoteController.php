@@ -11,21 +11,30 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DemoVoteController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $latestVote = VoteVersion::getLatestVote();
-        return Inertia::render("DemoVoteStart",[
-            "vote" => $latestVote
-        ] );
+        // ddd(Vote::where("user_id", Auth::id()));
+        // $voteHistory;
+        return Inertia::render(
+            "DemoVoteStart",
+            [
+                "vote" => $latestVote,
+                "res" => $latestVote
+            ]
+        );
     }
 
-    public function handingOutBallots() {
+    public function handingOutBallots()
+    {
 
-        return Inertia::render("HandingOutBallots",[
-            "auth"=> Auth::user()
+        return Inertia::render("HandingOutBallots", [
+            "auth" => Auth::user()
         ]);
     }
 
-    public function markOnBallotPaper() {
+    public function markOnBallotPaper()
+    {
 
         $politics = Politics::all();
 
@@ -34,7 +43,8 @@ class DemoVoteController extends Controller
         ]);
     }
 
-    public function vote(Request $request) {
+    public function vote(Request $request)
+    {
         // 最新の選挙情報を取得
         $latestVote = VoteVersion::getLatestVote();
 

@@ -6,8 +6,9 @@ import Header from "../components/Header";
 import TmpFooter from "../components/TmpFooter";
 import { useEffect } from "react";
 
-const DemoVote = ({ vote }) => {
-	return (
+const DemoVote = ({ vote, res }) => {
+	console.log(vote, res);
+    return (
 		<>
 			<Header />
 			<DemoVoteStartPage>
