@@ -31,7 +31,7 @@ const Politics = () => {
                             </div>
                             <div className="name">{item.name}</div>
                             </div>
-                            <div className="item2">
+                            <div id="item2" className="item2">
                             <Modal Politics_data={item} />
                             </div>
                         </div>
@@ -106,7 +106,7 @@ const PoliticsPage = styled.div`
                     height: 100px;
                     margin-right: 10px;
                     background-color: #fff;
-                    white-space: pre-wrap;
+                    /* white-space: pre-wrap; */
                     overflow: hidden;
                     text-overflow: ellipsis;
                 }
