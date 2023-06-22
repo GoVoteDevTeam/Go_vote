@@ -1,106 +1,103 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
-import Footer from '../components/footer';
+import Footer from '../components/Footer';
 import VoteNotice from '../components/VoteNotice';
-import { useEffect } from "react";
 import axios from "axios";
 
 const News = () => {
-
-    const [news, setNews] = useState();
+    const [news, setNews] = useState({});
     const [currentTab, setCurrentTab] = useState('business');
     const tabs = [
         {
             id: "business",
             tabTitle: 'ビジネス',
-            title: 'Title 1',
-            content: 'Las tabs se generan automáticamente a partir de un array de objetos, el cual tiene las propiedades: id, tabTitle, title y content.'
         },
         {
             id: "entertainment",
             tabTitle: 'エンタメ',
-            title: 'Title 2',
-            content: 'Contenido de tab 2.'
         },
         {
             id: "health",
             tabTitle: '健康',
-            title: 'Title 3',
-            content: 'Contenido de tab 3.'
         },
         {
             id: "science",
             tabTitle: '科学',
-            title: 'Title 4',
-            content: 'Contenido de tab 4.'
         },
         {
             id: "sports",
             tabTitle: 'スポーツ',
-            title: 'Title 5',
-            content: 'Contenido de tab 5.'
         },
     ];
 
     const handleTabClick = (e) => {
         setCurrentTab(e.target.id);
-    }
+    };
 
     useEffect(() => {
         const fetchData = async () => {
-            const newsContents = await axios.get(`https://newsapi.org/v2/top-headlines?country=jp&category=${currentTab}&apiKey=${import.meta.env.VITE_NEWS_KEY}`);
-            setNews(newsContents.data.articles);
-        }
+            if (!news[currentTab]) {
+                const newsContents = await axios.get(`https://newsapi.org/v2/top-headlines?country=jp&category=${currentTab}&apiKey=${import.meta.env.VITE_NEWS_KEY}`);
+                setNews(prevNews => ({
+                    ...prevNews,
+                    [currentTab]: newsContents.data.articles,
+                }));
+            }
+        };
+
         fetchData();
-        console.log("rerender")
-	}, [currentTab]);
+    }, [currentTab, news]);
 
     return (
-      <>
-        <Header />
-        <NewsPage>
-            <VoteNotice />
-            <div className="news-container">
-            <div className='tab-wrap'>
-                <div className='tabs'>
-                    <div className='title'>
-                        ニュース
-                    </div>
-                    <div className="button-element">
-                        {tabs.map((tab, i) =>
-                            <button className='btn' key={i} id={tab.id} disabled={currentTab === `${tab.id}`} onClick={(handleTabClick)}>{tab.tabTitle}</button>
-                        )}
-                    </div>
-                </div>
-                {news && news.map((news, i) => {
-                    return(
-                        <div key={i}>
-                            <div className='news'>
-                            <div className='newsTitle'>
-                                <div className='newsTitleText'>
-                                   {news.title}
-                                </div>
+        <>
+            <Header />
+            <NewsPage>
+                <VoteNotice />
+                <div className="news-container">
+                    <div className='tab-wrap'>
+                        <div className='tabs'>
+                            <div className='title'>
+                                ニュース
                             </div>
-                            <div className='newsContent'>
-                                <div className='newsImg'>
-                                    <img src={news.urlToImage || '../../../img/jimin.jpg'} alt="" />
-                                </div>
-
-                                <div className='newsText'>{news.title}</div>
-
-                            </div>
+                            <div className="button-element">
+                                {tabs.map((tab) => (
+                                    <button
+                                        className='btn'
+                                        key={tab.id}
+                                        id={tab.id}
+                                        disabled={currentTab === tab.id}
+                                        onClick={handleTabClick}
+                                    >
+                                        {tab.tabTitle}
+                                    </button>
+                                ))}
                             </div>
                         </div>
-                    )
-                })}
-            </div>
-            </div>
-        </NewsPage>
-        <Footer />
-      </>
+                        {news[currentTab] && news[currentTab].map((newsItem, i) => (
+                            <div key={i}>
+                                <div className='news'>
+                                    <div className='newsTitle'>
+                                        <div className='newsTitleText'>
+                                            {newsItem.title}
+                                        </div>
+                                    </div>
+                                    <div className='newsContent'>
+                                        <div className='newsImg'>
+                                            <img src={newsItem.urlToImage || '../../../img/jimin.jpg'} alt="" />
+                                        </div>
+                                        <div className='newsText'>{newsItem.title}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </NewsPage>
+            <Footer />
+        </>
     );
-}
+};
 
 export default News;
 
@@ -118,10 +115,9 @@ const NewsPage = styled.div`
         .tab-wrap{
             /* width: 1000px; */
             .tabs{
-                margin: 30px 0 0 -2%;
-                padding-top: 10px 0;
+                margin: 30px 0 0 0;
                 background-color: #36375F;
-                width: 105.4%;
+                width: 100%;
                 height: 90px;
                 border-radius: 35px 35px 0px 0px;
                 .title{
