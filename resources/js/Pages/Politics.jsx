@@ -24,7 +24,7 @@ const Politics = () => {
                     </div>
                     <div className="scroll">
                         {data.map((item, index) => (
-                        <div key={index} className={`political_party ${index === data.length - 1 ? 'last' : ''}`}>
+                        <div key={index} className="political_party">
                             <div className="item">
                             <div className="icon">
                                 <img className="img" src={`./img/${item.img}`} />
@@ -50,7 +50,7 @@ export default Politics;
 
 const PoliticsPage = styled.div`
     width: 100%;
-    height: calc(100vh - 92px - 70px);
+    height: calc(100vh - 92px - 80px);
     background-color: #BDC3CD;
     padding-bottom: 20px;
     overflow-y: auto;
@@ -66,8 +66,9 @@ const PoliticsPage = styled.div`
             font-size:20px;
         }
         .scroll{
-            overflow-y: scroll;
-            max-height: 461px;
+            overflow-y: auto;
+            /* max-height: 461px; */
+            height: calc(100vh - 390px);
             ::-webkit-scrollbar {
                 width: 5px;
             }
@@ -111,11 +112,11 @@ const PoliticsPage = styled.div`
                     text-overflow: ellipsis;
                 }
             }
-            .political_party.last{
+            /* .political_party.last{
                 display: flex;
                 margin: 10px;
                 margin-bottom: 11%;
-            }
+            } */
         }
     }
 

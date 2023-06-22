@@ -6,8 +6,7 @@ const Modal = ({ Politics_data }) => {
 
   const handleModal = () => setIsOpen(!isOpen);
 
-  // Politics_data.detailの表示される最大文字数を設定し最後に…を付ける。
-  function truncateText(text, maxLength) {
+  const truncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
       return text;
     }
@@ -25,7 +24,7 @@ const Modal = ({ Politics_data }) => {
     let truncatedDetail = truncateText(Politics_data.detail);
   
     // widthを取得して表示する関数を定義します
-    function logWidth() {
+    const logWidth = () => {
       const width = divElement.offsetWidth;
       // console.log('Width:', width);
       y = -0.06675 * (125 - width);
@@ -36,7 +35,6 @@ const Modal = ({ Politics_data }) => {
       const truncatedDetailElement = document.getElementById(`truncatedDetail-${Politics_data.id}`);
       truncatedDetailElement.innerHTML = truncatedDetail;
     }
-  
     logWidth();
     window.addEventListener('resize', logWidth);  
   }
