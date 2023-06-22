@@ -31,7 +31,7 @@ const Politics = () => {
                             </div>
                             <div className="name">{item.name}</div>
                             </div>
-                            <div id="item2" className="item2">
+                            <div id={`item2-${item.id}`}  className="item2">
                             <Modal Politics_data={item} />
                             </div>
                         </div>

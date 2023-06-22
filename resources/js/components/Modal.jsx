@@ -15,28 +15,31 @@ const Modal = ({ Politics_data }) => {
   }
 
   // div要素を取得します
-  const divElement = document.getElementById('item2'); // 'your-div-id'は対象のdiv要素のIDに置き換えてください
+  const divElement = document.getElementById('item2-1');
 
-  let y = 50;
-  let truncatedDetail = truncateText(Politics_data.detail);
-
-  // widthを取得して表示する関数を定義します
-  function logWidth() {
-    const width = divElement.offsetWidth;
-    console.log('Width:', width);
-    y = -0.06675 * (125 - width);
-    console.log('detail:', y);
-    truncatedDetail = truncateText(Politics_data.detail, y);
-    console.log(truncatedDetail);
-
-    const truncatedDetailElement = document.getElementById('truncatedDetail');
-    truncatedDetailElement.innerHTML = truncatedDetail;
+  if (!divElement) {
+    console.error('Error: "item2" not found.');
+  } else {
+    let y = 50;
+    let truncatedDetail = truncateText(Politics_data.detail);
+    console.log(Politics_data.detail);
+  
+    // widthを取得して表示する関数を定義します
+    function logWidth() {
+      const width = divElement.offsetWidth;
+      // console.log('Width:', width);
+      y = -0.06675 * (125 - width);
+      // console.log('detail:', y);
+      truncatedDetail = truncateText(Politics_data.detail, y);
+      // console.log(truncatedDetail);
+  
+      const truncatedDetailElement = document.getElementById(`truncatedDetail-${Politics_data.id}`);
+      truncatedDetailElement.innerHTML = truncatedDetail;
+    }
+  
+    logWidth();
+    window.addEventListener('resize', logWidth);  
   }
-
-  window.addEventListener('load', logWidth);
-  window.addEventListener('resize', logWidth);
-
-  // const truncatedDetail = truncateText(Politics_data.detail, y); // 最大x文字まで表示
 
   return (
     <>
@@ -53,7 +56,7 @@ const Modal = ({ Politics_data }) => {
           <label htmlFor={`modal-${Politics_data.name}`} className="modal__trigger_catchcopy">
             {Politics_data.catchcopy}
           </label>
-          <label id="truncatedDetail" htmlFor={`modal-${Politics_data.name}`} className="modal__trigger_detail"></label>
+          <label id={`truncatedDetail-${Politics_data.id}`} htmlFor={`modal-${Politics_data.name}`} className="modal__trigger_detail"></label>
         </div>
 
         {isOpen && (
