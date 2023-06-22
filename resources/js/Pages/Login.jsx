@@ -317,6 +317,8 @@ const LoginPage = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
     main {
         margin: 10px 0 10px 0;
         padding: 40px 0 0 0;
@@ -324,6 +326,8 @@ const LoginPage = styled.div`
         width: 50vw;
         height: calc(100vh - 92px - 140px);
         border-radius: 10px;
+        text-align: center;
+        align-items: center;
         
         /* display: flex;
         flex-direction: column;
@@ -332,15 +336,15 @@ const LoginPage = styled.div`
         text-align: center; */
         display: grid;
         grid-template:
-            "header" 100px
+            "header" 140px
             "img" 100px
-            "form" 1fr
-            "button-login" 100px
+            "form" 320px
+            "button-login" 1fr
             /1fr;
         
         
         .text-login {
-            width: min(100% - 10rem);
+            width: 273.27px;
             margin-inline: auto;
             height: 5vh;
             color: #36375F;
@@ -349,7 +353,7 @@ const LoginPage = styled.div`
         }
         @media screen and (max-width: 391px){
             .text-login{
-                margin: 20px 0 10px 0;
+                margin: 40px 0 10px 0;
                 font-size: 32px;
                 grid-area: header;
             }
@@ -358,13 +362,16 @@ const LoginPage = styled.div`
         img {
             width:100px;
             height: 100px;
+            margin: 0 auto;
             grid-area: img;
         }
     
         form {
-            width: 100vw;
+            width: 50vw;
             height: 40vh;
             color: #36375F;
+            margin: 20px 0 0 0;
+            padding: 20px 0 0 0;
             grid-area: form;
             /* display: grid;
             grid-template:
@@ -380,7 +387,7 @@ const LoginPage = styled.div`
                         grid-area: input-conf;
                     } */
                     .user-emil, .user-password, .user-confPassword {
-                        width: 100vw;
+                        width: 100%;
                         height: 7vh;
                         margin: 20px 0;
                     p {
@@ -394,7 +401,7 @@ const LoginPage = styled.div`
                             }
                         }
                     input {
-                            width: 240px;
+                            width: 400px;
                             height: 40px;
                             border: none;
                             background-color: #eeeeee;
@@ -408,46 +415,57 @@ const LoginPage = styled.div`
                     }
                 }
             }
-            
+            @media screen and (max-width: 391px){
+                form {
+                    width: 70vw;
+                    height: 35vh
+                }
+            }
             
             .err-msg {
-                width: 100vw;
+                width: 100%;
                 height: 40px;
                 color: #FF0000;
                 font-size: 12px;
-                /* margin: 10px 0 0 0; */
+                padding: 0 0 10px 0;
             }
             @media screen and (max-width: 391px){
                 .err-msg{
                     width: 70vw;
-                    height: 40px;
+                    height: 30px;
                     font-size: 8px;
+                    padding: 0 0 23px 0;
                 }
             }
 
             .button-login{
-                width: 100vw;
-                height: 100px;
+                width: 50vw;
+                height: auto;
                 grid-area: button-login;
-                button{
-                width: 100vw;
-                height: 40px;
-                margin: 0px auto;
-                padding: 8px;
-                font-size: 16px;
-                font-weight: 700;
-                color: #ffffff;
-                background-color: #36375F;
-                border-radius: 10px;
-            }
-            @media screen and (max-width: 391px){
-                button{
-                    width: 30vw;
-                    height: 35px;
-                    padding: 5px;
-                    font-size: 12px;
+                    button{
+                    width: 20vw;
+                    height: 40px;
+                    margin: 0px auto;
+                    padding: 8px;
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: #ffffff;
+                    background-color: #36375F;
+                    border-radius: 10px;
+                }
+                @media screen and (max-width: 391px){
+                    button{
+                        width: 30vw;
+                        height: 35px;
+                        padding: 5px;
+                        font-size: 12px;
+                    }
                 }
             }
+            @media screen and (max-width: 391px){
+                .button-login{
+                    width: 70vw;
+                }
             }
 
     }
@@ -459,11 +477,11 @@ const LoginPage = styled.div`
             height: calc(100vh - 92px - 100px);
             display: grid;
             grid-template:
-                ".text-login" 100px
+                ".text-login" 140px
                 "img" 100px
                 "form" 1fr
-                "button" 100px
-                /40px 1fr 40px;
+                "button" 200px
+                /1fr;
         }
     }
 
