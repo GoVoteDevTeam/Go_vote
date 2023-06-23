@@ -321,24 +321,17 @@ const LoginPage = styled.div`
     overflow-x: hidden;
     main {
         margin: 10px 0 10px 0;
-        padding: 40px 0 0 0;
         background-color: #FFFFFF;
         width: 50vw;
         height: calc(100vh - 92px - 140px);
         border-radius: 10px;
         text-align: center;
         align-items: center;
-        
-        /* display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center; */
         display: grid;
         grid-template:
-            "header" 140px
+            "header" 100px
             "img" 100px
-            "form" 320px
+            "form" 340px
             "button-login" 1fr
             /1fr;
         
@@ -368,24 +361,9 @@ const LoginPage = styled.div`
     
         form {
             width: 50vw;
-            height: 40vh;
+            height: 50vh;
             color: #36375F;
-            margin: 20px 0 0 0;
-            padding: 20px 0 0 0;
             grid-area: form;
-            /* display: grid;
-            grid-template:
-            "input-emil" 100px
-            "input-pass" 100px
-            "input-conf" 100px
-            /1fr; */
-                    /* .user-emil {
-                        grid-area: input-user;
-                    }
-                    .user-password {
-                        grid-area: input-pass;
-                        grid-area: input-conf;
-                    } */
                     .user-emil, .user-password, .user-confPassword {
                         width: 100%;
                         height: 7vh;
@@ -401,8 +379,8 @@ const LoginPage = styled.div`
                             }
                         }
                     input {
-                            width: 400px;
-                            height: 40px;
+                            width: 350px;
+                            height: 35px;
                             border: none;
                             background-color: #eeeeee;
                             border-radius: 10px;
@@ -418,7 +396,9 @@ const LoginPage = styled.div`
             @media screen and (max-width: 391px){
                 form {
                     width: 70vw;
-                    height: 35vh
+                    height: 35vh;
+                    margin: 20px 0 0 0;
+                    padding: 20px 0 0 0;
                 }
             }
             
@@ -427,10 +407,9 @@ const LoginPage = styled.div`
                 height: 40px;
                 color: #FF0000;
                 font-size: 12px;
-                padding: 0 0 10px 0;
             }
             @media screen and (max-width: 391px){
-                .err-msg{
+                .err-msg {
                     width: 70vw;
                     height: 30px;
                     font-size: 8px;
@@ -438,11 +417,11 @@ const LoginPage = styled.div`
                 }
             }
 
-            .button-login{
+            .button-login {
                 width: 50vw;
                 height: auto;
                 grid-area: button-login;
-                    button{
+                    button {
                     width: 20vw;
                     height: 40px;
                     margin: 0px auto;
@@ -454,23 +433,24 @@ const LoginPage = styled.div`
                     border-radius: 10px;
                 }
                 @media screen and (max-width: 391px){
-                    button{
+                    button {
                         width: 30vw;
                         height: 35px;
+                        grid-area: button-login;
                         padding: 5px;
                         font-size: 12px;
                     }
                 }
             }
             @media screen and (max-width: 391px){
-                .button-login{
+                .button-login {
                     width: 70vw;
                 }
             }
 
     }
     @media screen and (max-width: 391px){
-        main{
+        main {
             margin: 0 auto;
             padding: 0 0 0 0;
             width: 70vw;
