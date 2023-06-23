@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import Header from "../components/Header";
-import TmpFooter from "../components/TmpFooter";
+import TmpFooter from "../components/footer";
 import styled from "styled-components";
 import { Helmet } from 'react-helmet';
 
@@ -46,8 +46,6 @@ const Login = ({ errors }) => {
 return (
     <>
         <Helmet>
-            //npm install react-helmet
-            //上記の文を打ってshellにインストールしてください
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Helmet>
       <Header />
@@ -117,7 +115,6 @@ const LoginPage = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     overflow-y: hidden;
     overflow-x: hidden;
     main {
@@ -256,13 +253,6 @@ const LoginPage = styled.div`
             padding: 0 0 0 0;
             width: 70vw;
             height: calc(100vh - 92px - 100px);
-            display: grid;
-            grid-template:
-                ".text-login" 140px
-                "img" 100px
-                "form" 1fr
-                "button" 200px
-                /1fr;
         }
     }
 
