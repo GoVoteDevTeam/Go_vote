@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import Header from "../components/Header";
-import TmpFooter from "../components/footer";
+import TmpFooter from "../components/Footer";
 import styled from "styled-components";
 import { Helmet } from 'react-helmet';
 
