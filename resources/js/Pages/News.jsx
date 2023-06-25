@@ -176,10 +176,12 @@ const NewsPage = styled.div`
                     position: relative;
                     .newsImg{
                         width: 30%;
+                        max-width: 150px;
+                        min-width: 150px;
                         img {
                             width: 100%;
                             margin: 10px 10px 5px;
-                            aspect-ratio: 1/1;
+                            /* aspect-ratio: 1/1; */
                             min-width: 100px;
                         }
                     }
