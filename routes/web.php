@@ -69,6 +69,10 @@ Route::middleware('auth')->group(function () {
         return Inertia::render("ToVote");
     });
 
+    Route::get("/demo_vote/set_vote_version", function () {
+        return Inertia::render("SetVoteVersion");
+    });
+
     Route::post("/demo_vote/to_vote", [DemoVoteController::class, "vote"]);
 
     Route::get("/demo_vote/completed", function() {
