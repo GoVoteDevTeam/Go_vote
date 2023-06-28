@@ -59,9 +59,6 @@ Route::get("/demo_vote/result", function() {
     return Inertia::render("VoteResult");
 })->name("demovote_result");
 
-Route::get("/demo_vote/vote_version", [DemoVoteController::class, "voteVersion"]);
-
-Route::post("/demo_vote/set_vote_version", [DemoVoteController::class, "setVoteVersion"]);
 
 Route::middleware('auth')->group(function () {
     Route::get("/demo_vote/ballots", [DemoVoteController::class, "handingOutBallots"])->name("ballots");
@@ -72,9 +69,9 @@ Route::middleware('auth')->group(function () {
         return Inertia::render("ToVote");
     });
 
-    Route::get("/demo_vote/set_vote_version", function () {
-        return Inertia::render("SetVoteVersion");
-    });
+    Route::post("/demo_vote/set_vote_version", [DemoVoteController::class, "setVoteVersion"]);
+
+    Route::get("/demo_vote/vote_version", [DemoVoteController::class, "voteVersion"]);
 
     Route::post("/demo_vote/to_vote", [DemoVoteController::class, "vote"]);
 
