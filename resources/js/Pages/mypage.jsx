@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import pro from "../../../public/img/pro.png";
 
+const MyPage = ({ auth }) => {
+
+  const profile_name = `${auth.user_name}さん`;
+  const profile_Email = auth.email;
   
-const MyPage = () => {
   return (
     <>
       <Header />
@@ -13,18 +17,29 @@ const MyPage = () => {
             <div className="title">
               マイページ
             </div>
-
+    
             <div className='profile'>
-              プロフィール
+              <img className="pro" src={pro}/>
+              <div className='profile-text'>
+                <h4>{profile_name}</h4>
+                <p>{"E-mail : " + profile_Email}</p>
+              </div>
             </div>
-
+    
             <div className='rireki'>
               <div className='riretitle'>
                 政党診断履歴
               </div>
               <hr></hr>
             </div>
-
+    
+            <div className='rireki'>
+              <div className='riretitle'>
+                政党診断履歴
+              </div>
+              <hr></hr>
+            </div>
+    
           </div>
     </MypageElement>
     <Footer />
@@ -59,7 +74,27 @@ const MypageElement = styled.div`
 }
 
 .profile{
-  margin: 30px 0px 20px 20px;
+  margin: 20px 0px 20px 20px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.profile h4{
+  font-size: 18px;
+  margin: 0 auto;
+}
+
+.profile p{
+  font-size: 17px;
+  margin: 0 auto;
+  color: #666666;
+  font-weight: bold;
+}
+
+.pro{
+  width: 50px;
+  margin-bottom: 20px;
+  margin-right: 20px;
 }
 
 .rireki{
@@ -69,6 +104,7 @@ const MypageElement = styled.div`
   align-items: center;
   background-color: #BDC3CD;
   border-radius: 15px;
+  margin-bottom: 20px;
 }
 
 .riretitle{
@@ -77,4 +113,5 @@ const MypageElement = styled.div`
   font-size: 23px;
   font-weight: bold;
 }
+
 `
