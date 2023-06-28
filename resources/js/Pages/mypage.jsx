@@ -56,62 +56,61 @@ const MypageElement = styled.div`
   padding-bottom: 20px;
   overflow-y: auto;
 
-.mypage{
-  margin: 0 auto;
-  width: 90%;
-  height: calc(130vh - 70px);
-  align-items: center;
-  background-color: #FFFFFF;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  border-radius: 15px;
+  .mypage {
+    margin: 0 auto;
+    width: 90%;
+    height: calc(130vh - 70px);
+    align-items: center;
+    background-color: #FFFFFF;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+
+    .title {
+      margin: 20px 0px 0px 20px;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .profile {
+      margin: 20px 0px 20px 20px;
+      display: flex;
+      align-items: flex-start;
+
+      h4 {
+        font-size: 18px;
+        margin: 0 auto;
+      }
+
+      p {
+        font-size: 17px;
+        margin: 0 auto;
+        color: #666666;
+        font-weight: bold;
+      }
+
+      .pro {
+        width: 50px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+      }
+    }
+
+    .rireki {
+      margin: 0 auto;
+      width: 90%;
+      height: 40%;
+      align-items: center;
+      background-color: #BDC3CD;
+      border-radius: 15px;
+      margin-bottom: 20px;
+
+      .riretitle {
+        margin-left: 20px;
+        padding-top: 20px;
+        font-size: 23px;
+        font-weight: bold;
+      }
+    }
   }
-
-.title{
-  margin: 20px 0px 0px 20px;
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.profile{
-  margin: 20px 0px 20px 20px;
-  display: flex;
-  align-items: flex-start;
-}
-
-.profile h4{
-  font-size: 18px;
-  margin: 0 auto;
-}
-
-.profile p{
-  font-size: 17px;
-  margin: 0 auto;
-  color: #666666;
-  font-weight: bold;
-}
-
-.pro{
-  width: 50px;
-  margin-bottom: 20px;
-  margin-right: 20px;
-}
-
-.rireki{
-  margin: 0 auto;
-  width: 90%;
-  height: 40%;
-  align-items: center;
-  background-color: #BDC3CD;
-  border-radius: 15px;
-  margin-bottom: 20px;
-}
-
-.riretitle{
-  margin-left: 20px;
-  padding-top: 20px;
-  font-size: 23px;
-  font-weight: bold;
-}
-
 `
