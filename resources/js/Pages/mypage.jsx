@@ -59,11 +59,11 @@ const MypageElement = styled.div`
 .mypage{
   margin: 0 auto;
   width: 90%;
-  height: calc(100vh - 92px - 70px);
+  height: calc(130vh - 70px);
   align-items: center;
   background-color: #FFFFFF;
-  overflow-y: auto;
   margin-top: 30px;
+  margin-bottom: 30px;
   border-radius: 15px;
   }
 
@@ -100,7 +100,7 @@ const MypageElement = styled.div`
 .rireki{
   margin: 0 auto;
   width: 90%;
-  height: 45%;
+  height: 40%;
   align-items: center;
   background-color: #BDC3CD;
   border-radius: 15px;
