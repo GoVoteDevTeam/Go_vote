@@ -3,7 +3,7 @@
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DemoVoteController;
-use App\Http\Controllers\Mypagecontroller;
+use App\Http\Controllers\MypageController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\TmpLoginController;
 use Illuminate\Support\Facades\Auth;
