@@ -104,7 +104,7 @@ const SignUPPage = styled.div`
         padding: 10px;
         width: 80%;
         height: 90%;
-        background-color: #f5f5f5;
+        background-color: #FFFFFF;
         text-align: center;
         .login-gazou {
             text-align: center;
@@ -116,32 +116,17 @@ const SignUPPage = styled.div`
         form {
             margin: 0 auto;
 
-            .user-input {
+            .user-input , .user-email , .user-password {
                 input {
                     width: 240px;
                     height: 40px;
-                    background-color: #eeeeee;
+                    background-color: #eeeeee
+                    ;
                     border: none;
                     border-radius: 20px;
                 }
             }
-            .user-email {
-                input {
-                    width: 240px;
-                    height: 40px;
-                    background: #D9D9D9;
-                    border-radius: 20px;
-                }
-            }
-            .user-password {
-                input {
-                    -webkit-text-security:disc;
-                    width: 240px;
-                    height: 40px;
-                    background: #D9D9D9;
-                    border-radius: 20px;
-                }
-            }
+       
             .user-submit {
 
                 button {
@@ -156,8 +141,8 @@ const SignUPPage = styled.div`
                     line-height: 18px;
                     text-align: center;
                     letter-spacing: -0.01em;
-                    color: #000000;
-                    background-color: #BDC0FF;
+                    color: #fff;
+                    background-color: #36375F;
                 }
             }
         }
