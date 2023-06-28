@@ -15,12 +15,14 @@ class DemoVoteController extends Controller
     {
         $latestVote = VoteVersion::getLatestVote();
         //  対象のユーザーが投票済みか
-        $voteHistory =Vote::where("version_id", $latestVote->version_id)->where("user_id", Auth::id())->get();
+        $voteHistory = Vote::where("version_id", $latestVote->version_id)->where("user_id", Auth::id())->get();
+        // ddd($voteHistory);
         return Inertia::render(
             "DemoVoteStart",
             [
                 "vote" => $latestVote,
-                "history" => $voteHistory
+                "history" => $voteHistory,
+                "lastVote" => $latestVote->version_id
             ]
         );
     }
@@ -57,5 +59,20 @@ class DemoVoteController extends Controller
         ]);
 
         return Inertia::location("/demo_vote/completed");
+    }
+
+    public function voteVersion()
+    {
+        return Inertia::render("VoteVersion");
+    }
+
+    public function setVoteVersion(Request $request)
+    {
+        $requestData = $request->request->all();
+
+        VoteVersion::create([
+            "start_date" => $requestData["start"],
+            "finish_date" => $requestData["end"],
+        ]);
     }
 }

@@ -3,13 +3,15 @@ import { InertiaLink } from "@inertiajs/inertia-react";
 import Header from "../components/Header";
 import TmpFooter from "../components/TmpFooter";
 
-const DemoVote = ({ vote, history }) => {
+const DemoVote = ({ vote, history, lastVote }) => {
 
     const checkAlreadyVote = (history) => {
         return history.length !== 0;
     }
 
     let isAlreadyVote = checkAlreadyVote(history);
+
+	console.log(lastVote)
 
     return (
         <>
