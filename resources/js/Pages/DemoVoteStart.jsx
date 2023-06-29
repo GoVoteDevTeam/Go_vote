@@ -1,15 +1,17 @@
 import styled from "styled-components";
 import { Inertia } from "@inertiajs/inertia"
-import axios from "axios";
-import { InertiaLink } from "@inertiajs/inertia-react";
 import Header from "../components/Header";
 import TmpFooter from "../components/TmpFooter";
+import { InertiaLink, usePage } from '@inertiajs/inertia-react';
+
 
 const DemoVote = () => {
+	const { auth } = usePage().props;
+
+	console.log(auth);
 
 	return (
 		<>
-			<Header />
 			<DemoVoteStartPage>
                 <InertiaLink href={"/demo_vote/result"} className="tmp"> 結果表示</InertiaLink>
 				<div className="title">
@@ -35,8 +37,6 @@ const DemoVote = () => {
 				</div>
 
 			</DemoVoteStartPage>
-
-			<TmpFooter />
 		</>
 	);
 }

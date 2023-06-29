@@ -26,7 +26,6 @@ const MarkOnBallotPaper = ({ politics }) => {
 
     return (
         <>
-            <Header />
             <MarkOnBallotPage open={open} >
                 <VoteTitle info={pageInfo} />
                 <div className="ballot-main-paper">
@@ -62,8 +61,6 @@ const MarkOnBallotPaper = ({ politics }) => {
                     setCurrentPolitics={setCurrentPolitics}
                 />
             </MarkOnBallotPage>
-
-            <TmpFooter />
         </>
     )
 }
