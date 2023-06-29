@@ -91,7 +91,6 @@ const ToVote = () => {
 
     return (
         <>
-        <Header />
         <ToVotePage>
             <div className="elem"
                 onTouchStart={(e)=> touchstart(e)}
@@ -107,7 +106,6 @@ const ToVote = () => {
                 </div>
             </div>
         </ToVotePage>
-        <TmpFooter />
         </>
     )
 }
