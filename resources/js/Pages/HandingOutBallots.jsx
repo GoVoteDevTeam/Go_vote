@@ -24,7 +24,6 @@ const HandingOutBallots = ({ auth }) => {
 
     return (
         <>
-            <Header />
             <HandingOutBallotsPage>
                 <VoteTitle info={pageInfo} />
                 <div className="votable-items">
@@ -37,7 +36,6 @@ const HandingOutBallots = ({ auth }) => {
                     ))}
                 </div>
             </HandingOutBallotsPage>
-            <TmpFooter />
         </>
     )
 }
