@@ -5,18 +5,18 @@ import { useState } from "react";
 import Footer from "../components/footer";
 import VoteNotice from '../components/VoteNotice';
 
-var variables = {
-  answer1: 0,
-  answer2: 0,
-  answer3: 0,
-  answer4: 0,
-  answer5: 0,
-  answer6: 0,
-  answer7: 0,
-  answer8: 0,
-  answer9: 0,
-  answer: 0,
-};
+// var variables = {
+//   answer1: 0,
+//   answer2: 0,
+//   answer3: 0,
+//   answer4: 0,
+//   answer5: 0,
+//   answer6: 0,
+//   answer7: 0,
+//   answer8: 0,
+//   answer9: 0,
+//   answer: 0,
+// };
 
 const questions = [
   {
@@ -74,7 +74,6 @@ const Diagnose = () => {
 
     setSelectedOption("");
     setCurrentQuestion(currentQuestion + 1);
-    setError(false); // エラーをリセット
   };
 
   const handleOptionChange = (event) => {
