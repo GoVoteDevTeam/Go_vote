@@ -1,17 +1,15 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import Header from "../components/Header";
 import TmpFooter from "../components/TmpFooter";
 import BallotPaper from "../components/BallotPaper";
-import{ Inertia } from "@inertiajs/inertia";
+import { Inertia } from "@inertiajs/inertia";
 import { useRef } from "react";
 
 const ToVote = () => {
-
     const el = useRef(null);
     const box_top = useRef(null);
 
     const touchstart = (e) => {
-
         //移動時にtouchmove、離れた時にtouchend関数を実行する
         window.addEventListener("touchmove", touchmove);
         window.addEventListener("touchend", touchend);
@@ -20,8 +18,7 @@ const ToVote = () => {
         let prevY = e.touches[0].clientY;
 
         // touchmoveされたとき
-        function touchmove (e){
-
+        function touchmove(e) {
             // Y座標値差 = 初期値 - 現在地点
             let newY = prevY - e.touches[0].clientY;
 
@@ -36,22 +33,24 @@ const ToVote = () => {
                 el.current.style.top = 92 + "px";
             }
 
-            if (box_top.current.getBoundingClientRect().top < el.current.getBoundingClientRect().top) {
-                Inertia.get("/demo_vote/voting_completed")
+            if (
+                box_top.current.getBoundingClientRect().top <
+                el.current.getBoundingClientRect().top
+            ) {
+                Inertia.get("/demo_vote/voting_completed");
             }
 
             prevY = e.touches[0].clientY;
         }
 
         // itemから指が離れた際にイベントを解除
-        function touchend () {
+        function touchend() {
             window.removeEventListener("touchmove", touchmove);
             window.removeEventListener("touchend", touchend);
         }
-    }
+    };
 
     const mousedown = (e) => {
-
         //移動時にmousemove、離れた時にmouseup関数を実行する
         window.addEventListener("mousemove", mousemove);
         window.addEventListener("mouseup", mouseup);
@@ -61,7 +60,7 @@ const ToVote = () => {
         let prevY = e.clientY;
 
         // mousemoveされたとき
-        function mousemove (e){
+        function mousemove(e) {
             // X,Y座標値差 = 初期値 - 現在地点
             let newY = prevY - e.clientY;
 
@@ -75,48 +74,50 @@ const ToVote = () => {
                 el.current.style.top = 92 + "px";
             }
 
-            if (box_top.current.getBoundingClientRect().top < el.current.getBoundingClientRect().top) {
-                Inertia.get("/demo_vote/voting_completed")
+            if (
+                box_top.current.getBoundingClientRect().top <
+                el.current.getBoundingClientRect().top
+            ) {
+                Inertia.get("/demo_vote/voting_completed");
             }
             prevX = e.clientX;
             prevY = e.clientY;
         }
 
         // itemからカーソルが離れた際にイベントを解除
-        function mouseup () {
+        function mouseup() {
             window.removeEventListener("mousemove", mousemove);
             window.removeEventListener("mouseup", mouseup);
         }
-    }
+    };
 
     return (
         <>
-        <ToVotePage>
-            <div className="elem"
-                onTouchStart={(e)=> touchstart(e)}
-                onMouseDown={(e) => mousedown(e)}
-                ref={el}
+            <ToVotePage>
+                <div
+                    className="elem"
+                    onTouchStart={(e) => touchstart(e)}
+                    onMouseDown={(e) => mousedown(e)}
+                    ref={el}
                 >
-                <BallotPaper title={"投票用紙"} />
-            </div>
-            <div className="ballot-box">
-                <div className="top" ref={box_top} />
-                <div className="box">
-                    スワイプして投票
+                    <BallotPaper title={"投票用紙"} />
                 </div>
-            </div>
-        </ToVotePage>
+                <div className="ballot-box">
+                    <div className="top" ref={box_top} />
+                    <div className="box">スワイプして投票</div>
+                </div>
+            </ToVotePage>
         </>
-    )
-}
+    );
+};
 
-export default ToVote
+export default ToVote;
 
 const ToVotePage = styled.div`
-    background-color: #BDC3CD;
-	width: 100%;
-	height: calc(100vh - 92px - 80px);
-	overflow-y: auto;
+    background-color: #bdc3cd;
+    width: 100%;
+    height: calc(100vh - 92px - 80px);
+    overflow-y: auto;
     padding-top: 20px;
     .elem {
         position: absolute;
@@ -139,7 +140,7 @@ const ToVotePage = styled.div`
         .box {
             width: 200px;
             height: 100px;
-            background-color: #BDC3CD;
+            background-color: #bdc3cd;
             padding-top: 15px;
             text-align: center;
             font-weight: 700px;

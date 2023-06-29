@@ -5,8 +5,6 @@ import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 const Layout = ({ children }) => {
     const { auth } = usePage().props;
 
-    console.log(auth);
-
     return (
         <div>
             <Header />
