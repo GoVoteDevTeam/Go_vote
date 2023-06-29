@@ -58,7 +58,6 @@ const News = () => {
 
     return (
       <>
-        <Header />
         <NewsPage>
             <VoteNotice />
             <div className="news-container">
@@ -97,7 +96,6 @@ const News = () => {
             </div>
             </div>
         </NewsPage>
-        <Footer />
       </>
     );
 }

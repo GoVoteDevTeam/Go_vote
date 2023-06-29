@@ -48,7 +48,6 @@ return (
         <Helmet>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Helmet>
-      <Header />
         <LoginPage>
             <main>
                 <div className="text-login">ログイン</div>
@@ -97,7 +96,6 @@ return (
                 </form>
             </main>
         </LoginPage>
-      <Footer />
     </>
   );
 };
