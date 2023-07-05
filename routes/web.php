@@ -3,6 +3,7 @@
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DemoVoteController;
+use App\Http\Controllers\MypageController;
 use App\Http\Controllers\SignUpController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -60,6 +61,8 @@ Route::get("/demo_vote/result",[DemoVoteController::class, "result"])->name("dem
 Route::get("/demo_vote/result_list", [DemoVoteController::class, "resultVoteList"]);
 
 Route::middleware('auth')->group(function () {
+    Route::get("/mypage",[MypageController::class, "index"])->name("mypage");
+    
     Route::get("/demo_vote/ballots", [DemoVoteController::class, "handingOutBallots"])->name("ballots");
 
     Route::get("/demo_vote/party_based_election", [DemoVoteController::class, "markOnBallotPaper"])->name("markon");
