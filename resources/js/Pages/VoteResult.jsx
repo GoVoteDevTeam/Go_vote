@@ -1,51 +1,48 @@
 import styled from "styled-components";
-import Header from "../components/Header";
-import TmpFooter from "../components/TmpFooter";
 import VoteTitle from "../components/VoteTitle";
 import { Bar } from "react-chartjs-2";
 import Chart from "chart.js/auto"; // 消さないで
 
-const VoteResult = () => {
+const VoteResult = ({ vote_id, vote_data, politics }) => {
     const pageInfo = {
         title: "結果",
         info: "",
     };
+    console.log(vote_id, vote_data, politics)
 
-    let mockData = [2008, 504, 1115, 823, 80, 20];
+    let labelData = [];
+
+    politics.forEach((element)=> {
+        labelData = [...labelData, element.politics_name] ;
+    })
+
+    let mockData = [2008, 504, 1115, 823, 80, 20, 200, 10, 39, 59];
 
     const dataSum = mockData.reduce(
         (accumulator, currentValue) => accumulator + currentValue
     );
 
+    const colorData = [
+        "rgb(255, 99, 132)",     // Red
+        "rgb(54, 162, 235)",     // Blue
+        "rgb(255, 206, 86)",     // Yellow
+        "rgb(75, 192, 192)",     // Teal
+        "rgb(153, 102, 255)",    // Purple
+        "rgb(255, 159, 64)",     // Orange
+        "rgb(255, 255, 0)",      // Lime
+        "rgb(128, 0, 128)",      // Magenta
+        "rgb(0, 128, 128)",      // Aqua
+        "rgb(128, 128, 0)"       // Olive
+    ]
+
     const data = {
-        labels: [
-            "自由民主党",
-            "公明党",
-            "立憲民主党",
-            "日本維新の会",
-            "国民民主党",
-            "共産党",
-        ],
+        labels: labelData,
         datasets: [
             {
                 label: "得票数",
                 data: mockData, // 仮の得票数
-                backgroundColor: [
-                    "rgb(255, 99, 132)",
-                    "rgb(54, 162, 235)",
-                    "rgb(255, 206, 86)",
-                    "rgb(75, 192, 192)",
-                    "rgb(153, 102, 255)",
-                    "rgb(153, 102, 255)",
-                ],
-                borderColor: [
-                    "rgb(255, 99, 132)",
-                    "rgb(54, 162, 235)",
-                    "rgb(255, 206, 86)",
-                    "rgb(75, 192, 192)",
-                    "rgb(153, 102, 255)",
-                    "rgb(153, 102, 255)",
-                ],
+                backgroundColor: colorData,
+                borderColor: colorData,
                 borderWidth: 1,
             },
         ],
