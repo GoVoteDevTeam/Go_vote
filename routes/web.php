@@ -5,7 +5,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DemoVoteController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\SignUpController;
-use App\Http\Controllers\TmpLoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -57,9 +56,9 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get("/demo_vote/start", [DemoVoteController::class, "index"])->name("demovote_start");
 
-Route::get("/demo_vote/result", function() {
-    return Inertia::render("VoteResult");
-})->name("demovote_result");
+Route::get("/demo_vote/result",[DemoVoteController::class, "result"])->name("demovote_result");
+
+Route::get("/demo_vote/result_list", [DemoVoteController::class, "resultVoteList"]);
 
 Route::middleware('auth')->group(function () {
     Route::get("/mypage",[MypageController::class, "index"])->name("mypage");
@@ -72,7 +71,13 @@ Route::middleware('auth')->group(function () {
         return Inertia::render("ToVote");
     });
 
-    Route::get("/demo_vote/voting_completed", function () {
+    Route::post("/demo_vote/set_vote_version", [DemoVoteController::class, "setVoteVersion"]);
+
+    Route::get("/demo_vote/vote_version", [DemoVoteController::class, "voteVersion"]);
+
+    Route::post("/demo_vote/to_vote", [DemoVoteController::class, "vote"]);
+
+    Route::get("/demo_vote/completed", function() {
         return Inertia::render("VotingCompleted");
     });
 });

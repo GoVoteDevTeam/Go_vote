@@ -4,8 +4,6 @@ import logo from "../../../public/logo.png"
 
 const Header = () => {
     return(
-
-
         <HeaderElement>
           <div className="logo-container">
             <img className="logo" src={logo}/>
