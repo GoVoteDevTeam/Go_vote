@@ -17,7 +17,7 @@ const DemoVote = ({ vote, history, lastVote }) => {
     return (
         <>
             <DemoVoteStartPage>
-                <InertiaLink href={"/demo_vote/result"} className="tmp"> 結果表示</InertiaLink>
+                <InertiaLink href={"/demo_vote/result_list"} className="tmp"> 結果表示</InertiaLink>
                 <div className="title">
                     <h1>デモ選挙</h1>
                     <p>あなたの投票が、若者の意識を変える</p>

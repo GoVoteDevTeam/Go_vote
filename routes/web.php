@@ -55,9 +55,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get("/demo_vote/start", [DemoVoteController::class, "index"])->name("demovote_start");
 
-Route::get("/demo_vote/result", function() {
-    return Inertia::render("VoteResult");
-})->name("demovote_result");
+Route::get("/demo_vote/result",[DemoVoteController::class, "result"])->name("demovote_result");
 
 Route::get("/demo_vote/result_list", [DemoVoteController::class, "resultVoteList"]);
 

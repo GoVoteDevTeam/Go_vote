@@ -76,11 +76,24 @@ class DemoVoteController extends Controller
         ]);
     }
 
-    public function resultVoteList() {
+    public function resultVoteList()
+    {
         $allVoteVersion = VoteVersion::getAllVoteVersion();
 
         return Inertia::render("ResultList", [
             "vote_version" => $allVoteVersion
         ]);
-    } 
+    }
+    public function result(Request $request)
+    {
+        $versionId = $request->query('version_id');
+        // Retrieve all votes with the given version id
+        $votes = Vote::where('version_id', $versionId)->get();
+
+        return Inertia::render("VoteResult", [
+            "vote_id" => $versionId,
+            "vote_data" => $votes,
+            "politics" => Politics::all()
+        ]);
+    }
 }
