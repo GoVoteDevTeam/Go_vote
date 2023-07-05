@@ -59,6 +59,7 @@ Route::get("/demo_vote/result", function() {
     return Inertia::render("VoteResult");
 })->name("demovote_result");
 
+Route::get("/demo_vote/result_list", [DemoVoteController::class, "resultVoteList"]);
 
 Route::middleware('auth')->group(function () {
     Route::get("/demo_vote/ballots", [DemoVoteController::class, "handingOutBallots"])->name("ballots");

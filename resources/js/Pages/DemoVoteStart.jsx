@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { InertiaLink } from "@inertiajs/inertia-react";
-import Header from "../components/Header";
-import TmpFooter from "../components/TmpFooter";
+
+
+import { InertiaLink, usePage } from '@inertiajs/inertia-react';
+
 
 const DemoVote = ({ vote, history, lastVote }) => {
 
@@ -15,7 +16,6 @@ const DemoVote = ({ vote, history, lastVote }) => {
 
     return (
         <>
-            <Header />
             <DemoVoteStartPage>
                 <InertiaLink href={"/demo_vote/result"} className="tmp"> 結果表示</InertiaLink>
                 <div className="title">
@@ -50,8 +50,6 @@ const DemoVote = ({ vote, history, lastVote }) => {
                 </div>
 
             </DemoVoteStartPage>
-
-            <TmpFooter />
         </>
     );
 }

@@ -75,4 +75,12 @@ class DemoVoteController extends Controller
             "finish_date" => $requestData["end"],
         ]);
     }
+
+    public function resultVoteList() {
+        $allVoteVersion = VoteVersion::getAllVoteVersion();
+
+        return Inertia::render("ResultList", [
+            "vote_version" => $allVoteVersion
+        ]);
+    } 
 }
