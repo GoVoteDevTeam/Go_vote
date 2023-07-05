@@ -10,13 +10,13 @@ const Header = () => {
     const navchange = () => {
       if(!auth){
         return(
-          <InertiaLink href="/mypage" className="icon">
-          <img className="myicon" src={myicon}/>
+          <InertiaLink href="/login" className="icon">
           </InertiaLink>
         )
       }else{
         return(
-          <InertiaLink href="/login" className="icon">
+          <InertiaLink href="/mypage" className="icon">
+          <img className="myicon" src={myicon}/>
           </InertiaLink>
         )
       }
