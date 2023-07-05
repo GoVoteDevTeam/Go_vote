@@ -3,6 +3,7 @@ import Header from "../components/Header"
 import styled from "styled-components";
 import { Inertia } from "@inertiajs/inertia";
 import PropTypes from 'prop-types';
+import Footer from "../components/footer"
 
 const SignUp = ({ errors }) => {
     // 入力されるデータを定義
@@ -82,6 +83,7 @@ const SignUp = ({ errors }) => {
                     </form>
                 </div>
             </SignUPPage>
+            <Footer />
         </>
     )
 
@@ -94,16 +96,18 @@ SignUp.PropTypes = {
 export default SignUp;
 
 const SignUPPage = styled.div`
-    background-color: #bcd3cd;
+    background-color: #BDC3CD;
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     margin: 0 auto;
-    padding-top: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     .main {
-        margin: 0 auto ;
-        padding: 10px;
+        border-radius: 10px;
+        margin: 0 auto;
         width: 80%;
-        height: 90%;
+        padding-top: 5px;
+        padding-bottom: 5px;
         background-color: #FFFFFF;
         text-align: center;
         .login-gazou {
@@ -130,8 +134,8 @@ const SignUPPage = styled.div`
             .user-submit {
 
                 button {
-                    margin-top: 50px;
-                    width: 60px;
+                    margin-top: 20px;
+                    width: 100px;
                     height: 30px;
                     border-radius: 10px;
                     font-family: 'Inter';
