@@ -51,10 +51,6 @@ const SignUp = ({ errors }) => {
             <Header />
 
             <SignUPPage>
-                {passwordMatchError && <p>パスワードが一致しません</p>}
-                {errors && Object.keys(errors).map((key) => (
-                    <div key={key}>{errors[key]}</div>
-                ))}
                 <div className="main">
                     <div className="login-gazou">
                         <h1>新規登録</h1>
@@ -78,6 +74,10 @@ const SignUp = ({ errors }) => {
                             <input type="text" name="confirmPassword" id="confirmPassword" required onChange={(e) => inputChange(e)} />
                         </div>
                         <div className="user-submit">
+                            {passwordMatchError && <p>パスワードが一致しません</p>}
+                            {errors && Object.keys(errors).map((key) => (
+                                <div key={key}>{errors[key]}</div>
+                            ))}
                             <button type="submit">送信</button>
                         </div>
                     </form>
@@ -98,7 +98,7 @@ export default SignUp;
 const SignUPPage = styled.div`
     background-color: #BDC3CD;
     width: 100%;
-    /* height: 100vh; */
+    height: calc(100vh - 90px - 100px);
     margin: 0 auto;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -147,6 +147,9 @@ const SignUPPage = styled.div`
                     letter-spacing: -0.01em;
                     color: #fff;
                     background-color: #36375F;
+                }
+                p {
+                    color: red;
                 }
             }
         }
