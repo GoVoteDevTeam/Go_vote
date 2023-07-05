@@ -3,25 +3,25 @@ import logo from "../../../public/logo.png"
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import myicon from "../../../public/myicon.png"
 
-const { auth } = usePage().props;
 
-const navchange = (auth) => {
-     if(auth.user == ""){
-         return(
-        <InertiaLink href="/login" className="icon">
-        </InertiaLink>
-       )
-     }else{
-      return(
-        <InertiaLink href="/" className="icon">
-           <img className="myicon" src={myicon}/>
-        </InertiaLink>
-      )
-    }
-}
+const Header = () => {
+    const { auth } = usePage().props;
 
+    const navchange = () => {
+      if(auth.email == null){
+        return(
+          <InertiaLink href="/login" className="icon">
+          </InertiaLink>
+        )
+      }else{
+        return(
+          <InertiaLink href="/mypage" className="icon">
+            <img className="myicon" src={myicon}/>
+          </InertiaLink>
+        )
+      }
+    }  
 
-const Header = (auth) => {
     return(
 
 
@@ -31,7 +31,7 @@ const Header = (auth) => {
           </div>
 
           <div className="icon-container">
-            {navchange(auth)}
+            {navchange()}
           </div>
         </HeaderElement>
     )
