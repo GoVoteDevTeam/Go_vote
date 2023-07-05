@@ -8,15 +8,15 @@ const Header = () => {
     const { auth } = usePage().props;
 
     const navchange = () => {
-      if(auth.email == null){
+      if(!auth){
         return(
-          <InertiaLink href="/login" className="icon">
+          <InertiaLink href="/mypage" className="icon">
+          <img className="myicon" src={myicon}/>
           </InertiaLink>
         )
       }else{
         return(
-          <InertiaLink href="/mypage" className="icon">
-            <img className="myicon" src={myicon}/>
+          <InertiaLink href="/login" className="icon">
           </InertiaLink>
         )
       }
