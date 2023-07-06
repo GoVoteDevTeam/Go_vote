@@ -1,8 +1,29 @@
 import styled from "styled-components";
 import logo from "../../../public/logo.png"
+import { InertiaLink, usePage } from "@inertiajs/inertia-react";
+import myicon from "../../../public/myicon.png"
 
 
 const Header = () => {
+    const { auth } = usePage().props;
+
+    const navchange = () => {
+      console.log(auth)
+      if(!auth){
+        console.log(true)
+        return(
+          <InertiaLink href="/login" className="icon">
+          </InertiaLink>
+        )
+      }else{
+        return(
+          <InertiaLink href="/mypage" className="icon">
+          <img className="myicon" src={myicon}/>
+          </InertiaLink>
+        )
+      }
+    }  
+
     return(
         <HeaderElement>
           <div className="logo-container">
@@ -10,7 +31,7 @@ const Header = () => {
           </div>
 
           <div className="icon-container">
-            <div className="icon"></div>
+            {navchange()}
           </div>
         </HeaderElement>
     )
@@ -48,6 +69,13 @@ const HeaderElement = styled.header`
     padding: 0;
     border-radius: 50%;
     background-color: white;
+    .myicon {
+      float: right;
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      border-radius: 50%;
+    }
   }
 
 `;
