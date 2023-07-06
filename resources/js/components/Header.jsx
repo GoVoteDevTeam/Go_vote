@@ -8,7 +8,9 @@ const Header = () => {
     const { auth } = usePage().props;
 
     const navchange = () => {
+      console.log(auth)
       if(!auth){
+        console.log(true)
         return(
           <InertiaLink href="/login" className="icon">
           </InertiaLink>
