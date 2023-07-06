@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import VoteTitle from "../components/VoteTitle";
 import { InertiaLink } from "@inertiajs/inertia-react";
 import PoliticsModal from "../components/PoliticsModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const MarkOnBallotPaper = ({ politics }) => {
 
@@ -17,16 +17,22 @@ const MarkOnBallotPaper = ({ politics }) => {
 
     const [open, setOpen] = useState(false);
 
-    const [currentPolitics, setCurrentPolitics] = useState("");
+    const [currentPolitics, setCurrentPolitics] = useState({
+        politics_id: 0,
+        politics_name: "",
+    });
 
     const handleNameClick = () => {
         // 反転
         setOpen(!open);
     }
 
+    useEffect(() => {
+        localStorage.setItem("politics", JSON.stringify(currentPolitics));
+    }, [currentPolitics]);
+
     return (
         <>
-            <Header />
             <MarkOnBallotPage open={open} >
                 <VoteTitle info={pageInfo} />
                 <div className="ballot-main-paper">
@@ -45,7 +51,7 @@ const MarkOnBallotPaper = ({ politics }) => {
                             <h3>候補政党</h3>
                         </div>
                         <div className="col-input">
-                            <h1>{currentPolitics}</h1>
+                            <h1>{currentPolitics.politics_name}</h1>
                         </div>
                     </div>
                     <div className="vote-button">
@@ -62,8 +68,6 @@ const MarkOnBallotPaper = ({ politics }) => {
                     setCurrentPolitics={setCurrentPolitics}
                 />
             </MarkOnBallotPage>
-
-            <TmpFooter />
         </>
     )
 }

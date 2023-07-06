@@ -1,89 +1,111 @@
+import React, { useState } from "react";
 import styled from "styled-components";
 import data from "../components/diagonos";
-import Header from "../components/Header";
-import { useState } from "react";
-import Footer from "../components/footer";
-import VoteNotice from '../components/VoteNotice';
-
-// var variables = {
-//   answer1: 0,
-//   answer2: 0,
-//   answer3: 0,
-//   answer4: 0,
-//   answer5: 0,
-//   answer6: 0,
-//   answer7: 0,
-//   answer8: 0,
-//   answer9: 0,
-//   answer: 0,
-// };
+import VoteNotice from "../components/VoteNotice";
 
 const questions = [
   {
-      number: "1",
-      title: "経済",
-      question: "国民への給付金に対してどう思うか？",
-      answer1: "国民一律に必要である。",
-      answer2: "部分的に必要である。",
-      answer3: "不要である",
-      answer4: "特になし"
+    number: "1",
+    title: "経済",
+    question: "国民への給付金に対してどう思うか？",
+    answer1: "国民一律に必要である。",
+    answer2: "部分的に必要である。",
+    answer3: "不要である",
+    answer4: "特になし",
   },
   {
-      number: "2",     //政党名
-      title: "財政・税制",       //キャッチコピー
-      question: "財政・税制に対してどう思うか？", //詳細
-      answer1: "PB黒字化破壊",
-      answer2: "PB黒字化見直し",
-      answer3: "PB黒字化維持",
-      answer4: "特になし"
+    number: "2", //政党名
+    title: "財政・税制", //キャッチコピー
+    question: "財政・税制に対してどう思うか？", //詳細
+    answer1: "PB黒字化破壊",
+    answer2: "PB黒字化見直し",
+    answer3: "PB黒字化維持",
+    answer4: "特になし",
   },
   {
-    number: "3",     //政党名
-    title: "子育て・教育",       //キャッチコピー
+    number: "3", //政党名
+    title: "子育て・教育", //キャッチコピー
     question: "幼児教育の無償化", //詳細
     answer1: "完全無償化",
     answer2: "段階的無償化",
     answer3: "条件付き無償化",
-    answer4: "特になし"
+    answer4: "特になし",
   },
   {
-    number: "4",     //政党名
-    title: "日米同盟",       //キャッチコピー
-    question: "日米関係についてどう思うか？",      //詳細
+    number: "4", //政党名
+    title: "日米同盟", //キャッチコピー
+    question: "日米関係についてどう思うか？", //詳細
     answer1: "対米自立",
     answer2: "同盟維持",
     answer3: "PB黒字化維持",
-    answer4: "特になし"     
+    answer4: "特になし",
   },
 ];
 
 const Diagnose = () => {
-  data.forEach((data) => {
-    console.log(data.name);
-  });
-
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOptions, setSelectedOptions] = useState({});
   const [error, setError] = useState(false);
+  const [showResults, setShowResults] = useState(false);
+  const [result, setResult] = useState(null);
 
   const handleNextQuestion = () => {
-    if (selectedOption === "") {
-      setError(true); // オプションが選択されていない場合にエラーを設定
+    if (!selectedOptions[currentQuestion]) {
+      setError(true);
       return;
     }
 
-    setSelectedOption("");
-    setCurrentQuestion(currentQuestion + 1);
+    setError(false);
+    setSelectedOptions((prevOptions) => ({
+      ...prevOptions,
+      [currentQuestion]: selectedOptions[currentQuestion],
+    }));
+
+    if (currentQuestion === questions.length - 1) {
+      setShowResults(true);
+      calculateResult();
+    } else {
+      setCurrentQuestion((prevQuestion) => prevQuestion + 1);
+    }
   };
 
   const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-    setError(false); // オプションが選択されたらエラーをリセット
+    const value = event.target.value;
+    setSelectedOptions((prevOptions) => ({
+      ...prevOptions,
+      [currentQuestion]: value,
+    }));
+  };
+
+  const calculateResult = () => {
+    const answerCounts = {
+      option1: 0,
+      option2: 0,
+      option3: 0,
+      option4: 0,
+    };
+
+    // 選択されたオプションを数える
+    Object.values(selectedOptions).forEach((option) => {
+      answerCounts[option]++;
+    });
+
+    let maxCount = 0;
+    let result = null;
+
+    // 最も選択されたオプションを見つける
+    Object.entries(answerCounts).forEach(([option, count]) => {
+      if (count > maxCount) {
+        maxCount = count;
+        result = option;
+      }
+    });
+
+    setResult(result);
   };
 
   return (
     <>
-      <Header />
       <DiagnosePage>
         <VoteNotice />
         <div className="Diagnose">
@@ -91,61 +113,69 @@ const Diagnose = () => {
           <div className="sub_title">Question!</div>
 
           <div className="question">
-            {currentQuestion < questions.length ? (
+            {showResults ? (
+              <ResultContainer>
+                <h1>診断結果</h1>
+                <p>
+                  あなたの選んだ政策にもっとも近い政党は{" "}
+                  {result ? data[result]?.name : "ありません"} です。
+                </p>
+                <p>お疲れ様でした。問題は以上です。</p>
+              </ResultContainer>
+            ) : (
               <>
                 <h1>{questions[currentQuestion].number}</h1>
                 <h2>{questions[currentQuestion].title}</h2>
                 <p>{questions[currentQuestion].question}</p>
-                <p>
-                  <input
-                    type="radio"
-                    name="option"
-                    value="option1"
-                    checked={selectedOption === "option1"}
-                    onChange={handleOptionChange}
-                  />
-                  {questions[currentQuestion].answer1}
-                </p>
-                <p>
-                  <input
-                    type="radio"
-                    name="option"
-                    value="option2"
-                    checked={selectedOption === "option2"}
-                    onChange={handleOptionChange}
-                  />
-                  {questions[currentQuestion].answer2}
-                </p>
-                <p>
-                  <input
-                    type="radio"
-                    name="option"
-                    value="option3"
-                    checked={selectedOption === "option3"}
-                    onChange={handleOptionChange}
-                  />
-                  {questions[currentQuestion].answer3}
-                </p>
-                <p>
-                  <input
-                    type="radio"
-                    name="option"
-                    value="option4"
-                    checked={selectedOption === "option4"}
-                    onChange={handleOptionChange}
-                  />
-                  {questions[currentQuestion].answer4}
-                </p>
-                {error && <p>一つ選んで下さい。</p>} {/* エラーメッセージの表示 */}
-                <button onClick={() => handleNextQuestion()}>次の問題へ</button>
+                <OptionContainer>
+                  <label>
+                    <input
+                      type="radio"
+                      name="option"
+                      value="option1"
+                      checked={selectedOptions[currentQuestion] === "option1"}
+                      onChange={handleOptionChange}
+                    />
+                    {questions[currentQuestion].answer1}
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="option"
+                      value="option2"
+                      checked={selectedOptions[currentQuestion] === "option2"}
+                      onChange={handleOptionChange}
+                    />
+                    {questions[currentQuestion].answer2}
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="option"
+                      value="option3"
+                      checked={selectedOptions[currentQuestion] === "option3"}
+                      onChange={handleOptionChange}
+                    />
+                    {questions[currentQuestion].answer3}
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="option"
+                      value="option4"
+                      checked={selectedOptions[currentQuestion] === "option4"}
+                      onChange={handleOptionChange}
+                    />
+                    {questions[currentQuestion].answer4}
+                  </label>
+                </OptionContainer>
+                {error && <ErrorText>一つ選んで下さい。</ErrorText>}
+                <button onClick={handleNextQuestion}>次の問題へ</button>
               </>
-            ) : (
-              <p>お疲れ様でした。問題は以上です。</p>
             )}
           </div>
         </div>
       </DiagnosePage>
-      <Footer />
     </>
   );
 };
@@ -158,7 +188,7 @@ const DiagnosePage = styled.div`
   background-color: #bdc3cd;
   padding-bottom: 20px;
   overflow-y: auto;
-  .Diagnose {
+  .Diagnose{
     background-color: #36375f;
     border-radius: 35px 35px 0px 0px;
     margin-top: 20px;
@@ -178,4 +208,30 @@ const DiagnosePage = styled.div`
       color: #fff;
     }
   }
+`;
+
+const ResultContainer = styled.div`
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+`;
+
+const OptionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+
+  label {
+    margin-bottom: 10px;
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+  }
+`;
+
+const ErrorText = styled.p`
+  color: red;
+  margin-top: 10px;
 `;

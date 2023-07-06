@@ -40,6 +40,7 @@ class SignUpController extends Controller
             "email" => $input_user->email,
             "password" => $input_user->password
         ]);
+        
 
         // リダイレクト
         return redirect()->route('login');
