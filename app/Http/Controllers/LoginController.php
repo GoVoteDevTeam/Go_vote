@@ -38,7 +38,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, true)) {
             // 認証成功の処理
             
-            return Inertia::location('/demo');
+            return Inertia::location('/news');
         } else {
             
             return Redirect::back()->withErrors(['メールアドレスまたはパスワードが正しくありません。']);

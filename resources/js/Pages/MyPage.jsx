@@ -1,18 +1,25 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import { Inertia } from '@inertiajs/inertia';
 import pro from "../../../public/img/pro.png";
 
 const MyPage = ({ auth }) => {
     const profile_name = `${auth.user_name}さん`;
     const profile_Email = auth.email;
 
+    const handleLogout = () => {
+        Inertia.post('/logout'); // ログアウトリクエストを送信
+    };
+
     return (
         <>
             <MypageElement>
                 <div className="mypage">
                     <div className="title">マイページ</div>
+
+                    <div className="logout" onClick={handleLogout}>
+                        <p className="text">ログアウト</p>
+                    </div>
 
                     <div className="profile">
                         <img className="pro" src={pro} />
@@ -56,10 +63,20 @@ const MypageElement = styled.div`
         margin-bottom: 30px;
         border-radius: 15px;
 
+        .logout{
+            .text{
+                margin: 0 auto;
+                direction: rtl;
+                margin-top: -35px;
+                margin-right: 15px;
+            }
+        }
+
         .title {
             margin: 20px 0px 0px 20px;
             font-size: 32px;
             font-weight: bold;
+            padding-top: 20px;
         }
 
         .profile {

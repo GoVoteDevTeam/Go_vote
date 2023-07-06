@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/footer";
 import styled from "styled-components";
 import { Helmet } from 'react-helmet';
+import { Link } from "@inertiajs/inertia-react";
 
 const Login = ({ errors }) => {
   // 入力されるデータを定義
@@ -92,7 +93,13 @@ return (
                 </div>
                 <div className="button-login">
                     <button type="submit">ログイン</button>
+                    <div>
+                        アカウントをお持ちでない方は
+                        <Link href="/signup">こちら</Link>
+                        から新規登録してください。
+                    </div>
                 </div>
+
                 </form>
             </main>
         </LoginPage>
