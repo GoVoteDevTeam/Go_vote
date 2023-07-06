@@ -93,7 +93,7 @@ return (
                 </div>
                 <div className="button-login">
                     <button type="submit">ログイン</button>
-                    <div>
+                    <div className="to-sign-up">
                         アカウントをお持ちでない方は
                         <Link href="/signup">こちら</Link>
                         から新規登録してください。
@@ -243,6 +243,11 @@ const LoginPage = styled.div`
                         padding: 5px;
                         font-size: 12px;
                     }
+                }
+                .to-sign-up {
+                    width: 70vw;
+                    height: 40px;
+                    font-size: 14px;
                 }
             }
             @media screen and (max-width: 391px){
