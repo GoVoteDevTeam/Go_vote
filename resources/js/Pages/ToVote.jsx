@@ -3,10 +3,17 @@ import Header from "../components/Header";
 import TmpFooter from "../components/TmpFooter";
 import BallotPaper from "../components/BallotPaper";
 import { Inertia } from "@inertiajs/inertia";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const ToVote = () => {
+
+    // console.log(localStorage.getItem("politics"));
+    // localStorage.clear();
+    // console.log(localStorage.getItem("politics"));
+
+    const [isLoading, setIsLoading] = useState(false);
     const el = useRef(null);
+    const debounceTimer = useRef(null);
     const box_top = useRef(null);
 
     const touchstart = (e) => {
@@ -33,11 +40,20 @@ const ToVote = () => {
                 el.current.style.top = 92 + "px";
             }
 
-            if (
-                box_top.current.getBoundingClientRect().top <
-                el.current.getBoundingClientRect().top
-            ) {
-                Inertia.get("/demo_vote/voting_completed");
+            if (box_top.current.getBoundingClientRect().top < el.current.getBoundingClientRect().top) {
+                if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                    if (!isLoading) {
+                        setIsLoading(true);
+                        clearTimeout(debounceTimer.current);
+                        debounceTimer.current = setTimeout(() => {
+                            Inertia.post("/demo_vote/to_vote", {
+                                politics: localStorage.getItem("politics")
+                            }).then(() => {
+                                setIsLoading(false);
+                            });
+                        }, 500);
+                    }
+                }
             }
 
             prevY = e.touches[0].clientY;
@@ -74,12 +90,22 @@ const ToVote = () => {
                 el.current.style.top = 92 + "px";
             }
 
-            if (
-                box_top.current.getBoundingClientRect().top <
-                el.current.getBoundingClientRect().top
-            ) {
-                Inertia.get("/demo_vote/voting_completed");
+            if (box_top.current.getBoundingClientRect().top < el.current.getBoundingClientRect().top) {
+                if (!navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+                    if (!isLoading) { // Only if not currently loading
+                        setIsLoading(true);
+                        clearTimeout(debounceTimer.current);
+                        debounceTimer.current = setTimeout(() => {
+                            Inertia.post("/demo_vote/to_vote", {
+                                politics: localStorage.getItem("politics")
+                            }).then(() => {
+                                setIsLoading(false);
+                            });
+                        }, 500);
+                    }
+                }
             }
+
             prevX = e.clientX;
             prevY = e.clientY;
         }
@@ -94,8 +120,7 @@ const ToVote = () => {
     return (
         <>
             <ToVotePage>
-                <div
-                    className="elem"
+                <div className="elem"
                     onTouchStart={(e) => touchstart(e)}
                     onMouseDown={(e) => mousedown(e)}
                     ref={el}
@@ -104,7 +129,9 @@ const ToVote = () => {
                 </div>
                 <div className="ballot-box">
                     <div className="top" ref={box_top} />
-                    <div className="box">スワイプして投票</div>
+                    <div className="box">
+                        スワイプして投票
+                    </div>
                 </div>
             </ToVotePage>
         </>

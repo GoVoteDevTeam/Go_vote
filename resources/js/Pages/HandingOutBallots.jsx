@@ -20,6 +20,7 @@ const HandingOutBallots = ({ auth }) => {
             name: "政策別選挙",
             href: "/demo_vote/policy_based_election"
         }
+        
     ];
 
     return (

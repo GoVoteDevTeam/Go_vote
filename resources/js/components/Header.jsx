@@ -23,8 +23,6 @@ const Header = () => {
     }  
 
     return(
-
-
         <HeaderElement>
           <div className="logo-container">
             <img className="logo" src={logo}/>
