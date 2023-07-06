@@ -140,23 +140,24 @@ const LoginPage = styled.div`
         
         
         .text-login {
-            width: 273.27px;
+            width: 50vw;
             margin-inline: auto;
             height: 5vh;
             color: #36375F;
             font-size: 36px;
             font-weight: 700;
         }
-        @media screen and (max-width: 391px){
+        @media screen and (max-width: 500px){
             .text-login{
-                margin: 40px 0 10px 0;
+                width: 50vw;
+                height: 3vh;
                 font-size: 32px;
                 grid-area: header;
             }
         }
         
         img {
-            width:100px;
+            width: 100px;
             height: 100px;
             margin: 0 auto;
             grid-area: img;
@@ -164,7 +165,7 @@ const LoginPage = styled.div`
     
         form {
             width: 50vw;
-            height: 50vh;
+            height: auto;
             color: #36375F;
             grid-area: form;
                     .user-emil, .user-password, .user-confPassword {
@@ -176,27 +177,27 @@ const LoginPage = styled.div`
                         font-size: 16px;
                         font-weight: 700;
                         }
-                        @media screen and (max-width: 391px){
+                        @media screen and (max-width: 500px){
                             p {
                                 font-size: 8px;
                             }
                         }
                     input {
-                            width: 350px;
+                            width: 30vw;
                             height: 35px;
                             border: none;
                             background-color: #eeeeee;
                             border-radius: 10px;
                         }
-                        @media screen and (max-width: 391px){
+                        @media screen and (max-width: 500px){
                         input {
-                            width: 240px;
+                            width: 50vw;
                             height: 35px;
                         }
                     }
                 }
             }
-            @media screen and (max-width: 391px){
+            @media screen and (max-width: 500px){
                 form {
                     width: 70vw;
                     height: 35vh;
@@ -211,7 +212,7 @@ const LoginPage = styled.div`
                 color: #FF0000;
                 font-size: 12px;
             }
-            @media screen and (max-width: 391px){
+            @media screen and (max-width: 500px){
                 .err-msg {
                     width: 70vw;
                     height: 30px;
@@ -235,7 +236,7 @@ const LoginPage = styled.div`
                     background-color: #36375F;
                     border-radius: 10px;
                 }
-                @media screen and (max-width: 391px){
+                @media screen and (max-width: 500px){
                     button {
                         width: 30vw;
                         height: 35px;
@@ -245,19 +246,29 @@ const LoginPage = styled.div`
                     }
                 }
                 .to-sign-up {
-                    width: 70vw;
+                    width: 50vw;
                     height: 40px;
-                    font-size: 14px;
+                    font-size: 16px;
+                    margin: auto 0;
+                    Link {
+                        margin: auto 0;
+                    }
+                }
+                @media screen and (max-width: 500px){
+                    .to-sign-up {
+                        width: 70vw;
+                        font-size: 14px;
+                    }
                 }
             }
-            @media screen and (max-width: 391px){
+            @media screen and (max-width: 500px){
                 .button-login {
                     width: 70vw;
                 }
             }
 
     }
-    @media screen and (max-width: 391px){
+    @media screen and (max-width: 500px){
         main {
             margin: 0 auto;
             padding: 0 0 0 0;
