@@ -14,24 +14,45 @@ const Politics = () => {
         <>
             <PoliticsPage>
                 <VoteNotice />
-                <div className="politics">
-                    <div className="title">
-                    政党早見表
-                    </div>
-                    <div className="scroll">
-                        {data.map((item, index) => (
-                        <div key={index} className="political_party">
-                            <div className="item">
-                            <div className="icon">
-                                <img className="img" src={`./img/${item.img}`} />
-                            </div>
-                            <div className="name">{item.name}</div>
-                            </div>
-                            <div id={`item2-${item.id}`} className="item2">
-                            <Modal Politics_data={item} />
-                            </div>
+                <div className="mobile">
+                    <div className="politics">
+                        <div className="title">
+                        政党早見表
                         </div>
-                        ))}
+                        <div className="scroll">
+                            {data.map((item, index) => (
+                            <div key={index} className="political_party">
+                                <div className="item">
+                                <div className="icon">
+                                    <img className="img" src={`./img/${item.img}`} />
+                                </div>
+                                <div className="name">{item.name}</div>
+                                </div>
+                                <div id={`item2-${item.id}`} className="item2">
+                                <Modal Politics_data={item} />
+                                </div>
+                            </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+                <div className="pc">
+                    <div className="pc-politics">
+                        <div className="pc-title">
+                        政党早見表
+                        </div>
+                        <div className="pc-politics-box">
+                            {data.map((item, index) => (
+                            <div key={index} className="pc-political_party">
+                                <div className="pc-item">
+                                <div className="pc-icon">
+                                    <img className="pc-img" src={`./img/${item.img}`} />
+                                </div>
+                                <div className="pc-name">{item.name}</div>
+                                </div>
+                            </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </PoliticsPage>
@@ -43,6 +64,9 @@ const Politics = () => {
 export default Politics;
 
 const PoliticsPage = styled.div`
+    .pc {
+        display: none;
+    }
     width: 100%;
     height: calc(100vh - 92px - 80px);
     background-color: #BDC3CD;
@@ -106,14 +130,56 @@ const PoliticsPage = styled.div`
                     text-overflow: ellipsis;
                 }
             }
-            /* .political_party.last{
-                display: flex;
-                margin: 10px;
-                margin-bottom: 11%;
-            } */
         }
     }
 	@media all and (min-width: 500px) {
-		height: 100vh;
-	}
+        height: 100vh;
+        padding-bottom: 0px;
+        overflow: auto;
+        .mobile {
+            display: none;
+        }
+        .pc {
+            display: block;
+            .pc-politics{
+                .pc-title {
+                    padding: 20px 20px 10px 20px;
+                    text-align: left;
+                    font-size:30px;
+                    font-weight: bold;
+                    color: #36375F;
+                }
+                .pc-politics-box{
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    grid-gap: 25px;
+                    .pc-political_party{
+                        display: flex;
+                        margin: 10px;
+                        .pc-item{
+                            width: 250px;
+                            height: 250px;
+                            border-radius: 30px;
+                            margin-left: 10px;
+                            background-color: #ffffffc3;
+                            .pc-icon{
+                                border-radius: 50%;
+                                height: 60px;
+                                width: 60px;
+                                margin:8px auto;
+                                .pc-img{
+                                    border-radius:50%;
+                                    height: 60px;
+                                    width: 60px;
+                                }
+                            }
+                            .pc-name{
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 `;
