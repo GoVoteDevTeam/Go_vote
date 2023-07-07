@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import data from "../components/Politics_data";
 import Modal from "../components/Modal";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import VoteNotice from '../components/VoteNotice';
 
 const Politics = () => {
@@ -14,8 +12,6 @@ const Politics = () => {
     return (
 
         <>
-            <Header />
-            
             <PoliticsPage>
                 <VoteNotice />
                 <div className="politics">
@@ -39,8 +35,6 @@ const Politics = () => {
                     </div>
                 </div>
             </PoliticsPage>
-
-            <Footer />
         </>
     )
 
@@ -119,5 +113,7 @@ const PoliticsPage = styled.div`
             } */
         }
     }
-
+	@media all and (min-width: 500px) {
+		height: 100vh;
+	}
 `;
