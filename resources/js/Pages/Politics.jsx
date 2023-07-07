@@ -85,7 +85,6 @@ const PoliticsPage = styled.div`
         }
         .scroll{
             overflow-y: auto;
-            /* max-height: 461px; */
             height: calc(100vh - 390px);
             ::-webkit-scrollbar {
                 width: 5px;
@@ -100,7 +99,6 @@ const PoliticsPage = styled.div`
                 .item{
                     width: 190px;
                     height: 100px;
-                    /* margin-right: 10px; */
                     margin-left: 10px;
                     background-color: #ffffffc3;
                     .icon{
@@ -125,9 +123,7 @@ const PoliticsPage = styled.div`
                     height: 100px;
                     margin-right: 10px;
                     background-color: #fff;
-                    /* white-space: pre-wrap; */
                     overflow: hidden;
-                    text-overflow: ellipsis;
                 }
             }
         }
@@ -152,7 +148,6 @@ const PoliticsPage = styled.div`
                 .pc-politics-box{
                     display: grid;
                     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                    grid-gap: 25px;
                     .pc-political_party{
                         display: flex;
                         margin: 10px;
