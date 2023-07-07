@@ -133,6 +133,13 @@ const PoliticsPage = styled.div`
         height: 100vh;
         padding-bottom: 0px;
         overflow: auto;
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgb(232, 232, 232, 0.5);
+            border-radius: 10px;
+        }
         .mobile {
             display: none;
         }
@@ -156,7 +163,6 @@ const PoliticsPage = styled.div`
                             width: 250px;
                             height: 250px;
                             border-radius: 30px;
-                            margin-left: 10px;
                             background-color: #ffffffc3;
                             .pc-icon{
                                 border-radius: 50%;
@@ -171,12 +177,10 @@ const PoliticsPage = styled.div`
                             }
                             .pc-name{
                                 text-align: center;
+                                font-weight: bold;
                             }
                             .pc-detail{
-                                width: 250px;
-                                position:relative;
-                                text-align: center;
-                                overflow: hidden;
+                                margin-left: 5px;
                                 display: -webkit-box;
                                 overflow: hidden;
                                 -webkit-line-clamp: 6;
