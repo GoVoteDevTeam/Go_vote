@@ -1,68 +1,92 @@
+import React, { useState } from "react";
 import styled from "styled-components";
 import data from "../components/Politics_data";
 import Modal from "../components/Modal";
 import VoteNotice from '../components/VoteNotice';
 
 const Politics = () => {
+    const [selectedParty, setSelectedParty] = useState(null);
 
-    data.forEach((data)=> {
-        console.log(data.name) ;
-    });
+    const openModal = (party) => {
+      setSelectedParty(party);
+    };
+  
+    const closeModal = () => {
+      setSelectedParty(null);
+    };
 
     return (
-
         <>
             <PoliticsPage>
                 <VoteNotice />
                 <div className="mobile">
                     <div className="politics">
                         <div className="title">
-                        政党早見表
+                            政党早見表
                         </div>
                         <div className="scroll">
                             {data.map((item, index) => (
-                            <div key={index} className="political_party">
-                                <div className="item">
-                                <div className="icon">
-                                    <img className="img" src={`./img/${item.img}`} />
+                                <div key={index} className="political_party">
+                                    <div className="item">
+                                        <div className="icon">
+                                            <img className="img" src={`./img/${item.img}`} />
+                                        </div>
+                                        <div className="name">{item.name}</div>
+                                    </div>
+                                    <div id={`item2-${item.id}`} className="item2">
+                                        <Modal Politics_data={item} />
+                                    </div>
                                 </div>
-                                <div className="name">{item.name}</div>
-                                </div>
-                                <div id={`item2-${item.id}`} className="item2">
-                                <Modal Politics_data={item} />
-                                </div>
-                            </div>
                             ))}
                         </div>
                     </div>
                 </div>
                 <div className="pc">
                     <div className="pc-politics">
-                        <div className="pc-title">
-                        政党早見表
-                        </div>
+                        <div className="pc-title">政党早見表</div>
                         <div className="pc-politics-box">
-                            {data.map((item, index) => (
-                            <div key={index} className="pc-political_party">
-                                <div className="pc-item">
+                        {data.map((item, index) => (
+                            <div
+                            key={index}
+                            className="pc-political_party"
+                            onClick={() => openModal(item)}
+                            >
+                            <div className="pc-item">
                                 <div className="pc-icon">
-                                    <img className="pc-img" src={`./img/${item.img}`} />
+                                <img className="pc-img" src={`./img/${item.img}`} alt={item.name} />
                                 </div>
                                 <div className="pc-name">{item.name}</div>
                                 <div className="pc-detail">{item.detail}</div>
-                                </div>
                             </div>
-                            ))}
+                            </div>
+                        ))}
                         </div>
                     </div>
-                </div>
+                    </div>
+
+                    {selectedParty && (
+                    <ModalWrap>
+                        <div className="modal__overlay" onClick={closeModal}></div>
+                        <div className="modal__content">
+                        <span className="modal__close" onClick={closeModal}>
+                            <p className="modal__closetext">×</p>
+                        </span>
+                        <div className="iconModal">
+                            <img className="img" src={`./img/${selectedParty.img}`} alt={selectedParty.name} />
+                        </div>
+                        <h2>{selectedParty.name}</h2>
+                        <p>{selectedParty.detail}</p>
+                        </div>
+                    </ModalWrap>
+                    )
+                }
             </PoliticsPage>
         </>
     )
-
 }
 
 export default Politics;
+
 
 const PoliticsPage = styled.div`
     .pc {
@@ -185,6 +209,13 @@ const PoliticsPage = styled.div`
                                 overflow: hidden;
                                 -webkit-line-clamp: 6;
                                 -webkit-box-orient: vertical;
+                                color: #4f96f6;
+                                position:relative;
+                            }
+                            .pc-detail:hover {
+                                text-decoration: underline;
+                                cursor: pointer;
+                                color: #c7511f;
                             }
                         }
                     }
@@ -192,4 +223,65 @@ const PoliticsPage = styled.div`
             }
         }
     }
+`;
+
+const ModalWrap = styled.div`
+  .modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .modal__content {
+    background-color: #fefefe;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 15;
+  }
+
+  .iconModal {
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    border: solid 4px #ff6347;
+        .img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+  }
+  .modal__close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    cursor: pointer;
+    background-color: #777;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    width: 36px;
+    height: 36px;
+    line-height: 1.5;
+    .modal__closetext{
+        margin: 0px 0px 0px 9px;
+        font-size: 1.4em;
+        color: #fff;
+    }
+  }
 `;
