@@ -49,6 +49,7 @@ const Politics = () => {
                                     <img className="pc-img" src={`./img/${item.img}`} />
                                 </div>
                                 <div className="pc-name">{item.name}</div>
+                                <div className="pc-detail">{item.detail}</div>
                                 </div>
                             </div>
                             ))}
@@ -170,6 +171,16 @@ const PoliticsPage = styled.div`
                             }
                             .pc-name{
                                 text-align: center;
+                            }
+                            .pc-detail{
+                                width: 250px;
+                                position:relative;
+                                text-align: center;
+                                overflow: hidden;
+                                display: -webkit-box;
+                                overflow: hidden;
+                                -webkit-line-clamp: 6;
+                                -webkit-box-orient: vertical;
                             }
                         }
                     }
