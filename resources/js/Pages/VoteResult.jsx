@@ -95,4 +95,7 @@ const ResultPage = styled.div`
             height: 600px;
         }
     }
+    @media all and (min-width: 500px) {
+		height: 100vh;
+	}
 `;

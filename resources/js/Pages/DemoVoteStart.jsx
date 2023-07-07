@@ -142,4 +142,7 @@ const DemoVoteStartPage = styled.div`
 			}
 		}
 	}
+	@media all and (min-width: 500px) {
+		height: 100vh;
+	}
 `;

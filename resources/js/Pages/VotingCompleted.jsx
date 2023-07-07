@@ -52,4 +52,7 @@ const VotingCompeletedPage = styled.div`
         align-items: center;
         justify-content: center;
     }
+    @media all and (min-width: 500px) {
+		height: 100vh;
+	}
 `;
