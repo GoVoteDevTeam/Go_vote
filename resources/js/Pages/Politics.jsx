@@ -180,6 +180,7 @@ const PoliticsPage = styled.div`
                 .pc-politics-box{
                     display: grid;
                     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    margin-left: 5px;
                     .pc-political_party{
                         display: flex;
                         margin: 10px;
@@ -204,7 +205,9 @@ const PoliticsPage = styled.div`
                                 font-weight: bold;
                             }
                             .pc-detail{
+                                font-size: 15px;
                                 margin-left: 5px;
+                                margin-top: 10px;
                                 display: -webkit-box;
                                 overflow: hidden;
                                 -webkit-line-clamp: 6;
