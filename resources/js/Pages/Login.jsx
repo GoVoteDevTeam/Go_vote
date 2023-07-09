@@ -117,7 +117,7 @@ const LoginPage = styled.div`
   justify-content: center;
   overflow-y: hidden;
   overflow-x: hidden;
-  @media screen and (max-width: 426px) {
+  @media screen and (max-width: 500px) {
     width: 100%;
     height: 73vh;
   }
@@ -146,7 +146,7 @@ const LoginPage = styled.div`
         margin: 25px 0;
         font-size: 36px;
       }
-      @media screen and (max-width: 426px) {
+      @media screen and (max-width: 500px) {
         p {
           height: 40px;
           margin: 10px 0;
@@ -154,7 +154,7 @@ const LoginPage = styled.div`
         }
       }
     }
-    @media screen and (max-width: 426px) {
+    @media screen and (max-width: 500px) {
       .text-login {
         font-size: 30px;
       }
@@ -166,7 +166,7 @@ const LoginPage = styled.div`
       margin: 0 auto;
       grid-area: img;
     }
-    @media screen and (max-width: 426px) {
+    @media screen and (max-width: 500px) {
       img {
         width: 60px;
         height: 60px;
@@ -189,7 +189,7 @@ const LoginPage = styled.div`
           font-size: 12px;
           font-weight: 700;
         }
-        @media screen and (max-width: 426px) {
+        @media screen and (max-width: 500px) {
           p {
             font-size: 8px;
           }
@@ -201,14 +201,14 @@ const LoginPage = styled.div`
           background-color: #eeeeee;
           border-radius: 5px;
         }
-        @media screen and (max-width: 426px) {
+        @media screen and (max-width: 500px) {
           input {
             width: 60%;
             height: 28px;
           }
         }
       }
-      @media screen and (max-width: 426px) {
+      @media screen and (max-width: 500px) {
         .user-emil,
         .user-password,
         .user-confPassword {
@@ -221,7 +221,7 @@ const LoginPage = styled.div`
         color: #ff0000;
         font-size: 12px;
       }
-      @media screen and (max-width: 426px) {
+      @media screen and (max-width: 500px) {
         .err-msg {
           height: 50px;
           font-size: 8px;
@@ -243,7 +243,7 @@ const LoginPage = styled.div`
           background-color: #36375f;
           border-radius: 5px;
         }
-        @media screen and (max-width: 426px) {
+        @media screen and (max-width: 500px) {
           button {
             width: 30vw;
             height: 35px;
@@ -260,7 +260,7 @@ const LoginPage = styled.div`
             margin: 0 auto;
           }
         }
-        @media screen and (max-width: 426px) {
+        @media screen and (max-width: 500px) {
           .to-sign-up {
             width: 100%;
             font-size: 8px;
@@ -268,14 +268,14 @@ const LoginPage = styled.div`
         }
       }
     }
-    @media screen and (max-width: 426px) {
+    @media screen and (max-width: 500px) {
       form {
         width: 100%;
         height: 35vh;
       }
     }
   }
-  @media screen and (max-width: 426px) {
+  @media screen and (max-width: 500px) {
     main {
       /* margin: 107.2px 0 0 0; */
       padding: 0;
