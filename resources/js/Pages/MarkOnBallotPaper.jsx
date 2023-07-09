@@ -78,6 +78,13 @@ const MarkOnBallotPage = styled.div`
     height: calc(100vh - 92px - 80px);
     overflow-y: auto;
     position: relative;
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgb(232, 232, 232, 0.5);
+        border-radius: 10px;
+    }
 
     ${({ open }) =>
         open

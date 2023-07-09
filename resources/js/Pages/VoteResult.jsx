@@ -82,6 +82,13 @@ const ResultPage = styled.div`
     height: calc(100vh - 92px - 80px);
     overflow-y: auto;
     padding-top: 20px;
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgb(232, 232, 232, 0.5);
+        border-radius: 10px;
+    }
     .result {
         margin: 20px auto;
         background-color: #fff;
