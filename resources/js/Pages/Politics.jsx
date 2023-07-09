@@ -206,8 +206,7 @@ const PoliticsPage = styled.div`
                             }
                             .pc-detail{
                                 font-size: 15px;
-                                margin-left: 5px;
-                                margin-top: 10px;
+                                margin: 10px 5px 10px 10px;
                                 display: -webkit-box;
                                 overflow: hidden;
                                 -webkit-line-clamp: 6;
