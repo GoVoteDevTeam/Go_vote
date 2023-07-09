@@ -51,6 +51,13 @@ const MypageElement = styled.div`
     height: calc(100vh - 92px - 70px);
     background-color: #bdc3cd;
     overflow-y: auto;
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgb(232, 232, 232, 0.5);
+        border-radius: 10px;
+    }
 
     .mypage {
         margin: 0 auto;
@@ -68,6 +75,7 @@ const MypageElement = styled.div`
                 direction: rtl;
                 margin-top: -35px;
                 margin-right: 15px;
+                cursor: pointer;
             }
         }
 
