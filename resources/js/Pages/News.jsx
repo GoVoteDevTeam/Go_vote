@@ -47,7 +47,7 @@ const News = () => {
         };
 
         fetchData();
-    }, [currentTab, news]);
+    }, [currentTab]);
 
     return (
         <>
@@ -86,7 +86,7 @@ const News = () => {
                                         <div className='newsImg'>
                                             <img src={newsItem.urlToImage || '../../../img/jimin.jpg'} alt="" />
                                         </div>
-                                        <div className='newsText'>{newsItem.title}</div>
+                                        <div className='newsText'>{newsItem.description}<a href={newsItem.url}>詳細記事はこちら</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -146,7 +146,6 @@ const NewsPage = styled.div`
                     }
                     .btn:last-child {
                         border-right: none; /* 最後のボタンの縦線を削除 */
-
                     }
                 }
 
@@ -190,6 +189,25 @@ const NewsPage = styled.div`
                         }
                 }
             }
+
+            /* レスポンシブ対応の追加 */
+            @media screen and (min-width: 1024px) {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 20px;
+            }
+        }
+    }
+
+    .container {
+    width: 100%;
+
+        @media screen and (min-width: 768px) {
+            width: 80%;
+        }
+
+        @media screen and (min-width: 1024px) {
+            width: 60%;
         }
     }
 
