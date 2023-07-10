@@ -212,7 +212,7 @@ const LoginPage = styled.div`
         .user-emil,
         .user-password,
         .user-confPassword {
-          margin: 10px 0;
+          margin: 13px 0;
         }
       }
       .err-msg {
@@ -223,7 +223,7 @@ const LoginPage = styled.div`
       }
       @media screen and (max-width: 500px) {
         .err-msg {
-          height: 50px;
+          height: 35px;
           font-size: 8px;
           /* padding: 0 0 23px 0; */
         }
@@ -231,7 +231,7 @@ const LoginPage = styled.div`
 
       .button-login {
         width: 100%;
-        height: 18vh;
+        height: 13.1vh;
         button {
           width: 40%;
           height: 40px;
@@ -264,6 +264,7 @@ const LoginPage = styled.div`
           .to-sign-up {
             width: 100%;
             font-size: 8px;
+            margin: 10px 0 0 0;
           }
         }
       }
@@ -284,8 +285,7 @@ const LoginPage = styled.div`
       grid-template:
         "header" 60px
         "img" 60px
-        "form" 230px
-        "button-login" 1fr
+        "form" 1fr
         /1fr;
     }
   }
