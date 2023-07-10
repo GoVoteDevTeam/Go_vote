@@ -81,7 +81,6 @@ const ResultPage = styled.div`
     width: 100%;
     height: calc(100vh - 92px - 80px);
     overflow-y: auto;
-    padding-top: 20px;
     ::-webkit-scrollbar {
         width: 5px;
     }

@@ -188,7 +188,11 @@ const ToVotePage = styled.div`
     }
     @media all and (min-width: 500px) {
         height: 100vh;
+        .elem {
+            left: 55%;
+        }
         .ballot-box {
+            left: 55%;
             transform: translate(-50%, 0%);
             .box {
                 height: 100px;
