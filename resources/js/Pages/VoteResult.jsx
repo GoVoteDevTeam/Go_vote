@@ -8,13 +8,26 @@ const VoteResult = ({ vote_id, vote_data, politics }) => {
         title: "結果",
         info: "",
     };
-    console.log(vote_id, vote_data, politics)
 
+    // console.log(vote_id, vote_data, politics)
     let labelData = [];
 
     politics.forEach((element)=> {
         labelData = [...labelData, element.politics_name] ;
     })
+
+    /**
+     * 集計処理を行う部分
+     */
+
+    // let resultData = Array(politics.length).fill(0);
+    
+    // vote_data.forEach((vote)=> {
+    //     resultData[vote.politics_id - 1]++;
+    // })
+
+    // console.log(resultData)
+
 
     let mockData = [2008, 504, 1115, 823, 80, 20, 200, 10, 39, 59];
 
