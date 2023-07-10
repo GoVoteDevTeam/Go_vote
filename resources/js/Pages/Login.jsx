@@ -98,6 +98,11 @@ const Login = ({ errors }) => {
                 <Link href="/signup">こちら</Link>
                 から新規登録してください。
               </div>
+              <div className="to-sign-up-mobile">
+                初めての方は
+                <Link href="/signup">こちら</Link>
+                から。
+              </div>
             </div>
           </form>
         </main>
@@ -255,16 +260,28 @@ const LoginPage = styled.div`
           width: 100%;
           height: 3vh;
           font-size: 12px;
-          margin: 0 auto;
+          margin: 10px 0 0 0;
           Link {
             margin: 0 auto;
           }
         }
         @media screen and (max-width: 500px) {
           .to-sign-up {
-            width: 100%;
-            font-size: 8px;
-            margin: 10px 0 0 0;
+            display: none;
+          }
+        }
+        .to-sign-up-mobile {
+          width: 100%;
+          height: 3vh;
+          font-size: 8px;
+          margin: 10px 0 0 0;
+          Link {
+            margin: 0 auto;
+          }
+        }
+        @media screen and (min-width: 500px) {
+          .to-sign-up-mobile {
+            display: none;
           }
         }
       }
