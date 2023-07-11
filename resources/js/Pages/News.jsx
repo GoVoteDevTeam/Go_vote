@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import VoteNotice from '../components/VoteNotice';
 import { useEffect } from "react";
 import axios from "axios";

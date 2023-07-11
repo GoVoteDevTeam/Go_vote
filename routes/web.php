@@ -38,6 +38,16 @@ Route::get('/demo', function () {
     ]);
 });
 
+Route::get('/diagonose', function () {
+    return Inertia::render('Diagonose');
+});
+
+Route::get('/politics', function () {
+    return Inertia::render('Politics');
+});
+// Route::get('/login', function () {
+//     return Inertia::render('Login');
+// })->name("login");
 Route::get('/politics', function () {
     return Inertia::render('Politics');
 });

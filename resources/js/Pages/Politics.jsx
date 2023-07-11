@@ -5,15 +5,9 @@ import Modal from "../components/Modal";
 import VoteNotice from '../components/VoteNotice';
 
 const Politics = () => {
-    const [selectedParty, setSelectedParty] = useState(null);
-
-    const openModal = (party) => {
-      setSelectedParty(party);
-    };
-  
-    const closeModal = () => {
-      setSelectedParty(null);
-    };
+    data.forEach((data)=> {
+        console.log(data.name) ;
+    });
 
     return (
         <>
