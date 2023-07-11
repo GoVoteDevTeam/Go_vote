@@ -124,7 +124,7 @@ const LoginPage = styled.div`
   overflow-x: hidden;
   @media screen and (max-width: 500px) {
     width: 100%;
-    height: calc(100vh - 27vh);
+    height: calc(100vh - 20vh);
   }
   main {
     background-color: #ffffff;
