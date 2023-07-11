@@ -184,7 +184,7 @@ export default Diagnose;
 
 const DiagnosePage = styled.div`
   width: 100%;
-  height: calc(100vh - 92px - 70px);
+  height: calc(200vh - 92px - 70px);
   background-color: #bdc3cd;
   padding-bottom: 20px;
   overflow-y: auto;
@@ -192,7 +192,7 @@ const DiagnosePage = styled.div`
     background-color: #36375f;
     border-radius: 35px 35px 0px 0px;
     margin-top: 20px;
-    padding-bottom: 20px;
+    height: 100vh;
     .title {
       padding: 10px;
       text-align: center;

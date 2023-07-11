@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="footer-nav-box">
             <ul className="footer-nav">
               <li><InertiaLink href={"/news"} className="footer-link">ニュース</InertiaLink></li>
-              <li><InertiaLink href={"/"} className="footer-link">政党診断</InertiaLink></li>
+              <li><InertiaLink href={"/diagonose"} className="footer-link">政党診断</InertiaLink></li>
               <li><InertiaLink href={"/politics"} className="footer-link">政党一覧</InertiaLink></li>
               <li><InertiaLink href={"/demo_vote/start"} className="footer-link">デモ選挙</InertiaLink></li>
             </ul>
