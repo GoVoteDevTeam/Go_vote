@@ -1,9 +1,7 @@
 import { useState } from "react";
-import Header from "../components/Header"
 import styled from "styled-components";
 import { Inertia } from "@inertiajs/inertia";
 import PropTypes from 'prop-types';
-import Footer from "../components/footer"
 
 const SignUp = ({ errors }) => {
     // 入力されるデータを定義
@@ -48,7 +46,6 @@ const SignUp = ({ errors }) => {
 
     return (
         <>
-            <Header />
 
             <SignUPPage>
                 <div className="main">
@@ -83,7 +80,7 @@ const SignUp = ({ errors }) => {
                     </form>
                 </div>
             </SignUPPage>
-            <Footer />
+
         </>
     )
 
