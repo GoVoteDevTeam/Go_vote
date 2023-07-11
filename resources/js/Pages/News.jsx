@@ -175,16 +175,17 @@ const NewsPage = styled.div`
                         background-color: #f5f5f5;
                         width: 100%;
                         height: 20%;
-                        display: flex;
+                        /* display: flex; */
                         justify-content: center;
                         box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
                         overflow: hidden;
                         overflow-x: auto;
                         position: relative;
                         .newsImg{
-                            width: 30%;
-                            max-width: 150px;
-                            min-width: 150px;
+                            margin: 0 auto;
+                            max-width: 80%;
+                            min-width: 200px;
+                            width: 300px;
                             img {
                                 width: 100%;
                                 margin: 10px 10px 5px;
