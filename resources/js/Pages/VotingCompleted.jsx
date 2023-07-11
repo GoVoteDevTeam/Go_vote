@@ -35,6 +35,13 @@ const VotingCompeletedPage = styled.div`
     width: 100%;
     height: calc(100vh - 92px - 80px);
     overflow-y: auto;
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgb(232, 232, 232, 0.5);
+        border-radius: 10px;
+    }
     .completed {
         text-align: center;
     }
