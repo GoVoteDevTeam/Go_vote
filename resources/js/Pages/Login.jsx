@@ -124,7 +124,7 @@ const LoginPage = styled.div`
   overflow-x: hidden;
   @media screen and (max-width: 500px) {
     width: 100%;
-    height: calc(100vh - 20vh);
+    height: calc(100vh - 92px - 80px);
   }
   main {
     background-color: #ffffff;
@@ -153,9 +153,9 @@ const LoginPage = styled.div`
       }
       @media screen and (max-width: 500px) {
         p {
-          height: 40px;
-          margin: 10px 0;
-          font-size: 30px;
+          height: 75px;
+          margin: 55px 0 0 0;
+          font-size: 40px;
         }
       }
     }
@@ -170,12 +170,6 @@ const LoginPage = styled.div`
       height: 100px;
       margin: 0 auto;
       grid-area: img;
-    }
-    @media screen and (max-width: 500px) {
-      img {
-        width: 60px;
-        height: 60px;
-      }
     }
 
     form {
@@ -234,7 +228,7 @@ const LoginPage = styled.div`
 
       .button-login {
         width: 100%;
-        height: 13.1vh;
+        height: 13vh;
         button {
           width: 40%;
           height: 40px;
@@ -248,7 +242,7 @@ const LoginPage = styled.div`
         }
         @media screen and (max-width: 500px) {
           button {
-            width: 30vw;
+            width: 35vw;
             height: 35px;
             padding: 5px;
             font-size: 12px;
@@ -287,19 +281,19 @@ const LoginPage = styled.div`
     @media screen and (max-width: 500px) {
       form {
         width: 100%;
-        height: 35vh;
+        height: 44vh;
+        margin: 20px 0 0 0;
       }
     }
   }
   @media screen and (max-width: 500px) {
     main {
-      /* margin: 107.2px 0 0 0; */
       padding: 0;
       width: 80%;
       height: 92%;
       grid-template:
-        "header" 60px
-        "img" 60px
+        "header" 130px
+        "img" 100px
         "form" 1fr
         /1fr;
     }
