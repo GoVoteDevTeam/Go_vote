@@ -149,7 +149,15 @@ const ToVotePage = styled.div`
     background-color: #bdc3cd;
     width: 100%;
     height: calc(100vh - 92px - 80px);
-    overflow-y: auto;
+    overflow-y: hidden;
+    
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgb(232, 232, 232, 0.5);
+        border-radius: 10px;
+    }
     .elem {
         position: absolute;
         width: fit-content;
@@ -181,7 +189,11 @@ const ToVotePage = styled.div`
     }
     @media all and (min-width: 500px) {
         height: 100vh;
+        .elem {
+            left: 55%;
+        }
         .ballot-box {
+            left: 55%;
             transform: translate(-50%, 0%);
             .box {
                 height: 100px;

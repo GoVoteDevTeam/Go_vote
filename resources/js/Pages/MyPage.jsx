@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Inertia } from '@inertiajs/inertia';
+import { Inertia } from "@inertiajs/inertia";
 import pro from "../../../public/img/pro.png";
 
 const MyPage = ({ auth }) => {
@@ -8,7 +8,7 @@ const MyPage = ({ auth }) => {
     const profile_Email = auth.email;
 
     const handleLogout = () => {
-        Inertia.post('/logout'); // ログアウトリクエストを送信
+        Inertia.post("/logout"); // ログアウトリクエストを送信
     };
 
     return (
@@ -50,25 +50,32 @@ const MypageElement = styled.div`
     width: 100%;
     height: calc(100vh - 92px - 70px);
     background-color: #bdc3cd;
-    padding-bottom: 20px;
     overflow-y: auto;
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgb(232, 232, 232, 0.5);
+        border-radius: 10px;
+    }
 
     .mypage {
         margin: 0 auto;
         width: 90%;
-        height: calc(130vh - 70px);
         align-items: center;
         background-color: #ffffff;
         margin-top: 30px;
         margin-bottom: 30px;
         border-radius: 15px;
+        padding-bottom: 10px;
 
-        .logout{
-            .text{
+        .logout {
+            .text {
                 margin: 0 auto;
                 direction: rtl;
                 margin-top: -35px;
                 margin-right: 15px;
+                cursor: pointer;
             }
         }
 
@@ -106,7 +113,7 @@ const MypageElement = styled.div`
         .rireki {
             margin: 0 auto;
             width: 90%;
-            height: 40%;
+            height: 230px;
             align-items: center;
             background-color: #bdc3cd;
             border-radius: 15px;
@@ -121,6 +128,6 @@ const MypageElement = styled.div`
         }
     }
     @media all and (min-width: 500px) {
-		height: 100vh;
-	}
+        height: 100vh;
+    }
 `;

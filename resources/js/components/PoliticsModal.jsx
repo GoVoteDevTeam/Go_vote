@@ -59,6 +59,13 @@ const ModalComponent = styled.div`
     transform: translate(-50%, -50%);
     overflow-y: auto;
     padding-bottom: 15px;
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgb(232, 232, 232, 0.5);
+        border-radius: 10px;
+    }
 
     /* stateのopenに応じて、表示非表示を判定 */
     ${({ open }) => open ? css`
