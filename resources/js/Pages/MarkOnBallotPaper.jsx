@@ -7,13 +7,12 @@ import PoliticsModal from "../components/PoliticsModal";
 import { useEffect, useState } from "react";
 
 const MarkOnBallotPaper = ({ politics }) => {
-
     const pageInfo = {
         title: "政党別",
-        info: `投票用紙を作成する`
-    }
+        info: `投票用紙を作成する`,
+    };
 
-    const year = 5
+    const year = 5;
 
     const [open, setOpen] = useState(false);
 
@@ -25,7 +24,7 @@ const MarkOnBallotPaper = ({ politics }) => {
     const handleNameClick = () => {
         // 反転
         setOpen(!open);
-    }
+    };
 
     useEffect(() => {
         localStorage.setItem("politics", JSON.stringify(currentPolitics));
@@ -33,7 +32,7 @@ const MarkOnBallotPaper = ({ politics }) => {
 
     return (
         <>
-            <MarkOnBallotPage open={open} >
+            <MarkOnBallotPage open={open}>
                 <VoteTitle info={pageInfo} />
                 <div className="ballot-main-paper">
                     <div className="fiscal-year">
@@ -69,30 +68,43 @@ const MarkOnBallotPaper = ({ politics }) => {
                 />
             </MarkOnBallotPage>
         </>
-    )
-}
+    );
+};
 
 export default MarkOnBallotPaper;
 
-
 const MarkOnBallotPage = styled.div`
-	width: 100%;
-	height: calc(100vh - 92px - 80px);
-	overflow-y: auto;
+    width: 100%;
+    height: calc(100vh - 92px - 80px);
+    overflow-y: auto;
     position: relative;
-
-    ${({ open }) => open ? css`
-            background-color:rgba(0, 0, 0, 0.6);
-        `: css`
-    	    background-color: #BDC3CD;
-            opacity: 1;
-        `
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgb(232, 232, 232, 0.5);
+        border-radius: 10px;
     }
 
+    ${({ open }) =>
+        open
+            ? css`
+                  background-color: rgba(0, 0, 0, 0.6);
+              `
+            : css`
+                  background-color: #bdc3cd;
+                  opacity: 1;
+              `}
+
     .ballot-main-paper {
-        background-color: #fff;
+        ${({ open }) =>
+            !open
+                ? css`
+                      background-color: #fff;
+                  `
+                : css``}
         max-width: 80%;
-        margin:10px auto 30px auto;
+        margin: 10px auto 30px auto;
         padding: 10px;
         .ballot-title {
             text-align: center;
@@ -129,17 +141,28 @@ const MarkOnBallotPage = styled.div`
         .vote-button {
             margin: 45px auto;
             width: 150px;
+            ${({ open }) =>
+                open
+                    ? css`
+                          display: none;
+                      `
+                    : css`
+                          display: block;
+                      `}
             a {
                 padding: 20px;
                 text-decoration: none;
-                background-color: #36375F;
+                background-color: #36375f;
                 width: 120px;
                 height: 55px;
                 border-radius: 20px;
                 color: #fff;
-                box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
                 margin: 0 auto;
             }
         }
     }
-`
+    @media all and (min-width: 500px) {
+        height: 100vh;
+    }
+`;

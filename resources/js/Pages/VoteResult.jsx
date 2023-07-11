@@ -8,13 +8,26 @@ const VoteResult = ({ vote_id, vote_data, politics }) => {
         title: "結果",
         info: "",
     };
-    console.log(vote_id, vote_data, politics)
 
+    // console.log(vote_id, vote_data, politics)
     let labelData = [];
 
     politics.forEach((element)=> {
         labelData = [...labelData, element.politics_name] ;
     })
+
+    /**
+     * 集計処理を行う部分
+     */
+
+    // let resultData = Array(politics.length).fill(0);
+    
+    // vote_data.forEach((vote)=> {
+    //     resultData[vote.politics_id - 1]++;
+    // })
+
+    // console.log(resultData)
+
 
     let mockData = [2008, 504, 1115, 823, 80, 20, 200, 10, 39, 59];
 
@@ -81,7 +94,13 @@ const ResultPage = styled.div`
     width: 100%;
     height: calc(100vh - 92px - 80px);
     overflow-y: auto;
-    padding-top: 20px;
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgb(232, 232, 232, 0.5);
+        border-radius: 10px;
+    }
     .result {
         margin: 20px auto;
         background-color: #fff;
@@ -95,4 +114,7 @@ const ResultPage = styled.div`
             height: 600px;
         }
     }
+    @media all and (min-width: 500px) {
+		height: 100vh;
+	}
 `;

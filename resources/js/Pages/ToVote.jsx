@@ -6,7 +6,6 @@ import { Inertia } from "@inertiajs/inertia";
 import { useRef, useState } from "react";
 
 const ToVote = () => {
-
     // console.log(localStorage.getItem("politics"));
     // localStorage.clear();
     // console.log(localStorage.getItem("politics"));
@@ -40,14 +39,17 @@ const ToVote = () => {
                 el.current.style.top = 92 + "px";
             }
 
-            if (box_top.current.getBoundingClientRect().top < el.current.getBoundingClientRect().top) {
+            if (
+                box_top.current.getBoundingClientRect().top <
+                el.current.getBoundingClientRect().top
+            ) {
                 if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
                     if (!isLoading) {
                         setIsLoading(true);
                         clearTimeout(debounceTimer.current);
                         debounceTimer.current = setTimeout(() => {
                             Inertia.post("/demo_vote/to_vote", {
-                                politics: localStorage.getItem("politics")
+                                politics: localStorage.getItem("politics"),
                             }).then(() => {
                                 setIsLoading(false);
                             });
@@ -90,14 +92,18 @@ const ToVote = () => {
                 el.current.style.top = 92 + "px";
             }
 
-            if (box_top.current.getBoundingClientRect().top < el.current.getBoundingClientRect().top) {
+            if (
+                box_top.current.getBoundingClientRect().top <
+                el.current.getBoundingClientRect().top
+            ) {
                 if (!navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
-                    if (!isLoading) { // Only if not currently loading
+                    if (!isLoading) {
+                        // Only if not currently loading
                         setIsLoading(true);
                         clearTimeout(debounceTimer.current);
                         debounceTimer.current = setTimeout(() => {
                             Inertia.post("/demo_vote/to_vote", {
-                                politics: localStorage.getItem("politics")
+                                politics: localStorage.getItem("politics"),
                             }).then(() => {
                                 setIsLoading(false);
                             });
@@ -120,7 +126,8 @@ const ToVote = () => {
     return (
         <>
             <ToVotePage>
-                <div className="elem"
+                <div
+                    className="elem"
                     onTouchStart={(e) => touchstart(e)}
                     onMouseDown={(e) => mousedown(e)}
                     ref={el}
@@ -129,9 +136,7 @@ const ToVote = () => {
                 </div>
                 <div className="ballot-box">
                     <div className="top" ref={box_top} />
-                    <div className="box">
-                        スワイプして投票
-                    </div>
+                    <div className="box">スワイプして投票</div>
                 </div>
             </ToVotePage>
         </>
@@ -144,14 +149,22 @@ const ToVotePage = styled.div`
     background-color: #bdc3cd;
     width: 100%;
     height: calc(100vh - 92px - 80px);
-    overflow-y: auto;
-    padding-top: 20px;
+    overflow-y: hidden;
+    
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgb(232, 232, 232, 0.5);
+        border-radius: 10px;
+    }
     .elem {
         position: absolute;
         width: fit-content;
         margin: 0 auto;
         left: 50%;
         transform: translateX(-50%);
+        padding-top: 20px;
     }
     .ballot-box {
         position: absolute;
@@ -172,6 +185,19 @@ const ToVotePage = styled.div`
             text-align: center;
             font-weight: 700px;
             font-size: 1.2em;
+        }
+    }
+    @media all and (min-width: 500px) {
+        height: 100vh;
+        .elem {
+            left: 55%;
+        }
+        .ballot-box {
+            left: 55%;
+            transform: translate(-50%, 0%);
+            .box {
+                height: 100px;
+            }
         }
     }
 `;

@@ -18,7 +18,7 @@ const Modal = ({ Politics_data }) => {
   const divElement = document.getElementById('item2-1');
 
   if (!divElement) {
-    console.error('Error: "item2" not found.');
+    // console.error('Error: "item2" not found.');
   } else {
     let y = 50;
     let truncatedDetail = truncateText(Politics_data.detail);
