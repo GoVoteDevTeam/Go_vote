@@ -129,8 +129,11 @@ const SignUPPage = styled.div`
                     border: none;
                     border-radius: 20px;
                 }
+            p{
+                    margin-bottom: 0;
             }
-       
+            }
+    
             .user-submit {
 
                 button {
