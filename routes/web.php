@@ -48,9 +48,6 @@ Route::get('/politics', function () {
 // Route::get('/login', function () {
 //     return Inertia::render('Login');
 // })->name("login");
-Route::get('/politics', function () {
-    return Inertia::render('Politics');
-});
 
 Route::get('/signup', [SignUpController::class, "index"])->name('signup');
 
@@ -66,13 +63,13 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get("/demo_vote/start", [DemoVoteController::class, "index"])->name("demovote_start");
 
-Route::get("/demo_vote/result",[DemoVoteController::class, "result"])->name("demovote_result");
+Route::get("/demo_vote/result", [DemoVoteController::class, "result"])->name("demovote_result");
 
 Route::get("/demo_vote/result_list", [DemoVoteController::class, "resultVoteList"]);
 
 Route::middleware('auth')->group(function () {
-    Route::get("/mypage",[MypageController::class, "index"])->name("mypage");
-    
+    Route::get("/mypage", [MypageController::class, "index"])->name("mypage");
+
     Route::get("/demo_vote/ballots", [DemoVoteController::class, "handingOutBallots"])->name("ballots");
 
     Route::get("/demo_vote/party_based_election", [DemoVoteController::class, "markOnBallotPaper"])->name("markon");
@@ -87,7 +84,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post("/demo_vote/to_vote", [DemoVoteController::class, "vote"]);
 
-    Route::get("/demo_vote/completed", function() {
+    Route::get("/demo_vote/completed", function () {
         return Inertia::render("VotingCompleted");
     });
 });

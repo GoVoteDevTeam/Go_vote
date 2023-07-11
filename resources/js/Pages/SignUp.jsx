@@ -36,7 +36,7 @@ const SignUp = ({ errors }) => {
             setMatchError(false);
         }
 
-        Inertia.post("signup", inputUserInformation, {onFinish})
+        Inertia.post("signup", inputUserInformation, { onFinish })
     }
     const onFinish = () => {
         console.log("finish");
@@ -46,31 +46,41 @@ const SignUp = ({ errors }) => {
 
     return (
         <>
+
             <SignUPPage>
-                {passwordMatchError && <p>パスワードが一致しません</p>}
-                {errors && Object.keys(errors).map((key) => (
-                    <div key={key}>{errors[key]}</div>
-                ))}
-                <form onSubmit={(e) => signUpSubmit(e)}>
-                    <div className="user-input">
-                        <p>ユーザ名</p>
-                        <input type="text" name="user_name" id="user_name" onChange={(e) => inputChange(e)} required />
+                <div className="main">
+                    <div className="login-gazou">
+                        <h1>新規登録</h1>
+                        <img src="img/signup.png" alt="" />
                     </div>
-                    <div className="user-emil">
-                        <p>e-mail</p>
-                        <input type="text" name="email" id="email" onChange={(e) => inputChange(e)} required />
-                    </div>
-                    <div className="user-password">
-                        <p>パスワード</p>
-                        <input type="text" name="password" id="password" onChange={(e) => inputChange(e)} required />
-                    </div>
-                    <div className="user-password">
-                        <p>再度入力</p>
-                        <input type="text" name="confirmPassword" id="confirmPassword" required onChange={(e) => inputChange(e)} />
-                    </div>
-                    <button type="submit">送信</button>
-                </form>
+                    <form onSubmit={(e) => signUpSubmit(e)}>
+                        <div className="user-input">
+                            <p>ユーザ名</p>
+                            <input type="text" name="user_name" id="user_name" onChange={(e) => inputChange(e)} required />
+                        </div>
+                        <div className="user-email">
+                            <p>e-mail</p>
+                            <input type="text" name="email" id="email" onChange={(e) => inputChange(e)} required />
+                        </div>
+                        <div className="user-password">
+                            <p>パスワード</p>
+                            <input type="text" name="password" id="password" onChange={(e) => inputChange(e)} required />
+                        </div>
+                        <div className="user-password">
+                            <p>再度入力</p>
+                            <input type="text" name="confirmPassword" id="confirmPassword" required onChange={(e) => inputChange(e)} />
+                        </div>
+                        <div className="user-submit">
+                            {passwordMatchError && <p>パスワードが一致しません</p>}
+                            {errors && Object.keys(errors).map((key) => (
+                                <div key={key}>{errors[key]}</div>
+                            ))}
+                            <button type="submit">送信</button>
+                        </div>
+                    </form>
+                </div>
             </SignUPPage>
+
         </>
     )
 
@@ -83,11 +93,69 @@ SignUp.PropTypes = {
 export default SignUp;
 
 const SignUPPage = styled.div`
-    form {
-        .user-password {
-            input {
-                -webkit-text-security:disc;
+    background-color: #BDC3CD;
+    width: 100%;
+    height: calc(100vh - 90px - 100px);
+    margin: 0 auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    .main {
+        border-radius: 10px;
+        margin: 0 auto;
+        width: 80%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: #FFFFFF;
+        text-align: center;
+        .login-gazou {
+            text-align: center;
+        }
+        .login-gazou img {
+            width: 100px;
+            height: 100px;
+        }
+        form {
+            margin: 0 auto;
+
+            .user-input , .user-email , .user-password {
+                input {
+                    width: 240px;
+                    height: 40px;
+                    background-color: #eeeeee
+                    ;
+                    border: none;
+                    border-radius: 20px;
+                }
+            p{
+                    margin-bottom: 0;
+            }
+            }
+    
+            .user-submit {
+
+                button {
+                    margin-top: 20px;
+                    width: 100px;
+                    height: 30px;
+                    border-radius: 10px;
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 15px;
+                    line-height: 18px;
+                    text-align: center;
+                    letter-spacing: -0.01em;
+                    color: #fff;
+                    background-color: #36375F;
+                }
+                p {
+                    color: red;
+                }
             }
         }
     }
+    @media all and (min-width: 500px) {
+        height: 100vh;
+    }
 `;
+
