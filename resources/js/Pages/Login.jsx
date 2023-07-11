@@ -124,7 +124,7 @@ const LoginPage = styled.div`
   overflow-x: hidden;
   @media screen and (max-width: 500px) {
     width: 100%;
-    height: 73vh;
+    height: calc(100vh - 27vh);
   }
   main {
     background-color: #ffffff;
@@ -180,7 +180,6 @@ const LoginPage = styled.div`
 
     form {
       width: 100%;
-      height: 270px;
       color: #36375f;
       grid-area: form;
       .user-emil,
