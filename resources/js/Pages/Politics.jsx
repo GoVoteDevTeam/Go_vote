@@ -1,15 +1,20 @@
+import React, { useState } from "react";
 import styled from "styled-components";
 import data from "../components/Politics_data";
 import Modal from "../components/Modal";
 
 const Politics = () => {
+    const [selectedParty, setSelectedParty] = useState(null);
 
-    data.forEach((data)=> {
-        console.log(data.name) ;
-    });
+    const openModal = (party) => {
+      setSelectedParty(party);
+    };
+  
+    const closeModal = () => {
+      setSelectedParty(null);
+    };
 
     return (
-
         <>
             <HeaderElement>
 
@@ -31,10 +36,9 @@ const Politics = () => {
                         </div>
                     </div>
                 ))}
-            </PoliticsPage>
+y            </PoliticsPage>
         </>
     )
-
 }
 
 export default Politics;
@@ -47,6 +51,9 @@ const HeaderElement = styled.header`
 `;
 
 const PoliticsPage = styled.div`
+    .pc {
+        display: none;
+    }
     width: 100%;
     height: 100%;
     background-color: #36375F;
@@ -98,4 +105,65 @@ const PoliticsPage = styled.div`
             overflow: hidden; */
         }
     }
+`;
+
+const ModalWrap = styled.div`
+  .modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .modal__content {
+    background-color: #fefefe;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 15;
+  }
+
+  .iconModal {
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    border: solid 4px #ff6347;
+        .img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+  }
+  .modal__close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    cursor: pointer;
+    background-color: #777;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    width: 36px;
+    height: 36px;
+    line-height: 1.5;
+    .modal__closetext{
+        margin: 0px 0px 0px 9px;
+        font-size: 1.4em;
+        color: #fff;
+    }
+  }
 `;

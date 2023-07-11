@@ -20,11 +20,11 @@ const HandingOutBallots = ({ auth }) => {
             name: "政策別選挙",
             href: "/demo_vote/policy_based_election"
         }
+        
     ];
 
     return (
         <>
-            <Header />
             <HandingOutBallotsPage>
                 <VoteTitle info={pageInfo} />
                 <div className="votable-items">
@@ -37,7 +37,6 @@ const HandingOutBallots = ({ auth }) => {
                     ))}
                 </div>
             </HandingOutBallotsPage>
-            <TmpFooter />
         </>
     )
 }
@@ -65,4 +64,7 @@ const HandingOutBallotsPage = styled.div`
         }
 
     }
+	@media all and (min-width: 500px) {
+		height: 100vh;
+	}
 `;

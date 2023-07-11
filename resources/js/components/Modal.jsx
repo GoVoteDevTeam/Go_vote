@@ -6,6 +6,39 @@ const Modal = ({ Politics_data }) => {
 
   const handleModal = () => setIsOpen(!isOpen);
 
+  const truncateText = (text, maxLength) => {
+    if (text.length <= maxLength) {
+      return text;
+    }
+  
+    return text.substring(0, maxLength) + '...';
+  }
+
+  // div要素を取得します
+  const divElement = document.getElementById('item2-1');
+
+  if (!divElement) {
+    // console.error('Error: "item2" not found.');
+  } else {
+    let y = 50;
+    let truncatedDetail = truncateText(Politics_data.detail);
+  
+    // widthを取得して表示する関数を定義します
+    const logWidth = () => {
+      const width = divElement.offsetWidth;
+      // console.log('Width:', width);
+      y = -0.06675 * (125 - width);
+      // console.log('detail:', y);
+      truncatedDetail = truncateText(Politics_data.detail, y);
+      // console.log(truncatedDetail);
+
+      const truncatedDetailElement = document.getElementById(`truncatedDetail-${Politics_data.id}`);
+      truncatedDetailElement.innerHTML = truncatedDetail;
+    }
+    logWidth();
+    window.addEventListener('resize', logWidth);  
+  }
+
   return (
     <>
       <ModalWrap>
@@ -21,9 +54,7 @@ const Modal = ({ Politics_data }) => {
           <label htmlFor={`modal-${Politics_data.name}`} className="modal__trigger_catchcopy">
             {Politics_data.catchcopy}
           </label>
-          <label htmlFor={`modal-${Politics_data.name}`} className="modal__trigger_detail">
-            {Politics_data.detail}
-          </label>
+          <label id={`truncatedDetail-${Politics_data.id}`} htmlFor={`modal-${Politics_data.name}`} className="modal__trigger_detail"></label>
         </div>
 
         {isOpen && (
@@ -53,6 +84,7 @@ const ModalWrap = styled.div`
     }
 
     .modal__trigger{
+      color: #4f96f6;
       position:relative;
       margin-left: 10px;
       margin-right: 10px;
@@ -71,7 +103,11 @@ const ModalWrap = styled.div`
           margin-left: 20px;
       }
     }
-
+    .modal__trigger:hover {
+      text-decoration: underline;
+      cursor: pointer;
+      color: #c7511f;
+    }
     .modal__overlay {
         position: fixed;
         top: 0;
@@ -121,9 +157,11 @@ const ModalWrap = styled.div`
             }
         }
     }
-    @media only screen and (max-width: 640px) {
+    @media only screen and (max-width: 500px) {
+    .modal__trigger .modal__trigger_catchcopy {
+        font-size: 1.2rem;
+    }
     .modal__trigger_detail {
-        font-size: calc(2rem - 1rem);
         white-space: pre-wrap;
         display: none;
     }
