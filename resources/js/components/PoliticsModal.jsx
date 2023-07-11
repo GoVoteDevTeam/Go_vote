@@ -6,8 +6,12 @@ const PoliticsModal = ({ politics, open, setOpen, currentPolitics, setCurrentPol
     }
 
     const setPolitics = (e) => {
-        const politics = e.target.value;
-        setCurrentPolitics(politics);
+        const name = e.target.value;
+        const id = e.target.id;
+        setCurrentPolitics({
+            politics_id: parseInt(id),
+            politics_name: name
+        });
     }
 
     return (
@@ -19,11 +23,12 @@ const PoliticsModal = ({ politics, open, setOpen, currentPolitics, setCurrentPol
                 {politics.map(
                     (item, key) => {
                         return (
-                            <label htmlFor={key} key={key}>
+                            <label htmlFor={item.politics_id} key={key}>
                                 <div className="politics-element"  >
                                     <input
                                         type="radio"
-                                        id={key} name="politics"
+                                        id={item.politics_id}
+                                        name="politics"
                                         value={item.politics_name}
                                         onClick={(e) => setPolitics(e)}
                                     />
@@ -54,6 +59,13 @@ const ModalComponent = styled.div`
     transform: translate(-50%, -50%);
     overflow-y: auto;
     padding-bottom: 15px;
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgb(232, 232, 232, 0.5);
+        border-radius: 10px;
+    }
 
     /* stateのopenに応じて、表示非表示を判定 */
     ${({ open }) => open ? css`

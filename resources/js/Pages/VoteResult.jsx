@@ -1,60 +1,77 @@
 import styled from "styled-components";
-import Header from "../components/Header";
-import TmpFooter from "../components/TmpFooter";
 import VoteTitle from "../components/VoteTitle";
-import { Bar } from 'react-chartjs-2';
-import Chart from 'chart.js/auto'; // 消さないで
+import { Bar } from "react-chartjs-2";
+import Chart from "chart.js/auto"; // 消さないで
 
-const VoteResult = () => {
+const VoteResult = ({ vote_id, vote_data, politics }) => {
     const pageInfo = {
         title: "結果",
-        info: ""
-    }
+        info: "",
+    };
 
-    let mockData = [ 2008, 504, 1115, 823, 80, 20 ]
+    // console.log(vote_id, vote_data, politics)
+    let labelData = [];
 
-    const dataSum = mockData.reduce((accumulator, currentValue) => accumulator + currentValue)
+    politics.forEach((element)=> {
+        labelData = [...labelData, element.politics_name] ;
+    })
+
+    /**
+     * 集計処理を行う部分
+     */
+
+    // let resultData = Array(politics.length).fill(0);
+    
+    // vote_data.forEach((vote)=> {
+    //     resultData[vote.politics_id - 1]++;
+    // })
+
+    // console.log(resultData)
+
+
+    let mockData = [2008, 504, 1115, 823, 80, 20, 200, 10, 39, 59];
+
+    const dataSum = mockData.reduce(
+        (accumulator, currentValue) => accumulator + currentValue
+    );
+
+    const colorData = [
+        "rgb(255, 99, 132)",     // Red
+        "rgb(54, 162, 235)",     // Blue
+        "rgb(255, 206, 86)",     // Yellow
+        "rgb(75, 192, 192)",     // Teal
+        "rgb(153, 102, 255)",    // Purple
+        "rgb(255, 159, 64)",     // Orange
+        "rgb(255, 255, 0)",      // Lime
+        "rgb(128, 0, 128)",      // Magenta
+        "rgb(0, 128, 128)",      // Aqua
+        "rgb(128, 128, 0)"       // Olive
+    ]
 
     const data = {
-        labels: ['自由民主党','公明党', '立憲民主党', '日本維新の会', '国民民主党', '共産党'],
+        labels: labelData,
         datasets: [
-          {
-            label: '得票数',
-            data: mockData, // 仮の得票数
-            backgroundColor: [
-              'rgb(255, 99, 132)',
-              'rgb(54, 162, 235)',
-              'rgb(255, 206, 86)',
-              'rgb(75, 192, 192)',
-              'rgb(153, 102, 255)',
-              'rgb(153, 102, 255)',
-            ],
-            borderColor: [
-              'rgb(255, 99, 132)',
-              'rgb(54, 162, 235)',
-              'rgb(255, 206, 86)',
-              'rgb(75, 192, 192)',
-              'rgb(153, 102, 255)',
-              'rgb(153, 102, 255)',
-            ],
-            borderWidth: 1,
-          },
+            {
+                label: "得票数",
+                data: mockData, // 仮の得票数
+                backgroundColor: colorData,
+                borderColor: colorData,
+                borderWidth: 1,
+            },
         ],
-      };
+    };
 
-      const options = {
+    const options = {
         scales: {
-          y: {
-            beginAtZero: true,
-          },
+            y: {
+                beginAtZero: true,
+            },
         },
-        indexAxis: 'y',
-        maintainAspectRatio: false //これを追加
-
-      };
+        indexAxis: "y",
+        maintainAspectRatio: false, //これを追加
+    };
     return (
         <>
-            <Header />
             <ResultPage>
                 <VoteTitle info={pageInfo} />
                 <div className="result">
@@ -66,19 +83,24 @@ const VoteResult = () => {
                     </div>
                 </div>
             </ResultPage>
-            <TmpFooter />
         </>
-    )
-}
+    );
+};
 
 export default VoteResult;
 
 const ResultPage = styled.div`
-    background-color: #BDC3CD;
-	width: 100%;
-	height: calc(100vh - 92px - 80px);
-	overflow-y: auto;
-    padding-top: 20px;
+    background-color: #bdc3cd;
+    width: 100%;
+    height: calc(100vh - 92px - 80px);
+    overflow-y: auto;
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgb(232, 232, 232, 0.5);
+        border-radius: 10px;
+    }
     .result {
         margin: 20px auto;
         background-color: #fff;
@@ -92,5 +114,7 @@ const ResultPage = styled.div`
             height: 600px;
         }
     }
-`
-
+    @media all and (min-width: 500px) {
+		height: 100vh;
+	}
+`;
