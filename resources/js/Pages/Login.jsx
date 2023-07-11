@@ -229,7 +229,6 @@ const LoginPage = styled.div`
         .err-msg {
           height: 35px;
           font-size: 8px;
-          /* padding: 0 0 23px 0; */
         }
       }
 
