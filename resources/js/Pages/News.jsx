@@ -84,7 +84,7 @@ const News = () => {
                                         </div>
                                         <div className='newsContent'>
                                             <div className='newsImg'>
-                                                <img src={newsItem.urlToImage || '../../../img/jimin.jpg'} alt="" />
+                                                <img src={newsItem.urlToImage || '../../../img/Noimg.jpg'} alt="" />
                                             </div>
                                             <div className='newsText'>{newsItem.description}<a href={newsItem.url}>詳細記事はこちら</a></div>
                                         </div>
@@ -106,6 +106,13 @@ const NewsPage = styled.div`
     width: 100%;
     height: calc(100vh);
     overflow-y: auto;
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgb(232, 232, 232, 0.5);
+        border-radius: 10px;
+    }
     .news-container {
         max-width: calc(100vw - 10px*2);
         max-width: 600px;
