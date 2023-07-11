@@ -108,7 +108,8 @@ const NewsPage = styled.div`
     overflow-y: auto;
     .news-container {
         max-width: calc(100vw - 10px*2);
-        width: 600px;
+        max-width: 600px;
+        width: 90%;
         margin: 2% auto;
         font-weight: 700;
         .tab-wrap{
@@ -153,7 +154,7 @@ const NewsPage = styled.div`
             .newsBlock{
                 .news{
                     max-width: calc(100vw - 10px*2);
-                    width: 600px;
+                    max-width: 600px;
                     .newsTitle{
                         background-color: #D9D9D9;
                         margin-top: 25px;
