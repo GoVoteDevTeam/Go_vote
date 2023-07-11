@@ -21,7 +21,7 @@ export default defineConfig({
         emptyOutDir: true,
         manifest: true,
         rollupOptions: {
-            input: 'resources/js/app.jsx',  // Entry point
+            input: ["resources/css/app.css", 'resources/js/app.jsx'],  // Entry point
         },
     },
 });
