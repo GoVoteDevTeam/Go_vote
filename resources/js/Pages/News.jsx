@@ -51,7 +51,6 @@ const News = () => {
 
     return (
         <>
-            <Header />
             <NewsPage>
                 <VoteNotice />
                 <div className="news-container">
@@ -74,27 +73,28 @@ const News = () => {
                                 ))}
                             </div>
                         </div>
-                        {news[currentTab] && news[currentTab].map((newsItem, i) => (
-                            <div key={i}>
-                                <div className='news'>
-                                    <div className='newsTitle'>
-                                        <div className='newsTitleText'>
-                                            {newsItem.title}
+                        <div className='newsBlock'>
+                            {news[currentTab] && news[currentTab].map((newsItem, i) => (
+                                <div key={i}>
+                                    <div className='news'>
+                                        <div className='newsTitle'>
+                                            <div className='newsTitleText'>
+                                                {newsItem.title}
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className='newsContent'>
-                                        <div className='newsImg'>
-                                            <img src={newsItem.urlToImage || '../../../img/jimin.jpg'} alt="" />
+                                        <div className='newsContent'>
+                                            <div className='newsImg'>
+                                                <img src={newsItem.urlToImage || '../../../img/jimin.jpg'} alt="" />
+                                            </div>
+                                            <div className='newsText'>{newsItem.description}<a href={newsItem.url}>詳細記事はこちら</a></div>
                                         </div>
-                                        <div className='newsText'>{newsItem.description}<a href={newsItem.url}>詳細記事はこちら</a></div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
             </NewsPage>
-            <Footer />
         </>
     );
 };
@@ -104,12 +104,11 @@ export default News;
 const NewsPage = styled.div`
     background-color: #BDC3CD;
     width: 100%;
-    height: calc(100vh - 92px - 80px);
+    height: calc(100vh);
     overflow-y: auto;
-
     .news-container {
         max-width: calc(100vw - 10px*2);
-	    width: 600px;
+        width: 600px;
         margin: 2% auto;
         font-weight: 700;
         .tab-wrap{
@@ -151,64 +150,58 @@ const NewsPage = styled.div`
 
             }
 
-            .news{
-                max-width: calc(100vw - 10px*2);
-	            width: 600px;
-                .newsTitle{
-                    background-color: #D9D9D9;
-                    margin-top: 25px;
-                    width: 100%;
-                    height: 20%;
-                    .newsTitleText{
-                    padding: 3px 10px;
-                    }
-                }
-                .newsContent{
-                    background-color: #f5f5f5;
-                    width: 100%;
-                    height: 20%;
-                    display: flex;
-                    justify-content: center;
-                    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
-                    overflow: hidden;
-                    overflow-x: auto;
-                    position: relative;
-                    .newsImg{
-                        width: 30%;
-                        max-width: 150px;
-                        min-width: 150px;
-                        img {
-                            width: 100%;
-                            margin: 10px 10px 5px;
-                            /* aspect-ratio: 1/1; */
-                            min-width: 100px;
+            .newsBlock{
+                .news{
+                    max-width: calc(100vw - 10px*2);
+                    width: 600px;
+                    .newsTitle{
+                        background-color: #D9D9D9;
+                        margin-top: 25px;
+                        width: 100%;
+                        height: 20%;
+                        .newsTitleText{
+                        padding: 3px 10px;
                         }
                     }
-                    .newsText{
+                    .newsContent{
+                        background-color: #f5f5f5;
+                        width: 100%;
+                        height: 20%;
+                        display: flex;
+                        justify-content: center;
+                        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+                        overflow: hidden;
+                        overflow-x: auto;
+                        position: relative;
+                        .newsImg{
+                            width: 30%;
+                            max-width: 150px;
+                            min-width: 150px;
+                            img {
+                                width: 100%;
+                                margin: 10px 10px 5px;
+                                /* aspect-ratio: 1/1; */
+                                min-width: 100px;
+                            }
+                        }
+                        .newsText{
                             margin: 10px 10px 5px 20px;
                         }
+                    }
+                }
+
+                /* レスポンシブ対応の追加 */
+                @media screen and (min-width: 1024px) {
+                /* display: grid; */
+                grid-template-columns: repeat(3, 1fr);
+                column-gap: 20px;
                 }
             }
-
-            /* レスポンシブ対応の追加 */
-            @media screen and (min-width: 1024px) {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            column-gap: 20px;
-            }
-        }
+        } 
     }
+    
 
     .container {
-    width: 100%;
-
-        @media screen and (min-width: 768px) {
-            width: 80%;
-        }
-
-        @media screen and (min-width: 1024px) {
-            width: 60%;
-        }
     }
 
 `

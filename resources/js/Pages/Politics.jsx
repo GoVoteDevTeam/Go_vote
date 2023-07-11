@@ -15,10 +15,7 @@ const Politics = () => {
     };
 
     return (
-        <>
-            <HeaderElement>
-
-            </HeaderElement>
+        <>       
             <PoliticsPage>
                 <div className="title">
                     政党早見表
@@ -42,13 +39,6 @@ y            </PoliticsPage>
 }
 
 export default Politics;
-
-const HeaderElement = styled.header`
-    width: 100%;
-    height: 92px;
-    background-color: #36375F;
-    margin-bottom: 100px;
-`;
 
 const PoliticsPage = styled.div`
     .pc {
