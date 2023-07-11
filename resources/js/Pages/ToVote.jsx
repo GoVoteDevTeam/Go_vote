@@ -149,7 +149,8 @@ const ToVotePage = styled.div`
     background-color: #bdc3cd;
     width: 100%;
     height: calc(100vh - 92px - 80px);
-    overflow-y: auto;
+    overflow-y: hidden;
+    
     ::-webkit-scrollbar {
         width: 5px;
     }
