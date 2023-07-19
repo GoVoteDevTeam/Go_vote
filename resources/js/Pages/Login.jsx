@@ -136,7 +136,7 @@ const LoginPage = styled.div`
     display: grid;
     grid-template:
       "header" 100px
-      "img" 100px
+      "img" 130px
       "form" 1fr
       /1fr;
 
@@ -148,8 +148,8 @@ const LoginPage = styled.div`
       grid-area: header;
       p {
         height: 50px;
-        margin: 25px 0;
-        font-size: 36px;
+        margin: 35px 0 15px 0;
+        font-size: 42px;
       }
       @media screen and (max-width: 500px) {
         p {
@@ -166,10 +166,16 @@ const LoginPage = styled.div`
     }
 
     img {
-      width: 100px;
-      height: 100px;
+      width: 130px;
+      height: 130px;
       margin: 0 auto;
       grid-area: img;
+    }
+    @media screen and (max-width: 500px) {
+      img {
+        width: 100px;
+        height: 100px;
+      }
     }
 
     form {
@@ -193,7 +199,7 @@ const LoginPage = styled.div`
           }
         }
         input {
-          width: 65%;
+          width: 50%;
           height: 5vh;
           border: none;
           background-color: #eeeeee;
@@ -230,7 +236,7 @@ const LoginPage = styled.div`
         width: 100%;
         height: 13vh;
         button {
-          width: 40%;
+          width: 25%;
           height: 40px;
           margin: 0px auto;
           padding: 8px;
