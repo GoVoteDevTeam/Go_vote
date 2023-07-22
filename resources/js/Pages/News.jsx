@@ -49,10 +49,24 @@ const News = () => {
         fetchData();
     }, [currentTab]);
 
+    // 日付の文字数制限
+    const maxCharCount = 10; // 非表示にする文字数の上限を設定
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const textElement = document.getElementById("day");
+      const day = textElement.textContent;
+
+      if (day.length > maxCharCount) {
+        // 文字数が上限を超えた場合、テキストを非表示にする
+        textElement.textContent = text.substring(0, maxCharCount) + "...";
+      }
+    });
+
     return (
         <>
             <NewsPage>
                 <VoteNotice />
+                <div className='bg-color'></div>
                 <div className="news-container">
                     <div className='tab-wrap'>
                         <div className='tabs'>
@@ -86,7 +100,12 @@ const News = () => {
                                             <div className='newsImg'>
                                                 <img src={newsItem.urlToImage || '../../../img/Noimg.jpg'} alt="" />
                                             </div>
-                                            <div className='newsText'>{newsItem.description}<a href={newsItem.url}>詳細記事はこちら</a></div>
+                                            <div className='news-article'>
+                                                <div className='day'>{newsItem.publishedAt}</div>
+                                                <div className='newsText'>{newsItem.description}</div>
+                                                <div><a href={newsItem.url}>詳細記事はこちら</a></div>
+                                                <div className='article-details'>→</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -106,31 +125,47 @@ const NewsPage = styled.div`
     width: 100%;
     height: calc(100vh);
     overflow-y: auto;
-    ::-webkit-scrollbar {
+    /* ::-webkit-scrollbar {
         width: 5px;
-    }
+    } */
     ::-webkit-scrollbar-thumb {
         background: rgb(232, 232, 232, 0.5);
         border-radius: 10px;
     }
+    .bg-color{
+        height: 35px;
+        z-index: 1;
+        background-color: #BDC3CD;
+        position: sticky;
+        top: -5px;
+    }
     .news-container {
-        max-width: calc(100vw - 10px*2);
-        max-width: 600px;
-        width: 90%;
-        margin: 2% auto;
+        /* max-width: calc(100vw - 10px*2); */
+        /* max-width: 600px; */
+        /* margin: 2% auto; */
+        width: 100%;
         font-weight: 700;
+        background: #36375F;
+        border-radius: 35px 35px 0 0;
         .tab-wrap{
+            z-index: 2;
             /* width: 1000px; */
+            .bg-color{
+                height: 20px;
+            }
             .tabs{
-                margin: 30px 0 0 0;
+                /* margin: 30px 0 0 0; */
                 background-color: #36375F;
                 width: 100%;
                 height: 90px;
+                position: sticky;
+                top: 10px;
                 border-radius: 35px 35px 0px 0px;
+                z-index: 1;
                 .title{
                     text-align: center;
                     font-size: 20px;
-                    color:#fff;
+                    color:#ffffff;
                     margin: 0 0 5px 0;
                     padding-top: 15px;
                 }
@@ -162,39 +197,58 @@ const NewsPage = styled.div`
                 .news{
                     max-width: calc(100vw - 10px*2);
                     max-width: 600px;
+                    width: 90%;
+                    margin: auto;
                     .newsTitle{
-                        background-color: #D9D9D9;
+                        background-color: #7275ff;
                         margin-top: 25px;
                         width: 100%;
                         height: 20%;
                         .newsTitleText{
                         padding: 3px 10px;
+                        color: #fff;
                         }
                     }
                     .newsContent{
                         background-color: #f5f5f5;
                         width: 100%;
                         height: 20%;
-                        /* display: flex; */
-                        justify-content: center;
+                        /* display: flex;
+                        justify-content: center; */
                         box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
                         overflow: hidden;
                         overflow-x: auto;
                         position: relative;
                         .newsImg{
                             margin: 0 auto;
-                            max-width: 80%;
-                            min-width: 200px;
+                            max-width: 50%;
+                            /* min-width: 30%;
                             width: 300px;
+                            flex-grow: 2; */
                             img {
                                 width: 100%;
-                                margin: 10px 10px 5px;
+                                margin: 30px 10px 5px;
                                 /* aspect-ratio: 1/1; */
-                                min-width: 100px;
+                                min-width: 50px;
                             }
                         }
-                        .newsText{
-                            margin: 10px 10px 5px 20px;
+                        .news-article{
+                                margin: 15px 10px 5px 20px;
+                                flex-grow: 3;
+                            .day{
+                                color:#5b5b5b;
+                            }
+                            .newsText{
+                                display: -webkit-box;
+                                -webkit-line-clamp: 2;/*ブラウザ動作の互換性に注意 */
+                                -webkit-box-orient: vertical;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
+                            .article-details{
+                                text-align: right;
+                                margin: 5px 5px -2px 0;
+                            }
                         }
                     }
                 }
